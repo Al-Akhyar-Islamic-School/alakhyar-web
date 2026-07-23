@@ -1,0 +1,44 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'berita'>;
+}
+const { post } = Astro.props;
+const { title, description, pubDate, category, cover } = post.data;
+const fmtDate = pubDate.toLocaleDateString('id-ID', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<a href={`/berita/${post.id}`} class="card-ak overflow-hidden flex flex-col group">
+  {
+    cover && (
+      <div class="aspect-[16/10] overflow-hidden">
+        <img
+          src={cover}
+          alt={title}
+          width={640}
+          height={400}
+          loading="lazy"
+          decoding="async"
+          class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+        />
+      </div>
+    )
+  }
+  <div class="p-5 flex flex-col flex-1">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="text-[11px] font-bold uppercase tracking-wide text-primary-600 bg-primary-50 px-2 py-0.5 rounded-full">
+        {category}
+      </span>
+      <span class="text-xs text-slate-400">{fmtDate}</span>
+    </div>
+    <h3 class="font-bold text-ink leading-snug mb-1.5 group-hover:text-primary-600 transition-colors">
+      {title}
+    </h3>
+    <p class="text-sm text-slate-500 line-clamp-2">{description}</p>
+  </div>
+</a>

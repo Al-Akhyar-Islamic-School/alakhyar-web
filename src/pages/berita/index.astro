@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import BeritaListing from '../../components/BeritaListing.astro';
+
+export const PER_PAGE = 24;
+
+const semua = (await getCollection('berita', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const totalPages = Math.ceil(semua.length / PER_PAGE);
+const posts = semua.slice(0, PER_PAGE);
+---
+
+<BaseLayout title="Berita" description="Kabar terbaru, prestasi, dan pengumuman dari Sekolah Islam Al Akhyar.">
+  <PageHeader
+    eyebrow="Berita"
+    title="Kabar dari Al Akhyar"
+    subtitle="Prestasi siswa, kegiatan sekolah, dan pengumuman resmi — terdokumentasi sejak 2016."
+  />
+  <section class="container-ak py-12">
+    <BeritaListing posts={posts} page={1} totalPages={totalPages} />
+  </section>
+</BaseLayout>

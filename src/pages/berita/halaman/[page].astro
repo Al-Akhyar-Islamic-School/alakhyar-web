@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHeader from '../../../components/PageHeader.astro';
+import BeritaListing from '../../../components/BeritaListing.astro';
+
+const PER_PAGE = 24;
+
+export async function getStaticPaths() {
+  const PER_PAGE = 24;
+  const semua = await getCollection('berita', ({ data }) => !data.draft);
+  const totalPages = Math.ceil(semua.length / PER_PAGE);
+  // halaman 2..N (halaman 1 = /berita)
+  return Array.from({ length: totalPages - 1 }, (_, i) => ({
+    params: { page: String(i + 2) },
+  }));
+}
+
+const page = Number(Astro.params.page);
+const semua = (await getCollection('berita', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const totalPages = Math.ceil(semua.length / PER_PAGE);
+const posts = semua.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+---
+
+<BaseLayout title={`Berita — Halaman ${page}`} description="Arsip berita Sekolah Islam Al Akhyar.">
+  <PageHeader
+    eyebrow="Berita"
+    title="Kabar dari Al Akhyar"
+    subtitle="Prestasi siswa, kegiatan sekolah, dan pengumuman resmi — terdokumentasi sejak 2016."
+  />
+  <section class="container-ak py-12">
+    <BeritaListing posts={posts} page={page} totalPages={totalPages} />
+  </section>
+</BaseLayout>

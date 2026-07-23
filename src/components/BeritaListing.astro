@@ -1,0 +1,68 @@
+---
+// Listing berita + chips kategori + paginasi — dipakai halaman index/halaman/kategori.
+import type { CollectionEntry } from 'astro:content';
+import BeritaCard from './BeritaCard.astro';
+
+interface Props {
+  posts: CollectionEntry<'berita'>[];
+  aktif?: string; // kategori aktif
+  page?: number;
+  totalPages?: number;
+  baseUrl?: string; // dasar URL paginasi
+}
+
+const { posts, aktif = 'Semua', page = 1, totalPages = 1, baseUrl = '/berita' } = Astro.props;
+const kategori = ['Semua', 'Kegiatan', 'Prestasi', 'Pengumuman', 'Umum'];
+const hrefKat = (k: string) => (k === 'Semua' ? '/berita' : `/berita/kategori/${k.toLowerCase()}`);
+const hrefPage = (p: number) => (p === 1 ? baseUrl : `${baseUrl === '/berita' ? '/berita/halaman' : baseUrl}/${p}`);
+---
+
+<div class="flex flex-wrap gap-2 mb-10">
+  {
+    kategori.map((k) => (
+      <a
+        href={hrefKat(k)}
+        class:list={[
+          'chip !text-xs !px-4 !py-2 transition-colors',
+          k === aktif
+            ? 'bg-primary-500 text-white shadow-brand'
+            : 'bg-white border border-slate-200 text-slate-500 hover:border-primary-200 hover:text-primary-600',
+        ]}
+      >
+        {k}
+      </a>
+    ))
+  }
+</div>
+
+{
+  posts.length === 0 ? (
+    <p class="text-slate-500">Belum ada berita pada kategori ini.</p>
+  ) : (
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {posts.map((post) => (
+        <BeritaCard post={post} />
+      ))}
+    </div>
+  )
+}
+
+{
+  totalPages > 1 && (
+    <nav class="flex items-center justify-center gap-2 mt-12" aria-label="Navigasi halaman">
+      {page > 1 && (
+        <a href={hrefPage(page - 1)} class="btn btn-ghost !py-2 !px-4 text-sm">
+          ← Sebelumnya
+        </a>
+      )}
+      <span class="text-sm text-slate-500 px-3">
+        Halaman {page} dari {totalPages}
+      </span>
+      {page < totalPages && (
+        <a href={hrefPage(page + 1)} class="btn btn-ghost !py-2 !px-4 text-sm">
+          Berikutnya →
+        </a>
+      )}
+    </nav>
+  )
+}

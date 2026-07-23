@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHeader from '../../../components/PageHeader.astro';
+import BeritaListing from '../../../components/BeritaListing.astro';
+
+export function getStaticPaths() {
+  return ['Kegiatan', 'Prestasi', 'Pengumuman', 'Umum'].map((k) => ({
+    params: { kategori: k.toLowerCase() },
+    props: { nama: k },
+  }));
+}
+
+const { nama } = Astro.props;
+const posts = (
+  await getCollection('berita', ({ data }) => !data.draft && data.category === nama)
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout title={`Berita ${nama}`} description={`Berita kategori ${nama} dari Sekolah Islam Al Akhyar.`}>
+  <PageHeader eyebrow="Berita" title={`Kategori: ${nama}`} subtitle={`${posts.length} artikel`} />
+  <section class="container-ak py-12">
+    <BeritaListing posts={posts} aktif={nama} />
+  </section>
+</BaseLayout>
