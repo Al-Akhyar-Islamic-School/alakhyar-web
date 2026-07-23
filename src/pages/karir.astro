@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout title="Karir" description="Peluang karir dan lowongan di Sekolah Islam Al Akhyar.">
+  <PageHeader
+    eyebrow="Karir"
+    title="Bergabung Menjadi Bagian Al Akhyar"
+    subtitle="Kami membuka peluang bagi pendidik dan tenaga kependidikan yang berdedikasi."
+  />
+  <section class="container-ak py-14 max-w-3xl">
+    <div class="rounded-xl bg-white border border-slate-200 p-8 text-center">
+      <p class="text-slate-600 mb-2">Saat ini belum ada lowongan aktif.</p>
+      <p class="text-sm text-slate-400 mb-6">
+        Kirim CV Anda untuk kami simpan sebagai kandidat saat lowongan dibuka.
+      </p>
+      <a href={`mailto:${site.email}`} class="btn btn-primary">Kirim Lamaran</a>
+    </div>
+  </section>
+</BaseLayout>

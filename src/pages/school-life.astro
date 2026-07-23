@@ -1,0 +1,66 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+const items = [
+  { t: 'Tahfidz Qur’an & Hadits', d: 'Pembinaan hafalan harian dengan target per jenjang, asesmen berkala, dan apresiasi Mumtaz–Jayyid.' },
+  { t: 'Ekstrakurikuler', d: 'Pramuka, PMR, OSIS, olahraga, seni, sains — ruang tumbuh minat dan kepemimpinan.' },
+  { t: 'Proyek STEAM', d: 'Pembelajaran berbasis proyek yang menumbuhkan inovasi dan nalar kritis.' },
+  { t: 'Outing Class', d: 'Belajar dari sumber nyata: museum, instansi, alam, dan dunia profesi.' },
+  { t: 'Kegiatan Keislaman', d: 'Semarak Ramadhan, pelatihan dai-daiyah, dan amalan harian 7KAIH.' },
+  { t: 'Sekolah Ramah Anak', d: 'Lingkungan aman dan hangat dengan program anti-perundungan.' },
+];
+
+// Galeri dari dokumentasi asli artikel
+const galeri = (await getCollection('berita', ({ data }) => !data.draft && !!data.cover))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 8)
+  .map((p) => ({ src: p.data.cover!, judul: p.data.title, id: p.id }));
+---
+
+<BaseLayout title="School Life" description="Kehidupan sekolah di Al Akhyar: tahfidz, ekstrakurikuler, STEAM, dan kegiatan islami.">
+  <PageHeader
+    eyebrow="School Life"
+    title="Kehidupan di Al Akhyar"
+    subtitle="Belajar, berkarya, dan bertumbuh dalam lingkungan islami yang hangat."
+  />
+  <section class="container-ak py-14">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
+      {
+        items.map((i, idx) => (
+          <div class="card-ak p-6" data-reveal style={`--reveal-delay: ${idx * 60}ms`}>
+            <h3 class="font-bold text-ink mb-1.5">{i.t}</h3>
+            <p class="text-sm text-slate-500">{i.d}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div data-reveal>
+      <span class="eyebrow">Galeri</span>
+      <h2 class="text-3xl font-bold text-ink mt-2 mb-8">Dokumentasi Kegiatan</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {
+        galeri.map((g, i) => (
+          <a
+            href={`/berita/${g.id}`}
+            class="group relative rounded-2xl overflow-hidden aspect-[4/3] border border-slate-200"
+            data-reveal
+            style={`--reveal-delay: ${i * 60}ms`}
+            title={g.judul}
+          >
+            <img
+              src={g.src}
+              alt={g.judul}
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

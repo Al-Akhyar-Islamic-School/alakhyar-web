@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { jenjang } from '../data/site';
+
+const alur = [
+  { n: 1, t: 'Pendaftaran Online', d: 'Isi formulir pendaftaran dan unggah berkas.' },
+  { n: 2, t: 'Observasi / Tes', d: 'Observasi kesiapan atau tes sesuai jenjang.' },
+  { n: 3, t: 'Pengumuman', d: 'Hasil seleksi diumumkan resmi oleh panitia.' },
+  { n: 4, t: 'Daftar Ulang', d: 'Konfirmasi dan pelunasan administrasi.' },
+];
+---
+
+<BaseLayout title="SPMB 2026/2027" description="Seleksi Penerimaan Murid Baru Sekolah Islam Al Akhyar.">
+  <PageHeader
+    eyebrow="SPMB · PPDB"
+    title="Penerimaan Murid Baru 2026/2027"
+    subtitle="Bergabunglah bersama keluarga Al Akhyar. Kuota setiap jenjang terbatas."
+  />
+  <section class="container-ak py-14 max-w-3xl">
+    <h2 class="text-2xl font-bold text-ink mb-5">Jenjang yang Dibuka</h2>
+    <div class="grid sm:grid-cols-4 gap-3 mb-12">
+      {jenjang.map((j) => (
+        <div class="rounded-lg bg-white border border-slate-200 p-4 text-center">
+          <p class="font-bold text-ink">{j.nama}</p>
+          <p class="text-xs text-slate-400 mt-1">{j.umur}</p>
+        </div>
+      ))}
+    </div>
+
+    <h2 class="text-2xl font-bold text-ink mb-5">Alur Pendaftaran</h2>
+    <ol class="space-y-4 mb-12">
+      {alur.map((a) => (
+        <li class="flex gap-4">
+          <span class="shrink-0 w-9 h-9 rounded-full bg-primary-500 text-white font-bold flex items-center justify-center">{a.n}</span>
+          <div>
+            <h3 class="font-semibold text-ink">{a.t}</h3>
+            <p class="text-sm text-slate-500">{a.d}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+
+    <div class="rounded-xl bg-primary-500 text-white p-8 text-center shadow-brand">
+      <h2 class="text-xl font-bold mb-2">Siap Mendaftar?</h2>
+      <p class="text-white/80 mb-5">Hubungi panitia SPMB untuk informasi biaya dan jadwal lengkap.</p>
+      <a href="/kontak" class="btn bg-white text-primary-600 hover:bg-slate-100">Hubungi Panitia</a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,17 +1,325 @@
 ---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BeritaCard from '../components/BeritaCard.astro';
+import { site, jenjang, pilar, stats } from '../data/site';
+import heroFoto from '../assets/brand/foto-mengaji.png';
 
+const semua = (await getCollection('berita', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const [utama, ...sisa] = semua.filter((p) => p.data.cover);
+const terbaru = sisa.slice(0, 4);
+
+// Galeri marquee: foto sampul 12 artikel terbaru — dokumentasi asli sekolah
+const galeri = semua
+  .filter((p) => p.data.cover)
+  .slice(0, 12)
+  .map((p) => ({ src: p.data.cover!, judul: p.data.title }));
+
+const warnaHeader: Record<string, string> = {
+  primary: 'from-primary-500 to-primary-600',
+  sky: 'from-sky-500 to-sky-600',
+  magenta: 'from-magenta-500 to-magenta-600',
+  coral: 'from-coral-500 to-coral-600',
+};
+const warnaPilar: Record<string, string> = {
+  primary: 'border-t-primary-500 text-primary-600',
+  sky: 'border-t-sky-500 text-sky-600',
+  green: 'border-t-green-500 text-green-600',
+};
+
+const fmtTanggal = (d: Date) =>
+  d.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout>
+  <!-- ============ HERO ============ -->
+  <section class="relative overflow-hidden bg-white">
+    <!-- ornamen latar -->
+    <div class="absolute inset-0 pattern-dots-dark opacity-40" aria-hidden="true"></div>
+    <div
+      class="absolute -top-32 -right-32 w-[480px] h-[480px] rounded-full bg-sky-100 blur-3xl opacity-60"
+      aria-hidden="true"
+    >
+    </div>
+    <div
+      class="absolute -bottom-40 -left-24 w-[380px] h-[380px] rounded-full bg-primary-50 blur-3xl"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div class="container-ak relative grid lg:grid-cols-[1.05fr_1fr] gap-12 items-center py-16 lg:py-24">
+      <div data-reveal>
+        <span
+          class="inline-flex items-center gap-2 rounded-full border border-primary-100 bg-primary-50 px-4 py-1.5 text-xs font-bold text-primary-600 mb-6"
+        >
+          <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+          SPMB 2026/2027 telah dibuka
+        </span>
+        <h1 class="font-display font-bold text-ink text-4xl md:text-[54px] leading-[1.08] tracking-tight mb-6">
+          Mendidik Generasi<br />
+          <span class="text-gradient-brand">Unggul & Berakhlak</span>
+        </h1>
+        <p class="text-lg text-slate-500 leading-relaxed max-w-xl mb-8">
+          Lebih dari 20 tahun Sekolah Islam Al Akhyar Makassar membina putra-putri
+          bangsa — memadukan Kurikulum Merdeka berciri khas keislaman, tahfidz
+          Qur’an &amp; hadits, dalam empat jenjang: TK, SD, SMP, dan SMA Islam.
+        </p>
+        <div class="flex flex-wrap gap-3 mb-10">
+          <a href="/spmb" class="btn btn-primary text-base !px-7 !py-3.5">Daftar Sekarang</a>
+          <a href="/jenjang" class="btn btn-ghost text-base !px-7 !py-3.5">Lihat Jenjang</a>
+        </div>
+        <div class="flex items-center gap-6 text-sm text-slate-500">
+          <div class="flex items-center gap-2">
+            <span class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold text-xs">A</span>
+            Akreditasi BAN-S/M
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-8 h-8 rounded-full bg-amber-100 text-amber-500 flex items-center justify-center">☪</span>
+            Tahfidz Qur’an &amp; Hadits
+          </div>
+        </div>
+      </div>
+
+      <div class="relative" data-reveal style="--reveal-delay: 120ms">
+        <div class="relative aspect-[4/3] rounded-[28px] overflow-hidden shadow-lg rotate-1">
+          <Image
+            src={heroFoto}
+            alt="Siswa Al Akhyar sedang mengaji"
+            class="w-full h-full object-cover"
+            loading="eager"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-primary-900/40 via-transparent to-transparent"></div>
+          <p class="absolute bottom-4 left-5 text-white text-sm font-medium drop-shadow">
+            Pembinaan Qur’an setiap hari · {site.city}
+          </p>
+        </div>
+        <!-- kartu mengambang -->
+        <div
+          class="absolute -bottom-7 -left-2 sm:left-8 bg-white/90 backdrop-blur rounded-2xl shadow-md border border-slate-200 px-5 py-4 -rotate-1"
+        >
+          <p class="text-xs text-slate-400 mb-1">Tiga Pilar Kurikulum</p>
+          <p class="font-bold text-ink">Iman · Ilmu · Ihsan</p>
+        </div>
+        <div
+          class="absolute -top-5 -right-2 sm:right-4 bg-brand-gradient text-white rounded-2xl shadow-brand px-5 py-3.5 rotate-2"
+        >
+          <p class="text-[11px] text-white/70 uppercase tracking-wide font-bold">Sejak</p>
+          <p class="font-display font-bold text-2xl leading-none">2004</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STATS BAND ============ -->
+  <section class="bg-brand-gradient relative overflow-hidden">
+    <div class="absolute inset-0 pattern-dots" aria-hidden="true"></div>
+    <div class="container-ak relative grid grid-cols-2 lg:grid-cols-4 gap-y-8 py-12">
+      {
+        stats.map((s, i) => (
+          <div class="text-center text-white" data-reveal style={`--reveal-delay: ${i * 90}ms`}>
+            <p class="font-display font-bold text-4xl md:text-5xl mb-1">{s.angka}</p>
+            <p class="font-semibold text-white/95 text-sm">{s.label}</p>
+            <p class="text-xs text-white/60 mt-0.5">{s.ket}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ============ PILAR KURIKULUM ============ -->
+  <section class="container-ak py-20">
+    <div class="max-w-2xl mx-auto text-center mb-12" data-reveal>
+      <span class="eyebrow">Kurikulum Al Akhyar</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-ink mt-3 mb-4">
+        Tiga Pilar yang Menjadi Arah Pendidikan Kami
+      </h2>
+      <p class="text-slate-500">
+        Kurikulum Merdeka dengan kekhasan keislaman, dirancang menyeluruh dari profil
+        lulusan hingga asesmen — terdokumentasi terbuka di
+        <a href={site.kurikulumUrl} class="text-primary-600 font-semibold hover:underline" target="_blank" rel="noopener">kurikulum.alakhyar.sch.id</a>.
+      </p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      {
+        pilar.map((p, i) => (
+          <div
+            class={`card-ak border-t-4 ${warnaPilar[p.warna]} p-8`}
+            data-reveal
+            style={`--reveal-delay: ${i * 100}ms`}
+          >
+            <p class="font-display font-bold text-5xl opacity-15 mb-4">0{i + 1}</p>
+            <h3 class="font-bold text-ink text-xl mb-2">{p.nama}</h3>
+            <p class="text-slate-500">{p.deskripsi}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ============ JENJANG ============ -->
+  <section class="bg-slate-100/70 border-y border-slate-200">
+    <div class="container-ak py-20">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12" data-reveal>
+        <div class="max-w-xl">
+          <span class="eyebrow">Jenjang Pendidikan</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-ink mt-3">
+            Perjalanan Belajar yang Berkesinambungan
+          </h2>
+        </div>
+        <a href="/jenjang" class="text-sm font-semibold text-primary-600 hover:text-primary-700 shrink-0">
+          Semua jenjang →
+        </a>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {
+          jenjang.map((j, i) => (
+            <a
+              href={`/jenjang/${j.slug}`}
+              class="group rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
+              data-reveal
+              style={`--reveal-delay: ${i * 90}ms`}
+            >
+              <div class={`bg-gradient-to-br ${warnaHeader[j.warna]} px-6 pt-6 pb-8 rounded-b-[24px] text-white relative overflow-hidden`}>
+                <div class="absolute inset-0 pattern-dots opacity-60" aria-hidden="true" />
+                <p class="relative text-[11px] uppercase tracking-wider font-bold text-white/70">{j.umur}</p>
+                <h3 class="relative font-display font-bold text-2xl mt-1">{j.nama}</h3>
+              </div>
+              <div class="p-6">
+                <p class="text-sm text-slate-500 leading-relaxed">{j.deskripsi}</p>
+                <span class="inline-block text-sm font-semibold text-primary-600 mt-4 group-hover:translate-x-1 transition-transform">
+                  Selengkapnya →
+                </span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GALERI MARQUEE ============ -->
+  <section class="py-16 overflow-hidden" aria-label="Galeri kegiatan">
+    <div class="container-ak mb-8" data-reveal>
+      <span class="eyebrow">Galeri</span>
+      <h2 class="text-3xl font-bold text-ink mt-2">Momen Nyata di Al Akhyar</h2>
+    </div>
+    <div class="relative">
+      <div class="marquee-track flex gap-5 w-max">
+        {
+          [...galeri, ...galeri].map((g) => (
+            <figure class="w-64 shrink-0">
+              <img
+                src={g.src}
+                alt={g.judul}
+                width="256"
+                height="176"
+                loading="lazy"
+                decoding="async"
+                class="w-64 h-44 object-cover rounded-2xl border border-slate-200 shadow-sm"
+              />
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BERITA ============ -->
+  {
+    utama && (
+      <section class="container-ak py-16">
+        <div class="flex items-end justify-between mb-10" data-reveal>
+          <div>
+            <span class="eyebrow">Berita &amp; Kabar</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-ink mt-3">Kabar Terbaru</h2>
+          </div>
+          <a href="/berita" class="hidden sm:inline text-sm font-semibold text-primary-600 hover:text-primary-700">
+            Semua berita →
+          </a>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-8">
+          <!-- artikel unggulan -->
+          <a href={`/berita/${utama.id}`} class="group relative rounded-[24px] overflow-hidden shadow-md min-h-[380px] flex" data-reveal>
+            <img
+              src={utama.data.cover}
+              alt={utama.data.title}
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-primary-900/85 via-primary-900/30 to-transparent" />
+            <div class="relative self-end p-7 text-white">
+              <span class="chip bg-white/20 backdrop-blur text-white mb-3">{utama.data.category}</span>
+              <h3 class="font-bold text-2xl leading-snug mb-2 group-hover:underline decoration-2 underline-offset-4">
+                {utama.data.title}
+              </h3>
+              <p class="text-sm text-white/70">{fmtTanggal(utama.data.pubDate)}</p>
+            </div>
+          </a>
+          <!-- daftar ringkas -->
+          <div class="flex flex-col gap-4">
+            {terbaru.map((p, i) => (
+              <a
+                href={`/berita/${p.id}`}
+                class="group flex gap-4 items-center card-ak !rounded-2xl p-3.5"
+                data-reveal
+                style={`--reveal-delay: ${i * 80}ms`}
+              >
+                <img
+                  src={p.data.cover}
+                  alt=""
+                  width="112"
+                  height="84"
+                  loading="lazy"
+                  decoding="async"
+                  class="w-28 h-21 object-cover rounded-xl shrink-0"
+                />
+                <div class="min-w-0">
+                  <p class="text-[11px] font-bold uppercase tracking-wide text-primary-600 mb-1">
+                    {p.data.category} · {fmtTanggal(p.data.pubDate)}
+                  </p>
+                  <h3 class="font-semibold text-ink leading-snug line-clamp-2 group-hover:text-primary-600 transition-colors">
+                    {p.data.title}
+                  </h3>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <!-- ============ CTA ============ -->
+  <section class="container-ak pb-20 pt-4">
+    <div class="relative rounded-[28px] bg-brand-gradient text-white overflow-hidden shadow-brand" data-reveal>
+      <div class="absolute inset-0 pattern-dots" aria-hidden="true"></div>
+      <div
+        class="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-white/10 blur-2xl"
+        aria-hidden="true"
+      >
+      </div>
+      <div class="relative px-8 py-14 md:px-16 md:py-16 grid md:grid-cols-[1.4fr_1fr] gap-8 items-center">
+        <div>
+          <h2 class="font-display text-3xl md:text-4xl font-bold mb-4 leading-tight">
+            Amanahkan Pendidikan Putra-Putri Anda kepada Kami
+          </h2>
+          <p class="text-white/80 max-w-xl">
+            Kuota SPMB Tahun Ajaran 2026/2027 terbatas untuk setiap jenjang.
+            Tersedia jalur beasiswa tahfidz melalui sistem Poinku.
+          </p>
+        </div>
+        <div class="flex md:justify-end gap-3 flex-wrap">
+          <a href="/spmb" class="btn bg-white text-primary-600 hover:bg-slate-100 text-base !px-7 !py-3.5">
+            Info Pendaftaran
+          </a>
+          <a href="/kontak" class="btn border border-white/40 text-white hover:bg-white/10 text-base !px-7 !py-3.5">
+            Hubungi Kami
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

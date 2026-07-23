@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import { jenjang } from '../../data/site';
+
+const warnaHeader: Record<string, string> = {
+  primary: 'from-primary-500 to-primary-600',
+  sky: 'from-sky-500 to-sky-600',
+  magenta: 'from-magenta-500 to-magenta-600',
+  coral: 'from-coral-500 to-coral-600',
+};
+---
+
+<BaseLayout
+  title="Jenjang Pendidikan"
+  description="TK Islam, SD Islam, SMP Islam, dan SMA Islam Al Akhyar Makassar."
+>
+  <PageHeader
+    eyebrow="Jenjang Pendidikan"
+    title="Empat Jenjang, Satu Visi"
+    subtitle="Perjalanan pendidikan islami yang berkesinambungan — dari usia dini hingga siap perguruan tinggi."
+  />
+  <section class="container-ak py-14">
+    <div class="grid sm:grid-cols-2 gap-6">
+      {
+        jenjang.map((j, i) => (
+          <a
+            href={`/jenjang/${j.slug}`}
+            class="group rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
+            data-reveal
+            style={`--reveal-delay: ${i * 80}ms`}
+          >
+            <div class={`bg-gradient-to-br ${warnaHeader[j.warna]} px-7 pt-7 pb-9 rounded-b-[28px] text-white relative overflow-hidden`}>
+              <div class="absolute inset-0 pattern-dots opacity-60" aria-hidden="true" />
+              <p class="relative text-[11px] uppercase tracking-wider font-bold text-white/70">{j.umur}</p>
+              <h2 class="relative font-display font-bold text-3xl mt-1">{j.nama}</h2>
+            </div>
+            <div class="p-7">
+              <p class="text-slate-500 leading-relaxed">{j.deskripsi}</p>
+              <span class="inline-block font-semibold text-primary-600 mt-5 group-hover:translate-x-1 transition-transform">
+                Pelajari jenjang ini →
+              </span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

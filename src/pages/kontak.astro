@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout title="Kontak" description="Hubungi Sekolah Islam Al Akhyar.">
+  <PageHeader eyebrow="Kontak" title="Hubungi Kami" subtitle="Kami senang menyambut pertanyaan Anda." />
+  <section class="container-ak py-14 max-w-3xl">
+    <div class="grid sm:grid-cols-2 gap-5">
+      <div class="card-ak p-6">
+        <h3 class="font-bold text-ink mb-1">Alamat</h3>
+        <p class="text-slate-500 text-sm">{site.address}</p>
+      </div>
+      <div class="card-ak p-6">
+        <h3 class="font-bold text-ink mb-1">Jam Kantor</h3>
+        <p class="text-slate-500 text-sm">{site.officeHours}</p>
+      </div>
+      <div class="card-ak p-6">
+        <h3 class="font-bold text-ink mb-1">Email</h3>
+        <a href={`mailto:${site.email}`} class="text-primary-600 text-sm hover:underline">{site.email}</a>
+      </div>
+      <div class="card-ak p-6">
+        <h3 class="font-bold text-ink mb-1">Telepon</h3>
+        <p class="text-slate-500 text-sm">{site.phone}</p>
+      </div>
+    </div>
+    <p class="text-sm text-slate-400 mt-8">
+      Peta lokasi dan formulir kontak akan ditambahkan saat migrasi konten.
+    </p>
+  </section>
+</BaseLayout>
