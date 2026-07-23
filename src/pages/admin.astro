@@ -19,5 +19,29 @@
     <!-- Decap CMS — pin versi stabil (3.11.0 terbaru crash React #130 saat load
          dashboard dengan git-gateway; jangan pakai range ^3.0.0) -->
     <script is:inline src="https://unpkg.com/decap-cms@3.3.3/dist/decap-cms.js"></script>
+    <script is:inline>
+      // Isi otomatis field "Penulis" dengan nama akun Google yang sedang login,
+      // bila penulis membiarkannya kosong / nilai default.
+      CMS.registerEventListener({
+        name: 'preSave',
+        handler: function ({ entry }) {
+          try {
+            var user = window.netlifyIdentity && window.netlifyIdentity.currentUser();
+            var nama =
+              (user && user.user_metadata && user.user_metadata.full_name) ||
+              (user && user.email) ||
+              '';
+            var data = entry.get('data');
+            var author = data.get('author');
+            if (nama && (!author || author === 'Humas Al Akhyar')) {
+              return data.set('author', nama);
+            }
+            return data;
+          } catch (e) {
+            return entry.get('data');
+          }
+        },
+      });
+    </script>
   </body>
 </html>
