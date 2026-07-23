@@ -1,0 +1,11 @@
+---
+title: "Nur Anisah, Sabet Tiga Gelar sekaligus di Lomba Mental Aritmatika Sempoa"
+description: "Nur Anisah Marwan, seorang siswi berprestasi dari SMP Islam Al Akhyar Makassar, baru saja mengukir namanya dalam dunia pendidikan dengan prestasi gemilang…"
+pubDate: 2024-05-14
+author: "reski"
+category: Prestasi
+tags: ["SMP"]
+cover: /uploads/berita/WhatsApp-Image-2024-05-14-at-08.23.54.jpeg
+---
+
+Nur Anisah Marwan, seorang siswi berprestasi dari SMP Islam Al Akhyar Makassar, baru saja mengukir namanya dalam dunia pendidikan dengan prestasi gemilang di ajang lomba Mental Aritmatika Sempoa. Dalam kompetisi tersebut, Anisah berhasil meraih juara di tiga kategori berbeda, menunjukkan keterampilannya yang luar biasa dan dedikasinya terhadap pembelajaran. Prestasi yang diraihnya ini tidak hanya membanggakan dirinya sendiri, tetapi juga sekolah dan orang tuanya. Di kategori Visual Intermediate, Anisah dinobatkan sebagai juara pertama, menegaskan kemampuannya dalam memvisualisasikan dan menghitung dengan cepat. Kemampuannya dalam memproses informasi secara visual dan menerjemahkannya ke dalam bentuk perhitungan yang tepat adalah hasil dari latihan intensif dan bimbingan dari para guru di SMP Islam Al Akhyar Makassar. Kemenangan ini membuktikan bahwa Anisah memiliki bakat luar biasa dalam bidang aritmatika visual. Tak hanya itu, Anisah juga meraih gelar Champion di kategori Flash Calculation Senior, sebuah kategori yang menuntut kecepatan dan akurasi dalam perhitungan mental. Dalam kompetisi ini, peserta harus mampu menghitung angka-angka yang ditampilkan dalam waktu singkat, dan Anisah membuktikan bahwa ia dapat mengatasi tantangan tersebut dengan sempurna. Keberhasilannya di kategori ini menandakan kecerdasan dan refleks mental yang luar biasa. Prestasi Anisah tidak berhenti sampai di situ. Dia juga berhasil meraih posisi 1st Runner Up dalam kategori Listening Calculation Senior. Kategori ini menuntut ketelitian dalam mendengarkan angka-angka yang dibacakan dengan cepat dan menghitungnya secara mental. Anisah menunjukkan bahwa ia tidak hanya unggul dalam visual dan flash calculation, tetapi juga memiliki kemampuan mendengar dan memproses informasi dengan cepat. Prestasi Anisah ini membuktikan bahwa dengan tekad dan kerja keras, prestasi luar biasa dapat diraih, menginspirasi teman-temannya untuk terus berusaha dan belajar.

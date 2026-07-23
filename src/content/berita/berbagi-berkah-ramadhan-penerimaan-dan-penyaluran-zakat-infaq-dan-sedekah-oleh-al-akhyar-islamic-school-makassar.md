@@ -1,0 +1,13 @@
+---
+title: "Berbagi Berkah Ramadhan: Penerimaan dan Penyaluran Zakat, Infaq, dan Sedekah oleh Al Akhyar Islamic School"
+description: "Bulan suci Ramadhan 1445 H telah menjadi momen yang istimewa bagi Al Akhyar Islamic School Makassar dalam menjalankan nilai-nilai keagamaan dan kepedulian…"
+pubDate: 2024-04-05
+author: "reski"
+category: Kegiatan
+tags: ["SD", "SMA", "SMP", "TK"]
+cover: /uploads/berita/IMG_20240403_104729-scaled.jpg
+---
+
+Bulan suci Ramadhan 1445 H telah menjadi momen yang istimewa bagi Al Akhyar Islamic School Makassar dalam menjalankan nilai-nilai keagamaan dan kepedulian sosial. Dari tanggal 28 Maret hingga 3 April 2024, lembaga pendidikan Al Akhyar Islamic School Makassar mengadakan kegiatan pengumpulan zakat fitrah, zakat mal, infaq, dan sedekah. Melibatkan seluruh siswa dari tingkat TK, SD, SMP, dan SMA, serta para guru dan karyawan, kegiatan ini bukan hanya sekadar pengumpulan dana, tetapi juga sebagai pembelajaran penting sejak dini bagi siswa-siswi Al Akhyar Islamic School Makassar tentang pentingnya berbagi dan kepedulian terhadap sesama.
+
+Partisipasi dari berbagai tingkatan pendidikan telah menghasilkan kontribusi yang signifikan dalam pengumpulan dana. Mulai dari siswa-siswi yang masih duduk di bangku TK hingga para guru dan karyawan Al Akhyar Islamic School, semuanya berkomitmen untuk berbagi rezeki kepada yang membutuhkan. Ini tidak hanya sekedar mengeluarkan zakat fitrah, zakat mal, infaq, dan sedekah, tetapi juga sebagai upaya nyata untuk menerapkan ajaran agama dalam kehidupan sehari-hari. Setelah proses pengumpulan selesai, dana yang terkumpul akan disalurkan pada saat buka puasa bersama pada tanggal 3 April 2024. Anak-anak panti asuhan dan rumah tangga fakir di sekitar wilayah Al Akhyar Islamic School Makassar menjadi penerima manfaat utama dari kegiatan ini. Tidak hanya sebagai bantuan materi, tetapi juga sebagai bentuk kasih sayang dan perhatian kepada mereka yang kurang beruntung. Inisiatif Al Akhyar Islamic School Makassar dalam mengadakan kegiatan pengumpulan zakat fitrah, zakat mal, infaq, dan sedekah, tidak hanya berdampak pada penerima manfaat langsung, tetapi juga sebagai pelajaran berharga bagi para siswa-siswi. Mereka belajar bahwa berbagi bukan hanya sekadar kewajiban agama, tetapi juga merupakan panggilan moral yang harus dijunjung tinggi dalam kehidupan sehari-hari. Dengan demikian, kegiatan ini tidak hanya meningkatkan rasa kepedulian sosial, tetapi juga membentuk karakter dan kepribadian yang mulia bagi para generasi penerus. ![](/uploads/berita/IMG-20240405-WA0003-300x200.jpg) ![](/uploads/berita/IMG-20240405-WA0002-300x200.jpg)

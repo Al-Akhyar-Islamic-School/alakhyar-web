@@ -1,0 +1,11 @@
+---
+title: "Kunjungan Pendidikan ke PDAM & BPOM Makassar oleh SMA Islam Al Akhyar Makassar"
+description: "Pada tanggal 19 Februari 2024, SMA Islam Al Akhyar Makassar mengadakan kunjungan pendidikan yang menarik ke PDAM (Perusahaan Daerah Air Minum) dan BPOM…"
+pubDate: 2024-02-27
+author: "asmira"
+category: Kegiatan
+tags: ["SMA"]
+cover: /uploads/berita/WhatsApp-Image-2024-02-20-at-09.34.13-1.jpeg
+---
+
+Pada tanggal 19 Februari 2024, SMA Islam Al Akhyar Makassar mengadakan kunjungan pendidikan yang menarik ke PDAM (Perusahaan Daerah Air Minum) dan BPOM (Badan Pengawas Obat dan Makanan) Makassar. Acara ini merupakan bagian dari proyek P5 (Penguatan Profil Pelajar Pancasila) dengan kurikulum merdeka yang telah dicanangkan oleh pemerintah. Kedatangan siswa-siswi SMA Islam Al Akhyar Makassar tersebut dijadwalkan mulai pukul 09.00 hingga 15.30 WITA. Selama kunjungan, para siswa diajak untuk lebih memahami berbagai aspek penting terkait pengelolaan air bersih dan pengawasan obat serta makanan. Di PDAM Makassar, mereka diberikan pemahaman tentang proses produksi air minum, sistem distribusi, serta upaya-upaya dalam menjaga kualitas air yang aman dan layak konsumsi. Selain itu, mereka juga mendapat kesempatan untuk melihat secara langsung fasilitas-fasilitas yang digunakan dalam proses tersebut. Selanjutnya, di BPOM Makassar, siswa-siswi diajak untuk memahami peran dan fungsi lembaga pengawas obat dan makanan dalam menjaga kesehatan masyarakat. Mereka diberikan pengetahuan mengenai proses pemeriksaan, pengujian, serta regulasi terkait dengan produk obat dan makanan yang beredar di pasaran. Hal ini diharapkan dapat meningkatkan kesadaran mereka akan pentingnya menggunakan produk yang telah terjamin keamanannya. Kunjungan ini tidak hanya memberikan pengetahuan teoritis, tetapi juga pengalaman praktis yang berharga bagi para siswa. Mereka dapat melihat langsung bagaimana konsep-konsep yang dipelajari di sekolah diterapkan dalam kehidupan nyata. Dengan demikian, diharapkan bahwa kunjungan ini dapat menjadi pengalaman pembelajaran yang berkesan dan memotivasi para siswa untuk lebih peduli terhadap lingkungan sekitar serta kesehatan diri mereka sendiri.   ![](/uploads/berita/WhatsApp-Image-2024-02-19-at-16.07.05-1-300x225.jpeg)

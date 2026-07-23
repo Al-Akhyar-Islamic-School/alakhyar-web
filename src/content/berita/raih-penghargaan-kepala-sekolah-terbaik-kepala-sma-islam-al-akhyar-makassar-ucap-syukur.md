@@ -1,0 +1,11 @@
+---
+title: "Raih Penghargaan Kepala Sekolah Terbaik Kepala SMA Islam Al Akhyar Makassar Ucap Syukur"
+description: "Makassar \\- Yayasan Pendidikan Islam Al Akhyar Makassar memberikan apresiasi bagi Kepala Sekolah, Guru dan Staf pada Perhelatan Wisuda SD Islam dan SMP…"
+pubDate: 2022-05-26
+author: "amaliah"
+category: Pengumuman
+tags: ["SD", "SMA", "SMP"]
+cover: /uploads/berita/Penghargaan.jpg
+---
+
+**Makassar** \- Yayasan Pendidikan Islam Al Akhyar Makassar memberikan apresiasi bagi Kepala Sekolah, Guru dan Staf pada Perhelatan Wisuda SD Islam dan SMP Islam Al Akhyar Makassar yang diselenggarakan semarak dan khidmat di Hotel Dalton pada hari Senin 23 Mei 2022. Adapun penilaian dalam pemberian penghargaan dilakukan oleh Yayasan dan penilaian guru dan staff berdasarkan kinerja dan integritas dalam memenuhi tugas dan tanggung jawab di sekolah. Sebanyak 10 guru dan staff berhasil meraih penghargaan dari berbagai kategori. Ketua Yayasan Pendidikan Islam Al Akhyar, Bapak Dzulkifli Dinar, LC dalam sambutannya mengucapkan selamat dan terima kasih atas dedikasi seluruh Guru dan Staff Yayasan. “Selamat kami ucapkan kepada seluruh guru dan staff yayasan yang telah mendapatkan penghargaan dari kami, semoga pencapaian ini tidak membuat kita semua merasa cepat puas, teruslah bergerak dan berkarya demi kualitas Pendidikan Al Akhyar Makassar” Kepala SMA Islam Al Akhyar (M. Awaluddin) ketika di temui di sela-sela acara, mengucapkan syukur atas penghargaan yang diraih, “Penghargaan ini adalah spirit baru bagi kami untuk terus berinovasi dan terus berkarya dalam membangun mutu Pendidikan SMA Islam Al Akhyar Makassar. Penghargaan ini kami dedikasikan untuk seluruh guru dan staf dan siswa SMA Islam Al Akhyar Makassar. Meski SMA masih seumur jagung, ia akan mampu bersaing dan memberi warna dan kualitas dalam memberikan Pendidikan terbaiknya kepada peserta didik." Ungkapnya. Selain Guru dan Staf yang diberikan penghargaan, sejumlah siswa dan siswi berprestasi SD dan SMP Islam Al akhyar turut mendapatkan piala dan piagam penghargaan dari sekolah dan Yayasan. Hingga akhir acara, seluruh rangkaian kegiatan berjalan dengan lancar, lalu ditutup dengan sesi foto bersama seluruh sivitas akademik Yayasan Pendidikan Islam Al Akhyar makassar. (am)

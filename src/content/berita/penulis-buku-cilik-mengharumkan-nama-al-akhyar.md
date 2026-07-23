@@ -1,0 +1,11 @@
+---
+title: "Penulis Buku Cilik Mengharumkan Nama Al Akhyar"
+description: "Siti Uswatun Hasanah yang akrab di panggil Uswah ini berhasil menuliskan buku hasil karangannya sendiri, hasil Jeripayah, hasil bernalar serta hasil dari…"
+pubDate: 2019-05-16
+author: "alakhyar"
+category: Umum
+tags: ["SMP"]
+cover: /uploads/berita/WhatsApp-Image-2019-05-15-at-21.26.06-225x300.jpeg
+---
+
+[![WhatsApp Image 2019-05-15 at 21.26.06](/uploads/berita/WhatsApp-Image-2019-05-15-at-21.26.06-225x300.jpeg)](/uploads/berita/WhatsApp-Image-2019-05-15-at-21.26.06.jpeg)[![IMG-20190516-WA0005](/uploads/berita/IMG-20190516-WA0005-208x300.jpg)](/uploads/berita/IMG-20190516-WA0005.jpg) Siti Uswatun Hasanah yang akrab di panggil Uswah ini berhasil menuliskan buku hasil karangannya sendiri, hasil Jeripayah, hasil bernalar serta hasil dari didikan dan pelatihan yang ia tekuni selama ini, buku karangannya yang berjudul "**JEJAK KAKI MENUJU NEGERI DOWN UNDER DAN PERSAHABATAN TIGA NEGARA "** insya Allah akan di _launching_ pada hari sabtu, 18 Mei 2019 bertempat di Perahu Phinisi Pantai Losari sekaligus juga menyambut Semarak Hari Buku Nasional dan Hari Pendidikan Nasional. Tentu hal ini menjadi kebanggan sendiri bagi kami selaku orangtua ke dua dari Uswah Ucap Ustadz Bahar sekaligus kami sebagai wali kelas dari Uswah sendiri bertekad untuk menyebarkan kabar gembira ini kepada teman-teman, tidak hanya ucapan dari wali kelas uswah juga mendapatkan ucapan selamat dari ketua yayasan pendidikan islam Al Akhyar Selamat dan Sukses Nanda Uswah Semoga bermanfaat dan berkah teruslah berkarya melalui tanganmu yang mungil ucap H. Dzulkifli Dinar, Lc Bercampur aduk rasanya setelah kami menuliskan buku _series_ ini akhirnya tulisan ini dikumpul-kumpul menjadi sebuah buku juga, saya mengucapkan terimakasih yang sebesar besarnya kepada SasiSabu Media Guru Indonesia. Selama ini saya banyak belajar dari komunitas tersebut ucap uswah. Menulis adalah proses berpikir dan menginterpretasikan hasil referensi serta pengalaman yang kita temui. Proses tersebut dirangkai dan diuntai menjadi kalimat-kalimat bernilai dimana kalimat itu tertuang dalam lembar-lembar kertas yang tersusun rapih nan idah dan elok. Kita tentu akan mati dan meninggalkan dunia ini tapi karyamu akan tetap ada

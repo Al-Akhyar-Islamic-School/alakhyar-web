@@ -1,0 +1,11 @@
+---
+title: "SMA Islam Al Akhyar Makassar Kirimkan 13 Siswa Berprestasi dalam OSN-K 2024"
+description: "SMA Islam Al Akhyar Makassar menorehkan prestasi gemilang dengan mengirimkan 13 siswa berbakat untuk berpartisipasi dalam Olimpiade Sains Nasional tingkat…"
+pubDate: 2024-03-26
+author: "asmira"
+category: Kegiatan
+tags: ["SMA"]
+cover: /uploads/berita/WhatsApp-Image-2024-03-26-at-07.44.14.jpeg
+---
+
+SMA Islam Al Akhyar Makassar menorehkan prestasi gemilang dengan mengirimkan 13 siswa berbakat untuk berpartisipasi dalam Olimpiade Sains Nasional tingkat Kota (OSN-K). Kegiatan OSN-K yang berlangsung selama dua hari dimulai pada tanggal 26 hingga 27 Maret 2024 ini menjadi ajang bergengsi bagi siswa untuk mengukur kemampuan dan pengetahuan mereka di berbagai bidang mata pelajaran. Tidak tanggung-tanggung, dari 13 siswa yang dikirimkan, masing-masing memiliki keahlian yang berbeda-beda. Di antaranya, Alya’ Nuriadi Sindi dari kelas X Al Awwal akan memperjuangkan bidang Ekonomi, sementara Aditya Jalaludin Elrumi, Rizka Amaliah S, dan Sitti Fadillah Almira Fahrini dari kelas X Al Awwal akan bertarung di bidang Kimia. Selain itu, dari kelas XI Al Ghanie, terdapat enam siswa yang akan menunjukkan prestasinya. Aghista Muslimin, Rifa Rahmania R, dan Muh. Khaerun Apridzaky akan berkompetisi di bidang Kimia dan Informatika. Abdullah Ali Margolang, Aqilah Syalfa Zahiyah Aswar, dan Rezky Aulia S akan mewakili bidang Informatika dan Matematika. Sedangkan Syarifah Athifah Aliyah, Naisylla Ramadhani, dan Syaula Purie Angkasa akan menunjukkan kehebatan mereka di bidang Biologi dan Fisika. Pada OSN-K kali ini, para siswa telah siap menghadapi tantangan dan berkompetisi dengan semangat juang yang tinggi. Mereka telah menjalani persiapan intensif baik secara mandiri maupun dengan bimbingan dari guru-guru mereka untuk meraih hasil terbaik dalam setiap bidang yang dipertandingkan. Dengan keikutsertaan siswa-siswa berbakat dari SMA Islam Al Akhyar Makassar, diharapkan dapat menorehkan prestasi gemilang serta mengharumkan nama sekolah dan kota Makassar di tingkat nasional. Para siswa telah mendapatkan dukungan penuh dari pihak sekolah, guru, dan orang tua untuk memberikan yang terbaik dalam OSN-K ini. Semoga keberhasilan dan prestasi akan menjadi cerminan dari jerih payah dan dedikasi mereka dalam menggapai mimpi dan meraih kesuksesan di masa depan.

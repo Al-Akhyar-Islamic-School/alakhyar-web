@@ -1,0 +1,11 @@
+---
+title: "Aghista Muslimin dari SMA Islam Al Akhyar Makassar Melangkah Sebagai Finalis Olimpiade Sains Nasional Bidang Kimia Sulawesi Selatan 2024"
+description: "Makassar, 24 April 2024 - Prestasi gemilang kembali diraih oleh salah satu siswi SMA Islam Al Akhyar Makassar, Aghista Muslimin, yang berhasil melangkah…"
+pubDate: 2024-04-24
+author: "asmira"
+category: Prestasi
+tags: ["SMA"]
+cover: /uploads/berita/WhatsApp-Image-2024-04-22-at-08.52.47.jpeg
+---
+
+Makassar, 24 April 2024 - Prestasi gemilang kembali diraih oleh salah satu siswi SMA Islam Al Akhyar Makassar, Aghista Muslimin, yang berhasil melangkah sebagai finalis dalam Olimpiade Sains Nasional Bidang Kimia tingkat Provinsi Sulawesi Selatan Tahun 2024. Keberhasilan ini menjadi bukti nyata atas dedikasi dan ketekunan siswa-siswi dalam mengejar prestasi akademis, terutama dalam bidang sains. Meskipun sekolahnya terhitung baru, SMA Islam Al Akhyar Makassar telah menunjukkan keberanian dan komitmen untuk bersaing di ajang nasional yang bergengsi ini. Tahun ini menandai tahun kedua mereka berpartisipasi, dan keberhasilan Aghista Muslimin membuktikan bahwa mereka mampu bersaing dengan sekolah-sekolah lain yang telah memiliki sejarah panjang dalam kompetisi ini. Dalam kompetisi yang ketat, Aghista berhasil menonjol dengan pengetahuan dan keterampilan kimianya yang luar biasa. Keberhasilannya ini tidak hanya menjadi kebanggaan bagi sekolahnya sendiri, tetapi juga bagi kota Makassar dan Sulawesi Selatan secara keseluruhan. Kepala SMA Islam Al Akhyar Makassar, Bapak Ahmad Antara, menyampaikan rasa bangga atas pencapaian Aghista dan berharap ini akan menjadi inspirasi bagi siswa-siswi lainnya untuk terus berusaha dan mengembangkan potensi mereka dalam bidang sains maupun bidang lainnya. Selain itu, ucapan terimakasih juga disematkan untuk mentor kimia Aghista yang tidak lain adalah guru bidang studi kimia yaitu ibu Nur Aeni atas dedikasi dan semangatnya memberikan pengetahuan dan dorongan kepada para siswa. Pencapaian ini tidak hanya menjadi momentum untuk merayakan keberhasilan individu, tetapi juga untuk mengingatkan bahwa setiap usaha dan kerja keras akan membuahkan hasil. Selamat dan teruslah berkarya, Aghista Muslimin, semoga prestasi ini menjadi awal dari perjalanan gemilangmu dalam dunia sains!

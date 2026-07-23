@@ -1,0 +1,13 @@
+---
+title: "Petualangan Pendidikan: SMP Islam Al Akhyar Makassar Mengunjungi Kebun Binatang Citra Satwa Celebes dan Museum Balla Lompoa"
+description: "SMP Islam Al Akhyar Makassar mengunjungi Kebun Binatang Citra Satwa Celebes dan Museum Balla Lompoa pada Kamis, 7 Maret 2024. Kunjungan ini merupakan bagian…"
+pubDate: 2024-03-08
+author: "reski"
+category: Kegiatan
+tags: ["SMP"]
+cover: /uploads/berita/MG_3192-min-scaled.jpg
+---
+
+SMP Islam Al Akhyar Makassar mengunjungi Kebun Binatang Citra Satwa Celebes dan Museum Balla Lompoa pada Kamis, 7 Maret 2024. Kunjungan ini merupakan bagian dari program sekolah yang bertujuan untuk memberikan pengalaman belajar di luar kelas. Kunjungan ini tidak hanya memberikan pengalaman baru bagi siswa, tetapi juga membantu mereka memahami secara langsung tentang keanekaragaman hayati dan sejarah budaya. 
+
+Kebun Binatang Citra Satwa Celebes menjadi destinasi pertama dalam kunjungan kali ini. Di sini, siswa dapat melihat berbagai macam spesies hewan yang ada, mulai dari hewan endemik khas Sulawesi seperti Anoa hingga spesies langka lainnya seperti burung Merak. Melalui pengamatan langsung ini, siswa dapat memperluas wawasan mereka tentang keanekaragaman hayati dan pentingnya menjaga kelestariannya. Setelah menjelajahi kebun binatang, para siswa melanjutkan perjalanan ke Museum _Balla Lompoa_ yang terletak di Kabupaten Gowa. Museum ini merupakan tempat penyimpanan berbagai artefak dan peninggalan sejarah dari Kerajaan Gowa, salah satu kerajaan terbesar di Sulawesi Selatan. Melalui penjelasan dari pengelola museum dan guru pendamping, siswa dapat memahami lebih dalam tentang sejarah dan budaya lokal mereka. Tidak hanya sekadar melihat dan mendengar, melalui kunjungan ini siswa diberi kesempatan untuk berinteraksi secara langsung dengan lingkungan sekitar. Mereka diajak untuk bertanya, mengamati, dan menggali informasi secara aktif. Hal ini membantu mereka mengembangkan keterampilan berpikir kritis dan rasa ingin tahu yang lebih mendalam. Kunjungan ke Kebun Binatang Citra Satwa Celebes dan Museum _Balla Lompoa_ tidak hanya memberikan pengalaman pendidikan yang berharga bagi siswa SMP Islam Al Akhyar Makassar, tetapi juga membantu mereka menghargai keanekaragaman hayati dan sejarah budaya lokal mereka. Dengan kunjungan semacam ini, pembelajaran tidak lagi terbatas pada dinding kelas, melainkan membuka pintu menuju pengalaman nyata yang mendalam dan berkesan. ![](/uploads/berita/MG_2981-scaled-300x169.jpg) ![](/uploads/berita/MG_3038-min-scaled-300x169.jpg) ![](/uploads/berita/WhatsApp-Image-2024-03-08-at-07.40.29-min-300x225.jpeg) ![](/uploads/berita/MG_3241-min-scaled-300x169.jpg) ![](/uploads/berita/MG_3258-min-scaled-300x169.jpg)

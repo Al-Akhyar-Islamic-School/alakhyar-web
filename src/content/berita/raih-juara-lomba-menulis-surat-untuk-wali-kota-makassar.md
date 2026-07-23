@@ -1,0 +1,11 @@
+---
+title: "Raih Juara Lomba Menulis \" Surat untuk wali Kota Makassar\""
+description: "Tepat pada tanggal 29 Agustus 2021, Ikatan Pelajar Muhammadiyah atau yang di kenal dengan sebutan IPM bekerjasama dengan Pemerintah Kota Makassar…"
+pubDate: 2021-09-20
+author: "alakhyar"
+category: Prestasi
+tags: ["SMA"]
+cover: /uploads/berita/WhatsApp-Image-2021-09-17-at-18.55.08.jpeg
+---
+
+Tepat pada tanggal 29 Agustus 2021, Ikatan Pelajar Muhammadiyah atau yang di kenal dengan sebutan IPM bekerjasama dengan Pemerintah Kota Makassar menyelenggarakan Lomba Menulis Surat untuk Wali Kota dengan tajuk " Makassar Tanpa Iklan Rokok Menuju Kota Sehat dan Layak Anak". SMA Islam Al Akhyar mengutus beberapa siswanya untuk ikut berkontribusi dalam lomba tersebut. ![](/uploads/berita/WhatsApp-Image-2021-09-17-at-18.55.08-300x135.jpeg) Foto Bersama Kepala SMA Islam Al Akhyar, Penyelenggara, & Pemenang Lomba Sebagaimana kita ketahui bersama bahwa menulis adalah kegiatan melahirkan pikiran atau perasaan melalui tulisan. Tulisan kita menunjukkan juga bagaimana kita berpikir dan berpandangan terhadap suatu masalah. Salah satu _skill_ yang tentu kita bisa bilang sangat bernilai di mata dunia. Siswa Siswi SMA Islam Al Akhyar sangat antusias mengikuti lomba menulis, tentunya hal ini juga di bawah bimbingan dari dua orang guru yakni Pak Ahmad dan Bu Rahmi. Siang dan malam tanpa kenal waktu siswa siswi SMA Islam Al Akhyar dan Guru pembimbing bersama sama merumuskan dan menuliskan kata-kata yang tepat serta layak untuk mendapatkan juara. Alhamdulillah pada ajang lomba menulis tersebut dua siswi SMA Islam Al akhyar mendapatkan juara 1 dan 3 dengan kategori tulisan terbaik. **Juara satu** di raih oleh **Siti Namira Wahyudi** dan **juara tiga** di araih oleh **Nabila Azzahra Herman** ![](/uploads/berita/WhatsApp-Image-2021-09-17-at-18.55.09-300x135.jpeg) ![](/uploads/berita/WhatsApp-Image-2021-09-17-at-18.55.10-300x135.jpeg) Salah satu guru pembimbing yakni bu Rahmi, menutup dengan mengatakan bhawa "Setiap orang punya kesempatan yang sama tapi tidak setiap orang berani mengambil kesempatan tersebut. Pemenang adalah dia yang atahu bahwa kesempatan hanya datang sekali dan karena itu mereka bersungguh-sungguh menjalaninya. " Saya berharap siswa-siswi Al Akhyar dapat mengambil peran untuk berkarya di ajang kompetisi lainnya"
