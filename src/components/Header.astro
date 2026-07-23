@@ -1,0 +1,81 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/brand/logo-sekolah.png';
+import { site, nav } from '../data/site';
+
+const path = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === '/' ? path === '/' : path.startsWith(href);
+---
+
+<header class="sticky top-0 z-50 bg-white/85 backdrop-blur-md border-b border-slate-200">
+  <div class="container-ak flex items-center justify-between h-16 gap-4">
+    <a href="/" class="flex items-center gap-2.5 shrink-0">
+      <Image src={logo} alt={site.name} width={40} height={40} class="h-9 w-auto" />
+      <span class="hidden sm:flex flex-col leading-tight">
+        <span class="font-bold text-ink text-[15px]">{site.shortName}</span>
+        <span class="text-[11px] text-slate-500">Islamic School</span>
+      </span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-1">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              'px-3 py-2 rounded-full text-sm font-medium transition-colors',
+              isActive(item.href)
+                ? 'text-primary-600 bg-primary-50'
+                : 'text-slate-700 hover:text-primary-600 hover:bg-slate-100',
+            ]}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a href="/spmb" class="btn btn-primary !py-2 !px-4 text-sm">SPMB</a>
+      <button
+        id="menu-toggle"
+        class="lg:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100"
+        aria-label="Buka menu"
+        aria-expanded="false"
+      >
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile nav -->
+  <div id="mobile-nav" class="lg:hidden hidden border-t border-slate-200 bg-white">
+    <nav class="container-ak flex flex-col py-3">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              'px-3 py-2.5 rounded-lg text-sm font-medium',
+              isActive(item.href) ? 'text-primary-600 bg-primary-50' : 'text-slate-700',
+            ]}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-nav');
+  toggle?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('hidden');
+    toggle.setAttribute('aria-expanded', String(!open));
+  });
+</script>
