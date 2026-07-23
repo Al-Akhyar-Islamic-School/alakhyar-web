@@ -1,0 +1,45 @@
+# ============================================================
+# Decap CMS — konfigurasi pengelolaan konten Al Akhyar
+# Login: Google (email @alakhyar.sch.id) via Netlify Identity + Git Gateway.
+#   -> Aktifkan di Netlify: Identity > enable, External providers > Google,
+#      Registration = Invite only, lalu undang email staf @alakhyar.sch.id.
+#   -> Git Gateway di-enable agar staf commit tanpa akun GitHub sendiri.
+# ============================================================
+backend:
+  name: git-gateway
+  branch: main
+
+# Semua media Berita diunggah ke folder ini
+media_folder: 'public/uploads/berita'
+public_folder: '/uploads/berita'
+
+locale: 'id'
+
+collections:
+  - name: 'berita'
+    label: 'Berita'
+    label_singular: 'Berita'
+    folder: 'src/content/berita'
+    create: true
+    slug: '{{slug}}'
+    summary: '{{title}} — {{pubDate}}'
+    sortable_fields: ['pubDate', 'title']
+    fields:
+      - { label: 'Judul', name: 'title', widget: 'string' }
+      - { label: 'Ringkasan', name: 'description', widget: 'text' }
+      - { label: 'Tanggal Terbit', name: 'pubDate', widget: 'datetime', format: 'YYYY-MM-DD' }
+      - { label: 'Penulis', name: 'author', widget: 'string', default: 'Humas Al Akhyar' }
+      - label: 'Kategori'
+        name: 'category'
+        widget: 'select'
+        options: ['Prestasi', 'Kegiatan', 'Pengumuman', 'Akademik', 'Umum']
+        default: 'Umum'
+      - { label: 'Gambar Sampul', name: 'cover', widget: 'image', required: false }
+      - label: 'Jenjang Terkait'
+        name: 'tags'
+        widget: 'select'
+        multiple: true
+        required: false
+        options: ['TK', 'SD', 'SMP', 'SMA', 'Yayasan']
+      - { label: 'Draft (sembunyikan)', name: 'draft', widget: 'boolean', default: false, required: false }
+      - { label: 'Isi Artikel', name: 'body', widget: 'markdown' }
