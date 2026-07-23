@@ -1,0 +1,6 @@
+{
+  "github_enabled": true,
+  "gitlab_enabled": false,
+  "bitbucket_enabled": false,
+  "roles": null
+}

@@ -1,3 +1,8 @@
+# SHIM: gateway Netlify baru tidak punya endpoint /settings (bug Jul 2026,
+# lihat forum Netlify #165578). Decap butuh JSON ini untuk inisialisasi;
+# operasi git sesungguhnya tetap ke /.netlify/git/github (masih hidup).
+/.netlify/git/settings /gateway-settings.json 200!
+
 # Redirect 301: URL artikel WordPress lama (root-level) -> /berita/<slug>
 /2nd-grade-reading /berita/2nd-grade-reading 301
 /2nd-grade-reading/ /berita/2nd-grade-reading 301
