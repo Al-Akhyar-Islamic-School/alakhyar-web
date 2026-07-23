@@ -7,6 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "cms": "npx decap-server & astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"

@@ -30,6 +30,8 @@ const year = new Date().getFullYear();
           <li><a href={item.href} class="hover:text-white transition-colors">{item.label}</a></li>
         ))}
         <li><a href="/spmb" class="hover:text-white transition-colors">SPMB / PPDB</a></li>
+        <li><a href={site.kurikulumUrl} target="_blank" rel="noopener" class="hover:text-white transition-colors">Kurikulum ↗</a></li>
+        <li><a href={site.dinarUrl} target="_blank" rel="noopener" class="hover:text-white transition-colors">Dinar App ↗</a></li>
       </ul>
     </div>
 
@@ -39,6 +41,7 @@ const year = new Date().getFullYear();
         <li>{site.address}</li>
         <li><a href={`mailto:${site.email}`} class="hover:text-white">{site.email}</a></li>
         <li>{site.phone}</li>
+        <li><a href={site.instagram} target="_blank" rel="noopener" class="hover:text-white">Instagram {site.instagramHandle}</a></li>
         <li class="text-white/50 pt-1">{site.officeHours}</li>
       </ul>
     </div>

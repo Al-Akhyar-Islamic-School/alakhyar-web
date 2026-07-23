@@ -3,8 +3,10 @@ import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BeritaCard from '../components/BeritaCard.astro';
-import { site, jenjang, pilar, stats } from '../data/site';
+import { site, jenjang, pilar, stats, kurikulum, dinar, testimoni, kampusAlumni } from '../data/site';
 import heroFoto from '../assets/brand/foto-mengaji.png';
+import dinarSS from '../assets/brand/Dinar APP SS.png';
+import dinarLogo from '../assets/brand/Dinar App logo.png';
 
 const semua = (await getCollection('berita', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -129,33 +131,75 @@ const fmtTanggal = (d: Date) =>
     </div>
   </section>
 
-  <!-- ============ PILAR KURIKULUM ============ -->
+  <!-- ============ KURIKULUM — nilai jual utama ============ -->
   <section class="container-ak py-20">
     <div class="max-w-2xl mx-auto text-center mb-12" data-reveal>
       <span class="eyebrow">Kurikulum Al Akhyar</span>
       <h2 class="text-3xl md:text-4xl font-bold text-ink mt-3 mb-4">
-        Tiga Pilar yang Menjadi Arah Pendidikan Kami
+        Dua Kurikulum, Satu Tujuan:<br class="hidden md:block" /> Unggul &amp; Berakhlak
       </h2>
       <p class="text-slate-500">
-        Kurikulum Merdeka dengan kekhasan keislaman, dirancang menyeluruh dari profil
-        lulusan hingga asesmen — terdokumentasi terbuka di
-        <a href={site.kurikulumUrl} class="text-primary-600 font-semibold hover:underline" target="_blank" rel="noopener">kurikulum.alakhyar.sch.id</a>.
+        Tidak sekadar kurikulum nasional — setiap siswa Al Akhyar menempuh
+        <strong>dua kurikulum sekaligus</strong> yang saling menguatkan.
       </p>
     </div>
-    <div class="grid md:grid-cols-3 gap-6">
-      {
-        pilar.map((p, i) => (
-          <div
-            class={`card-ak border-t-4 ${warnaPilar[p.warna]} p-8`}
-            data-reveal
-            style={`--reveal-delay: ${i * 100}ms`}
-          >
-            <p class="font-display font-bold text-5xl opacity-15 mb-4">0{i + 1}</p>
-            <h3 class="font-bold text-ink text-xl mb-2">{p.nama}</h3>
-            <p class="text-slate-500">{p.deskripsi}</p>
-          </div>
-        ))
-      }
+
+    <!-- dua kurikulum -->
+    <div class="grid md:grid-cols-2 gap-6 mb-8">
+      <div class="rounded-[24px] bg-white border border-slate-200 shadow-sm p-8" data-reveal>
+        <span class="chip bg-sky-100 text-sky-600 mb-4">{kurikulum.nasional.ket}</span>
+        <h3 class="font-display font-bold text-2xl text-ink mb-3">{kurikulum.nasional.nama}</h3>
+        <p class="text-slate-500 leading-relaxed">{kurikulum.nasional.deskripsi}</p>
+      </div>
+      <div class="rounded-[24px] bg-brand-gradient text-white shadow-brand p-8 relative overflow-hidden" data-reveal style="--reveal-delay: 100ms">
+        <div class="absolute inset-0 pattern-dots" aria-hidden="true"></div>
+        <div class="relative">
+          <span class="chip bg-white/20 text-white mb-4">{kurikulum.islami.ket}</span>
+          <h3 class="font-display font-bold text-2xl mb-3">{kurikulum.islami.nama}</h3>
+          <p class="text-white/85 leading-relaxed">{kurikulum.islami.deskripsi}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- pilar + pembiasaan harian -->
+    <div class="grid lg:grid-cols-[1fr_1fr] gap-6 items-stretch">
+      <div class="grid grid-cols-3 gap-4">
+        {
+          pilar.map((p, i) => (
+            <div
+              class={`card-ak border-t-4 ${warnaPilar[p.warna]} p-5 text-center`}
+              data-reveal
+              style={`--reveal-delay: ${i * 80}ms`}
+            >
+              <h3 class="font-bold text-ink text-lg mb-1">{p.nama}</h3>
+              <p class="text-xs text-slate-500 leading-snug">{p.deskripsi}</p>
+            </div>
+          ))
+        }
+      </div>
+      <div class="rounded-2xl bg-slate-100 border border-slate-200 p-6" data-reveal style="--reveal-delay: 150ms">
+        <h3 class="font-semibold text-ink mb-3">Pembiasaan Setiap Hari</h3>
+        <ul class="grid sm:grid-cols-2 gap-2.5">
+          {
+            kurikulum.harian.map((h) => (
+              <li class="flex gap-2 items-start text-sm text-slate-600">
+                <span class="text-green-500 font-bold mt-0.5">✓</span>
+                {h}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="text-center mt-10" data-reveal>
+      <a href={site.kurikulumUrl} target="_blank" rel="noopener" class="btn btn-primary">
+        Jelajahi Dokumen Kurikulum Lengkap
+      </a>
+      <p class="text-xs text-slate-400 mt-3">
+        Transparan &amp; terdokumentasi terbuka di kurikulum.alakhyar.sch.id — dari profil
+        lulusan, struktur per jenjang, hingga sistem asesmen.
+      </p>
     </div>
   </section>
 
@@ -196,6 +240,59 @@ const fmtTanggal = (d: Date) =>
             </a>
           ))
         }
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DINAR APP — nilai jual digital ============ -->
+  <section class="relative overflow-hidden bg-primary-900 text-white">
+    <div class="absolute inset-0 pattern-dots opacity-50" aria-hidden="true"></div>
+    <div
+      class="absolute -top-24 -left-24 w-[420px] h-[420px] rounded-full bg-sky-500/20 blur-3xl"
+      aria-hidden="true"
+    >
+    </div>
+    <div class="container-ak relative py-20">
+      <div class="max-w-2xl mb-4" data-reveal>
+        <span class="inline-flex items-center gap-2.5 mb-5">
+          <Image src={dinarLogo} alt="Logo Dinar App" width={44} height={44} class="h-10 w-auto rounded-xl bg-white/95 p-1" />
+          <span class="text-xs font-bold uppercase tracking-[0.08em] text-sky-300">{dinar.judul}</span>
+        </span>
+        <h2 class="font-display text-3xl md:text-4xl font-bold mb-4">
+          Dinar App — Sekolah dalam Genggaman Orang Tua
+        </h2>
+        <p class="text-white/70 text-lg max-w-xl">{dinar.deskripsi}</p>
+      </div>
+
+      <div class="my-10" data-reveal>
+        <Image
+          src={dinarSS}
+          alt="Tampilan aplikasi Dinar: roster kelas, jadwal shalat, hafalan Qur'an, agenda sekolah, kartu digital, dan e-rapor"
+          class="w-full h-auto"
+          widths={[768, 1280, 1920]}
+          sizes="100vw"
+        />
+      </div>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {
+          dinar.fitur.map((f, i) => (
+            <div
+              class="rounded-2xl bg-white/[0.06] border border-white/10 backdrop-blur px-5 py-4"
+              data-reveal
+              style={`--reveal-delay: ${i * 60}ms`}
+            >
+              <h3 class="font-semibold text-white text-sm mb-1">{f.nama}</h3>
+              <p class="text-xs text-white/55 leading-snug">{f.ket}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="text-center mt-10" data-reveal>
+        <a href={site.dinarUrl} target="_blank" rel="noopener" class="btn bg-white text-primary-700 hover:bg-slate-100">
+          Buka dinar.alakhyar.sch.id
+        </a>
       </div>
     </div>
   </section>
@@ -291,6 +388,55 @@ const fmtTanggal = (d: Date) =>
       </section>
     )
   }
+
+  <!-- ============ TESTIMONI & ALUMNI ============ -->
+  <section class="container-ak py-16">
+    <div class="max-w-2xl mx-auto text-center mb-10" data-reveal>
+      <span class="eyebrow">Kata Mereka</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-ink mt-3">
+        Dipercaya Orang Tua, Dikenang Alumni
+      </h2>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        testimoni.map((t, i) => (
+          <figure class="card-ak p-7 flex flex-col" data-reveal style={`--reveal-delay: ${(i % 3) * 90}ms`}>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" class="text-primary-200 mb-4" aria-hidden="true">
+              <path d="M9.6 4C5.9 6 3.5 9.4 3.5 13.6c0 3.4 2 6.4 5.3 6.4 2.5 0 4.4-1.9 4.4-4.3 0-2.3-1.7-4-3.9-4-.4 0-.9.1-1 .1.3-2.3 2-4.6 4-5.9L9.6 4Zm10.4 0c-3.7 2-6.1 5.4-6.1 9.6 0 3.4 2 6.4 5.3 6.4 2.5 0 4.4-1.9 4.4-4.3 0-2.3-1.7-4-3.9-4-.4 0-.8.1-1 .1.3-2.3 2-4.6 4-5.9L20 4Z" />
+            </svg>
+            <blockquote class="text-slate-600 text-sm leading-relaxed flex-1">“{t.teks}”</blockquote>
+            <figcaption class="mt-5 pt-4 border-t border-slate-100 flex items-center gap-3">
+              <span class="w-9 h-9 rounded-full bg-primary-100 text-primary-600 font-bold text-sm flex items-center justify-center shrink-0">
+                {t.nama.charAt(0)}
+              </span>
+              <span>
+                <p class="font-bold text-ink text-sm">{t.nama}</p>
+                <p class="text-xs text-slate-400">{t.peran}</p>
+              </span>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+
+    <!-- alumni diterima di -->
+    <div class="mt-12 rounded-[24px] bg-white border border-slate-200 shadow-sm p-8 text-center" data-reveal>
+      <p class="eyebrow mb-1">Jejak Alumni</p>
+      <h3 class="text-xl font-bold text-ink mb-2">Lulusan Kami Melanjutkan ke</h3>
+      <p class="text-sm text-slate-400 mb-6">
+        Kuota jalur undangan SMA mencapai 40% — dua lulusan diterima di Fakultas Kedokteran.
+      </p>
+      <div class="flex flex-wrap justify-center gap-2.5">
+        {
+          kampusAlumni.map((k) => (
+            <span class="chip !text-[13px] !normal-case !tracking-normal !font-bold bg-primary-50 border border-primary-100 text-primary-700 !px-4 !py-2">
+              {k}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+  </section>
 
   <!-- ============ CTA ============ -->
   <section class="container-ak pb-20 pt-4">

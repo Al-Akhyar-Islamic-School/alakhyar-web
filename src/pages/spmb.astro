@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
-import { jenjang, narahubung } from '../data/site';
+import { jenjang, narahubung, site } from '../data/site';
 
 const alur = [
   { n: 1, t: 'Pendaftaran', d: 'Isi formulir data calon siswa dan lengkapi berkas.' },
@@ -26,13 +26,23 @@ const syarat = [
     subtitle="Bergabunglah bersama keluarga Al Akhyar. Kuota setiap jenjang terbatas."
   />
   <section class="container-ak py-14 max-w-3xl">
+    <div class="rounded-[24px] bg-primary-50 border border-primary-100 p-7 mb-12 text-center" data-reveal>
+      <p class="text-slate-600 mb-4">
+        Pendaftaran resmi dilakukan secara online melalui portal SPMB Al Akhyar:
+      </p>
+      <a href={site.spmbUrl} target="_blank" rel="noopener" class="btn btn-primary text-base !px-8 !py-3.5">
+        Daftar di spmb.alakhyar.sch.id →
+      </a>
+    </div>
+
     <h2 class="text-2xl font-bold text-ink mb-5">Jenjang yang Dibuka</h2>
     <div class="grid sm:grid-cols-4 gap-3 mb-12">
       {jenjang.map((j) => (
-        <div class="rounded-lg bg-white border border-slate-200 p-4 text-center">
+        <a href={`/jenjang/${j.slug}`} class="rounded-lg bg-white border border-slate-200 p-4 text-center hover:border-primary-200 transition-colors">
           <p class="font-bold text-ink">{j.nama}</p>
           <p class="text-xs text-slate-400 mt-1">{j.umur}</p>
-        </div>
+          <p class="text-[11px] font-semibold text-primary-600 mt-2">Booklet & profil →</p>
+        </a>
       ))}
     </div>
 

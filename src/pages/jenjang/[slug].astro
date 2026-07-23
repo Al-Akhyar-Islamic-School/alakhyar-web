@@ -2,7 +2,8 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BeritaCard from '../../components/BeritaCard.astro';
-import { jenjang, site } from '../../data/site';
+import Placeholder from '../../components/Placeholder.astro';
+import { jenjang, site, programUnggulan } from '../../data/site';
 
 export function getStaticPaths() {
   return jenjang.map((j) => ({ params: { slug: j.slug }, props: { j } }));
@@ -23,50 +24,42 @@ const warnaHero: Record<string, string> = {
   magenta: 'from-magenta-500 to-magenta-600',
   coral: 'from-coral-500 to-coral-600',
 };
-
-const program = [
-  {
-    t: 'Tahfidz Qur’an & Hadits',
-    d: 'Kurikulum tahfidz terstruktur dengan metode, target, dan asesmen per jenjang.',
-  },
-  {
-    t: 'Kurikulum Merdeka Islami',
-    d: 'Perencanaan mendalam CP → ATP → Modul Ajar dengan kekhasan keislaman.',
-  },
-  {
-    t: 'Pembiasaan 7KAIH',
-    d: 'Program kokurikuler pembiasaan karakter dan adab islami harian.',
-  },
-  {
-    t: 'Sistem Poinku',
-    d: 'Poin Akhlak & Poin Unggul — apresiasi karakter hingga mekanisme beasiswa.',
-  },
-  {
-    t: 'Dinar App',
-    d: 'Orang tua memantau perkembangan ananda langsung dari aplikasi sekolah.',
-  },
-  {
-    t: 'Ekstrakurikuler',
-    d: 'Pengembangan minat-bakat: pramuka, olahraga, seni, sains, dan dai cilik.',
-  },
-];
 ---
 
 <BaseLayout title={j.lengkap} description={j.deskripsi}>
   <!-- hero berwarna khas jenjang (gaya feature-header Dinar) -->
   <section class={`relative bg-gradient-to-br ${warnaHero[j.warna]} text-white overflow-hidden rounded-b-[32px]`}>
     <div class="absolute inset-0 pattern-dots" aria-hidden="true"></div>
-    <div class="container-ak relative py-16 md:py-20 max-w-3xl">
-      <a href="/jenjang" class="text-sm text-white/70 hover:text-white">← Semua jenjang</a>
-      <p class="text-white/70 uppercase tracking-widest text-xs font-bold mt-6">{j.umur}</p>
-      <h1 class="font-display text-4xl md:text-5xl font-bold mt-2 mb-4">{j.lengkap}</h1>
-      <p class="text-lg text-white/85 leading-relaxed max-w-2xl">{j.deskripsi}</p>
+    <div class="container-ak relative py-16 md:py-20">
+      <div class="grid lg:grid-cols-[1.2fr_1fr] gap-10 items-center">
+        <div>
+          <a href="/jenjang" class="text-sm text-white/70 hover:text-white">← Semua jenjang</a>
+          <div class="flex items-center gap-3 mt-6">
+            <p class="text-white/70 uppercase tracking-widest text-xs font-bold">{j.umur}</p>
+            <span class="chip bg-white/15 text-white">Sejak {j.berdiri}</span>
+          </div>
+          <h1 class="font-display text-4xl md:text-5xl font-bold mt-2 mb-4">{j.lengkap}</h1>
+          <p class="text-lg text-white/85 leading-relaxed max-w-2xl mb-7">{j.deskripsi}</p>
+          <div class="flex flex-wrap gap-3">
+            <a href={j.booklet} target="_blank" rel="noopener" class="btn bg-white text-primary-700 hover:bg-slate-100 !py-2.5 text-sm">
+              📖 Unduh Booklet {j.nama}
+            </a>
+            <a href="/spmb" class="btn border border-white/40 text-white hover:bg-white/10 !py-2.5 text-sm">
+              Info SPMB
+            </a>
+          </div>
+        </div>
+        <Placeholder
+          label={`Foto kegiatan siswa ${j.nama} (landscape, suasana khas jenjang)`}
+          class="!border-white/40 !bg-white/10 [&_p]:!text-white/70 [&_svg]:!text-white/50 hidden lg:flex"
+        />
+      </div>
     </div>
   </section>
 
-  <!-- Kekhasan jenjang (konten migrasi situs lama) -->
+  <!-- Kekhasan jenjang (konten booklet & situs lama) -->
   <section class="container-ak pt-14">
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div class="grid sm:grid-cols-2 gap-5">
       {
         j.keunikan.map((k, i) => (
           <div
@@ -84,14 +77,49 @@ const program = [
     </div>
   </section>
 
+  <!-- Program khas (TK) / Ekstrakurikuler -->
+  {
+    j.programKhas.length > 0 && (
+      <section class="container-ak pt-12">
+        <div class="mb-6" data-reveal>
+          <span class="eyebrow">Program Harian &amp; Khas</span>
+        </div>
+        <div class="flex flex-wrap gap-2.5">
+          {j.programKhas.map((p) => (
+            <span class="chip !text-[13px] !normal-case !tracking-normal !font-semibold bg-white border border-slate-200 text-slate-600 !px-4 !py-2">
+              {p}
+            </span>
+          ))}
+        </div>
+      </section>
+    )
+  }
+  {
+    j.ekskul.length > 0 && (
+      <section class="container-ak pt-12">
+        <div class="mb-6" data-reveal>
+          <span class="eyebrow">Ekstrakurikuler &amp; Organisasi</span>
+        </div>
+        <div class="flex flex-wrap gap-2.5">
+          {j.ekskul.map((e) => (
+            <span class="chip !text-[13px] !normal-case !tracking-normal !font-semibold bg-white border border-slate-200 text-slate-600 !px-4 !py-2">
+              {e}
+            </span>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <!-- Program unggulan lintas jenjang -->
   <section class="container-ak py-16">
     <div class="max-w-2xl mb-10" data-reveal>
-      <span class="eyebrow">Program</span>
+      <span class="eyebrow">Program Unggulan</span>
       <h2 class="text-3xl font-bold text-ink mt-2">Yang Ananda Dapatkan</h2>
     </div>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
       {
-        program.map((p, i) => (
+        programUnggulan.map((p, i) => (
           <div class="card-ak p-6" data-reveal style={`--reveal-delay: ${i * 70}ms`}>
             <h3 class="font-bold text-ink mb-1.5">{p.t}</h3>
             <p class="text-sm text-slate-500">{p.d}</p>
@@ -100,10 +128,12 @@ const program = [
       }
     </div>
     <p class="text-sm text-slate-400 mt-6">
-      Detail struktur belajar &amp; beban jam per jenjang:
+      Struktur belajar &amp; beban jam lengkap:
       <a href={site.kurikulumUrl} target="_blank" rel="noopener" class="text-primary-600 font-semibold hover:underline">
         kurikulum.alakhyar.sch.id
       </a>
+      · Pantau harian ananda lewat
+      <a href={site.dinarUrl} target="_blank" rel="noopener" class="text-primary-600 font-semibold hover:underline">Dinar App</a>
     </p>
   </section>
 
@@ -140,7 +170,14 @@ const program = [
         <p class="text-white/80 mb-7 max-w-lg mx-auto">
           Kuota terbatas. Tersedia jalur beasiswa tahfidz untuk calon siswa berprestasi.
         </p>
-        <a href="/spmb" class="btn bg-white text-primary-600 hover:bg-slate-100">Info SPMB 2026/2027</a>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a href={site.spmbUrl} target="_blank" rel="noopener" class="btn bg-white text-primary-600 hover:bg-slate-100">
+            Daftar di spmb.alakhyar.sch.id
+          </a>
+          <a href={j.booklet} target="_blank" rel="noopener" class="btn border border-white/40 text-white hover:bg-white/10">
+            Unduh Booklet
+          </a>
+        </div>
       </div>
     </div>
   </section>

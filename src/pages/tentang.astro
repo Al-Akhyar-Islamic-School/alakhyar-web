@@ -1,9 +1,8 @@
 ---
-import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
+import Placeholder from '../components/Placeholder.astro';
 import { site, pilar, stats, visi, misi, sejarah, akreditasi } from '../data/site';
-import fotoTaman from '../assets/brand/foto-taman.png';
 
 const warnaPilar: Record<string, string> = {
   primary: 'border-t-primary-500',
@@ -42,9 +41,10 @@ const warnaPilar: Record<string, string> = {
       </div>
     </div>
     <div class="relative" data-reveal style="--reveal-delay: 120ms">
-      <div class="aspect-[4/3] rounded-[28px] overflow-hidden shadow-lg -rotate-1">
-        <Image src={fotoTaman} alt="Siswa Al Akhyar belajar di taman" class="w-full h-full object-cover" />
-      </div>
+      <Placeholder
+        label="Foto gedung / kampus Al Akhyar tampak depan (landscape)"
+        class="rounded-[28px] -rotate-1"
+      />
       <div class="absolute -bottom-6 left-8 bg-white rounded-2xl shadow-md border border-slate-200 px-6 py-4 rotate-1">
         <p class="font-display font-bold text-2xl text-primary-600 leading-none">4.200 m²</p>
         <p class="text-xs text-slate-500 mt-1">Kampus di Sudiang, Makassar</p>
@@ -159,7 +159,10 @@ const warnaPilar: Record<string, string> = {
   <!-- Sambutan Ketua Yayasan -->
   <section class="container-ak pb-20">
     <div class="rounded-[28px] bg-white border border-slate-200 shadow-sm p-8 md:p-12 max-w-3xl mx-auto" data-reveal>
-      <span class="eyebrow">Sambutan Ketua Yayasan</span>
+      <div class="flex items-start justify-between gap-6 flex-wrap">
+        <span class="eyebrow">Sambutan Ketua Yayasan</span>
+        <Placeholder label="Foto Ketua Yayasan" ratio="aspect-square" class="w-28 !rounded-full !p-2 [&_svg]:w-6 [&_p]:hidden" />
+      </div>
       <div class="mt-5 space-y-4 text-slate-600 leading-relaxed">
         <p class="font-semibold text-ink">Assalamu’alaikum warahmatullahi wabarakatuh,</p>
         <p>

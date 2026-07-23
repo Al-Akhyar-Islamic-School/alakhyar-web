@@ -2,19 +2,17 @@
 
 ## Mengelola Berita lewat CMS
 
-### A. Di komputer lokal (untuk development)
+### A. Di komputer lokal — mode dummy (untuk development)
 
-1. Jalankan dua terminal di folder proyek:
-
-   ```bash
-   npm run dev
-   ```
+1. Satu perintah di folder proyek:
 
    ```bash
-   npx decap-server
+   npm run cms
    ```
 
-2. Buka **http://localhost:4321/admin/index.html**
+   (menjalankan `decap-server` + `astro dev` sekaligus)
+
+2. Buka **http://localhost:4321/admin**
 3. Klik **Login** — langsung masuk tanpa akun (mode `local_backend`, hanya berlaku di
    localhost). Perubahan tersimpan langsung sebagai file di `src/content/berita/`
    (belum ter-commit — commit manual lewat git).
