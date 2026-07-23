@@ -1,5 +1,24 @@
 # Panduan Admin — Website Al Akhyar
 
+## Peran Pengguna
+
+| Peran | Hak | Catatan |
+|---|---|---|
+| **Admin** | Semua hak Editor + kelola situs Netlify, undang/cabut pengguna | Pemilik sistem |
+| **Editor** | Tulis, edit, hapus, **Publish** (menayangkan), approve tulisan kontributor | Penjaga mutu konten |
+| **Contributor** | Tulis & simpan ke papan **Drafts / In Review** | Tulisan tayang hanya setelah di-Publish Editor/Admin |
+
+CMS memakai **Editorial Workflow** — di dashboard ada tab **Workflow** berisi papan
+tiga kolom: *Drafts → In Review → Ready*. Alur kerjanya:
+
+1. **Contributor** menulis Berita → klik **Save** → tulisan masuk kolom *Drafts*
+   (belum tayang di web). Geser ke *In Review* bila sudah siap diperiksa.
+2. **Editor/Admin** membuka tab Workflow → membaca tulisan → jika layak, klik
+   **Publish** → tulisan tayang di web otomatis.
+3. Semua aksi tercatat di riwayat Git (siapa menulis, siapa menayangkan) —
+   pemisahan peran Contributor vs Editor ditegakkan lewat kesepakatan tim, bukan
+   paksaan sistem.
+
 ## Mengelola Berita lewat CMS
 
 ### A. Di komputer lokal — mode dummy (untuk development)
@@ -16,6 +35,10 @@
 3. Klik **Login** — langsung masuk tanpa akun (mode `local_backend`, hanya berlaku di
    localhost). Perubahan tersimpan langsung sebagai file di `src/content/berita/`
    (belum ter-commit — commit manual lewat git).
+
+> Catatan: papan **Workflow** (Drafts → In Review → Ready) tidak tampil di mode
+> lokal — keterbatasan `local_backend` Decap. Papan ini otomatis aktif di
+> produksi (Netlify + Git Gateway).
 
 ### B. Di produksi (staf sekolah, login Google @alakhyar.sch.id)
 
