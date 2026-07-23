@@ -47,7 +47,11 @@ const year = new Date().getFullYear();
   <div class="border-t border-white/10">
     <div class="container-ak py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/50">
       <p>© {year} {site.name}. Semua hak cipta dilindungi.</p>
-      <p>Yayasan Pendidikan Islam Al Akhyar · {site.tagline}</p>
+      <div class="flex items-center gap-4">
+        <a href="/stop-bullying" class="hover:text-white">Stop Bullying</a>
+        <a href="/privacy-policy" class="hover:text-white">Kebijakan Privasi</a>
+        <a href="/syarat-dan-ketentuan" class="hover:text-white">Syarat &amp; Ketentuan</a>
+      </div>
     </div>
   </div>
 </footer>

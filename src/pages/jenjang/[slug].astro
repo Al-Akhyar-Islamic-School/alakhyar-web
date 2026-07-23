@@ -64,6 +64,26 @@ const program = [
     </div>
   </section>
 
+  <!-- Kekhasan jenjang (konten migrasi situs lama) -->
+  <section class="container-ak pt-14">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {
+        j.keunikan.map((k, i) => (
+          <div
+            class="rounded-2xl bg-primary-50/60 border border-primary-100 p-6 flex gap-3 items-start"
+            data-reveal
+            style={`--reveal-delay: ${i * 80}ms`}
+          >
+            <span class="shrink-0 w-6 h-6 rounded-full bg-primary-500 text-white text-xs font-bold flex items-center justify-center mt-0.5">
+              ✓
+            </span>
+            <p class="text-sm text-slate-600 leading-relaxed">{k}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
   <section class="container-ak py-16">
     <div class="max-w-2xl mb-10" data-reveal>
       <span class="eyebrow">Program</span>

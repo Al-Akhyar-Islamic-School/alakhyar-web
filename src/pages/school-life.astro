@@ -9,7 +9,7 @@ const items = [
   { t: 'Proyek STEAM', d: 'Pembelajaran berbasis proyek yang menumbuhkan inovasi dan nalar kritis.' },
   { t: 'Outing Class', d: 'Belajar dari sumber nyata: museum, instansi, alam, dan dunia profesi.' },
   { t: 'Kegiatan Keislaman', d: 'Semarak Ramadhan, pelatihan dai-daiyah, dan amalan harian 7KAIH.' },
-  { t: 'Sekolah Ramah Anak', d: 'Lingkungan aman dan hangat dengan program anti-perundungan.' },
+  { t: 'Sekolah Ramah Anak', d: 'Lingkungan aman dan hangat dengan program anti-perundungan (Program Roots UNICEF).', href: '/stop-bullying' },
 ];
 
 // Galeri dari dokumentasi asli artikel
@@ -28,12 +28,20 @@ const galeri = (await getCollection('berita', ({ data }) => !data.draft && !!dat
   <section class="container-ak py-14">
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
       {
-        items.map((i, idx) => (
-          <div class="card-ak p-6" data-reveal style={`--reveal-delay: ${idx * 60}ms`}>
-            <h3 class="font-bold text-ink mb-1.5">{i.t}</h3>
-            <p class="text-sm text-slate-500">{i.d}</p>
-          </div>
-        ))
+        items.map((i, idx) =>
+          i.href ? (
+            <a href={i.href} class="card-ak p-6 group" data-reveal style={`--reveal-delay: ${idx * 60}ms`}>
+              <h3 class="font-bold text-ink mb-1.5 group-hover:text-primary-600 transition-colors">{i.t}</h3>
+              <p class="text-sm text-slate-500">{i.d}</p>
+              <span class="text-sm font-semibold text-primary-600 mt-3 inline-block">Selengkapnya →</span>
+            </a>
+          ) : (
+            <div class="card-ak p-6" data-reveal style={`--reveal-delay: ${idx * 60}ms`}>
+              <h3 class="font-bold text-ink mb-1.5">{i.t}</h3>
+              <p class="text-sm text-slate-500">{i.d}</p>
+            </div>
+          )
+        )
       }
     </div>
 

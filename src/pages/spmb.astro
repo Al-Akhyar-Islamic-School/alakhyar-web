@@ -1,13 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
-import { jenjang } from '../data/site';
+import { jenjang, narahubung } from '../data/site';
 
 const alur = [
-  { n: 1, t: 'Pendaftaran Online', d: 'Isi formulir pendaftaran dan unggah berkas.' },
-  { n: 2, t: 'Observasi / Tes', d: 'Observasi kesiapan atau tes sesuai jenjang.' },
+  { n: 1, t: 'Pendaftaran', d: 'Isi formulir data calon siswa dan lengkapi berkas.' },
+  { n: 2, t: 'Observasi / Tes', d: 'Tes kematangan calon siswa dan wawancara orang tua (sesuai jenjang).' },
   { n: 3, t: 'Pengumuman', d: 'Hasil seleksi diumumkan resmi oleh panitia.' },
-  { n: 4, t: 'Daftar Ulang', d: 'Konfirmasi dan pelunasan administrasi.' },
+  { n: 4, t: 'Daftar Ulang', d: 'Herregistrasi dan konfirmasi administrasi.' },
+];
+
+const syarat = [
+  'Muslim / Muslimah',
+  'Sehat jasmani dan rohani',
+  'Fotokopi akte kelahiran dan Kartu Keluarga',
+  'Pas foto berwarna ukuran 3×4',
+  'Fotokopi ijazah jenjang sebelumnya (untuk SD/SMP/SMA)',
 ];
 ---
 
@@ -41,10 +49,34 @@ const alur = [
       ))}
     </ol>
 
-    <div class="rounded-xl bg-primary-500 text-white p-8 text-center shadow-brand">
-      <h2 class="text-xl font-bold mb-2">Siap Mendaftar?</h2>
-      <p class="text-white/80 mb-5">Hubungi panitia SPMB untuk informasi biaya dan jadwal lengkap.</p>
-      <a href="/kontak" class="btn bg-white text-primary-600 hover:bg-slate-100">Hubungi Panitia</a>
+    <h2 class="text-2xl font-bold text-ink mb-5">Syarat Umum</h2>
+    <ul class="space-y-2.5 mb-12">
+      {syarat.map((s) => (
+        <li class="flex gap-3 items-start">
+          <span class="shrink-0 w-5 h-5 rounded-full bg-green-100 text-green-600 text-[10px] font-bold flex items-center justify-center mt-1">✓</span>
+          <p class="text-slate-600">{s}</p>
+        </li>
+      ))}
+    </ul>
+    <p class="text-sm text-slate-400 mb-12">
+      Keluarga dengan saudara kandung di Al Akhyar dan alumni jenjang sebelumnya
+      mendapatkan potongan biaya. Rincian biaya & jadwal terbaru dapat ditanyakan ke panitia.
+    </p>
+
+    <div class="rounded-[24px] bg-brand-gradient text-white p-8 md:p-10 text-center shadow-brand relative overflow-hidden">
+      <div class="absolute inset-0 pattern-dots" aria-hidden="true"></div>
+      <div class="relative">
+        <h2 class="text-xl md:text-2xl font-bold mb-2">Siap Mendaftar?</h2>
+        <p class="text-white/80 mb-5">Hubungi panitia SPMB untuk informasi biaya dan jadwal lengkap.</p>
+        <div class="flex flex-wrap justify-center gap-3 mb-5">
+          {narahubung.map((n) => (
+            <a href={`https://wa.me/62${n.replace(/[^0-9]/g, '').replace(/^0/, '')}`} target="_blank" rel="noopener" class="btn bg-white/15 border border-white/30 text-white hover:bg-white/25 !py-2.5 text-sm">
+              📱 {n}
+            </a>
+          ))}
+        </div>
+        <a href="/kontak" class="btn bg-white text-primary-600 hover:bg-slate-100">Hubungi Sekolah</a>
+      </div>
     </div>
   </section>
 </BaseLayout>

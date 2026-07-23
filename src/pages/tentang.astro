@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
-import { site, pilar, stats } from '../data/site';
+import { site, pilar, stats, visi, misi, sejarah, akreditasi } from '../data/site';
 import fotoTaman from '../assets/brand/foto-taman.png';
 
 const warnaPilar: Record<string, string> = {
@@ -12,34 +12,32 @@ const warnaPilar: Record<string, string> = {
 };
 ---
 
-<BaseLayout title="Tentang Kami" description="Sejarah, visi, dan pilar pendidikan Sekolah Islam Al Akhyar Makassar — berkiprah sejak 2004.">
+<BaseLayout
+  title="Tentang Kami"
+  description="Sejarah, visi-misi, dan pilar pendidikan Sekolah Islam Al Akhyar Makassar — berkiprah sejak 2004."
+>
   <PageHeader
     eyebrow="Tentang Kami"
     title="Sekolah Islam Al Akhyar"
     subtitle="Unggul di bidang prestasi, berakhlak mulia dalam perilaku — sejak 2004."
   />
 
+  <!-- Sejarah singkat + foto -->
   <section class="container-ak py-16 grid lg:grid-cols-2 gap-12 items-center">
     <div data-reveal>
       <span class="eyebrow">Sejarah Singkat</span>
       <h2 class="text-3xl font-bold text-ink mt-2 mb-5">Bermula dari Sebuah Nama yang Bermakna</h2>
       <div class="space-y-4 text-slate-600 leading-relaxed">
         <p>
-          Al Akhyar Islamic School mulai beroperasi pada tahun pembelajaran
-          <strong>2004–2005</strong>, dan gedung sekolah di Jl. Arung Teko No. 99,
-          Sudiang, Makassar diresmikan pada <strong>5 Agustus 2006</strong> di atas
-          lahan seluas 4.200 m².
+          Al Akhyar Islamic School lahir dari komitmen <strong>H. Dzulkifli Dinar, Lc.</strong>
+          dan <strong>Hj. Musdalifah Sappe</strong> untuk memajukan pendidikan generasi bangsa.
+          Nama <em>Al Akhyar</em> — dari kata bahasa Arab <em>khair</em> — berarti
+          <strong>“yang terbaik”</strong>: spirit seluruh civitas akademika untuk unggul di
+          bidang prestasi dan berakhlak mulia dalam perilaku.
         </p>
         <p>
-          Sekolah ini lahir dari komitmen <strong>H. Dzulkifli Dinar, Lc.</strong> dan
-          <strong>Hj. Musdalifah Sappe</strong> untuk memajukan pendidikan generasi
-          bangsa. Nama <em>Al Akhyar</em> berarti <strong>“yang terbaik”</strong> —
-          spirit yang menjadi ruh seluruh civitas akademika: unggul di bidang
-          prestasi dan berakhlak mulia dalam perilaku.
-        </p>
-        <p>
-          Kini Al Akhyar menaungi empat jenjang — TK, SD, SMP, dan SMA Islam — dengan
-          akreditasi A dari BAN-S/M dan kurikulum yang terdokumentasi terbuka.
+          Kini Al Akhyar menaungi empat jenjang — TK, SD, SMP, dan SMA Islam — dengan lebih
+          dari 650 peserta didik dan kurikulum yang terdokumentasi terbuka.
         </p>
       </div>
     </div>
@@ -54,7 +52,26 @@ const warnaPilar: Record<string, string> = {
     </div>
   </section>
 
-  <!-- stats -->
+  <!-- Timeline -->
+  <section class="container-ak pb-16">
+    <div class="mb-8" data-reveal>
+      <span class="eyebrow">Perjalanan Kami</span>
+      <h2 class="text-3xl font-bold text-ink mt-2">Tonggak Sejarah</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {
+        sejarah.map((s, i) => (
+          <div class="card-ak p-6 relative" data-reveal style={`--reveal-delay: ${i * 90}ms`}>
+            <p class="font-display font-bold text-3xl text-gradient-brand mb-2">{s.tahun}</p>
+            <h3 class="font-bold text-ink mb-1.5">{s.judul}</h3>
+            <p class="text-sm text-slate-500">{s.teks}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Stats -->
   <section class="bg-brand-gradient relative overflow-hidden">
     <div class="absolute inset-0 pattern-dots" aria-hidden="true"></div>
     <div class="container-ak relative grid grid-cols-2 lg:grid-cols-4 gap-y-8 py-12">
@@ -70,8 +87,37 @@ const warnaPilar: Record<string, string> = {
     </div>
   </section>
 
-  <!-- pilar -->
+  <!-- Visi & Misi -->
   <section class="container-ak py-16">
+    <div class="grid lg:grid-cols-[1fr_1.3fr] gap-10">
+      <div data-reveal>
+        <span class="eyebrow">Visi</span>
+        <blockquote class="mt-4 rounded-[24px] bg-primary-50 border border-primary-100 p-8">
+          <p class="font-display text-2xl font-bold text-primary-700 leading-snug">
+            “{visi}”
+          </p>
+        </blockquote>
+      </div>
+      <div data-reveal style="--reveal-delay: 100ms">
+        <span class="eyebrow">Misi</span>
+        <ol class="mt-4 space-y-3">
+          {
+            misi.map((m, i) => (
+              <li class="flex gap-3.5 items-start">
+                <span class="shrink-0 w-7 h-7 rounded-full bg-primary-500 text-white text-xs font-bold flex items-center justify-center mt-0.5">
+                  {i + 1}
+                </span>
+                <p class="text-slate-600">{m}</p>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pilar -->
+  <section class="container-ak pb-16">
     <div class="max-w-2xl mb-10" data-reveal>
       <span class="eyebrow">Arah Pendidikan</span>
       <h2 class="text-3xl font-bold text-ink mt-2">Tiga Pilar Kurikulum</h2>
@@ -87,9 +133,53 @@ const warnaPilar: Record<string, string> = {
       }
     </div>
     <p class="text-sm text-slate-400 mt-6">
-      Dokumen kurikulum lengkap — profil lulusan, struktur per jenjang, tahfidz, hingga
-      sistem Poinku — tersedia di
+      Dokumen kurikulum lengkap tersedia di
       <a href={site.kurikulumUrl} target="_blank" rel="noopener" class="text-primary-600 font-semibold hover:underline">kurikulum.alakhyar.sch.id</a>.
     </p>
+  </section>
+
+  <!-- Akreditasi -->
+  <section class="container-ak pb-16">
+    <div class="mb-8" data-reveal>
+      <span class="eyebrow">Mutu</span>
+      <h2 class="text-3xl font-bold text-ink mt-2">Akreditasi BAN-S/M</h2>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
+      {
+        akreditasi.map((a, i) => (
+          <div class="card-ak p-6 text-center" data-reveal style={`--reveal-delay: ${i * 70}ms`}>
+            <p class="font-display font-bold text-4xl text-primary-600 mb-1">{a.nilai}</p>
+            <p class="text-sm font-semibold text-ink">{a.jenjang}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Sambutan Ketua Yayasan -->
+  <section class="container-ak pb-20">
+    <div class="rounded-[28px] bg-white border border-slate-200 shadow-sm p-8 md:p-12 max-w-3xl mx-auto" data-reveal>
+      <span class="eyebrow">Sambutan Ketua Yayasan</span>
+      <div class="mt-5 space-y-4 text-slate-600 leading-relaxed">
+        <p class="font-semibold text-ink">Assalamu’alaikum warahmatullahi wabarakatuh,</p>
+        <p>
+          Selamat datang di situs resmi Al Akhyar Islamic School. Website ini adalah media
+          untuk memberitakan informasi kepada publik tentang Al Akhyar, sekaligus sarana
+          berinteraksi dalam rangka menjadikan Al Akhyar sekolah unggulan dambaan masyarakat.
+        </p>
+        <p>
+          Selain memberikan informasi, kami juga ingin menyerap berbagai masukan positif dari
+          semua pihak demi kemajuan Al Akhyar Islamic School. Kami menyampaikan terima kasih
+          dan penghargaan setinggi-tingginya kepada Anda yang telah berkenan mengunjungi dan
+          berpartisipasi aktif pada website ini. Semoga Allah ﷻ senantiasa meridhai setiap
+          langkah kita.
+        </p>
+        <p class="font-semibold text-ink">Wassalam,</p>
+        <div class="pt-2 border-t border-slate-100">
+          <p class="font-bold text-ink">Dzulkifli Dinar, Lc.</p>
+          <p class="text-sm text-slate-400">Ketua Yayasan Pendidikan Islam Al Akhyar</p>
+        </div>
+      </div>
+    </div>
   </section>
 </BaseLayout>

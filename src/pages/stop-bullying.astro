@@ -1,0 +1,69 @@
+---
+// Migrasi halaman "Stop Bullying" dari situs WordPress lama.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+const strategi = [
+  { t: 'Pendidikan Karakter', d: 'Mengajarkan empati, kebaikan, dan penghargaan terhadap perbedaan sejak dini.' },
+  { t: 'Kebijakan Sekolah yang Jelas', d: 'Aturan tegas tentang perilaku yang tidak dapat diterima beserta konsekuensinya.' },
+  { t: 'Lingkungan yang Mendukung', d: 'Sekolah yang aman dan nyaman bagi semua siswa.' },
+  { t: 'Pelatihan Guru & Staf', d: 'Kemampuan mengidentifikasi tanda-tanda perundungan dan cara mengatasinya.' },
+  { t: 'Keterlibatan Orang Tua', d: 'Kolaborasi memantau perubahan perilaku anak dan mendukung anak yang terdampak.' },
+  { t: 'Dukungan untuk Korban', d: 'Pendampingan emosional dan psikologis bagi siswa yang mengalami perundungan.' },
+];
+---
+
+<BaseLayout
+  title="Stop Bullying"
+  description="Komitmen Sekolah Islam Al Akhyar mencegah dan mengatasi perundungan: mengerti, menghindari, dan mengatasinya bersama."
+>
+  <PageHeader
+    eyebrow="Sekolah Ramah Anak"
+    title="Stop Bullying"
+    subtitle="Mengerti, menghindari, dan mengatasi perundungan di lingkungan sekolah."
+  />
+
+  <section class="container-ak py-14 max-w-3xl space-y-6 text-slate-600 leading-relaxed">
+    <p data-reveal>
+      Perundungan (bullying) adalah perilaku agresif yang sengaja dilakukan seseorang atau
+      kelompok terhadap pihak yang dianggap lebih lemah — secara fisik, sosial, maupun
+      psikologis, termasuk <em>cyberbullying</em> di media sosial. Dampaknya panjang: bagi
+      korban dapat memicu stres, kecemasan, hingga depresi; bagi pelaku menumbuhkan pola
+      agresi; dan bagi yang menyaksikan, menormalkan kekerasan.
+    </p>
+    <p data-reveal>
+      Sebagai sekolah Islam dengan jenjang TK hingga SMA, Al Akhyar menempatkan pencegahan
+      perundungan sebagai bagian dari pendidikan akhlak. SMA Islam Al Akhyar bahkan terpilih
+      sebagai pelaksana <strong>Program Roots</strong> — program pencegahan perundungan
+      berbasis sekolah dari Kemendikbudristek bekerja sama dengan UNICEF Indonesia.
+    </p>
+  </section>
+
+  <section class="container-ak pb-16">
+    <div class="mb-8" data-reveal>
+      <span class="eyebrow">Langkah Kami</span>
+      <h2 class="text-2xl md:text-3xl font-bold text-ink mt-2">Strategi Pencegahan &amp; Penanganan</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {
+        strategi.map((s, i) => (
+          <div class="card-ak p-6" data-reveal style={`--reveal-delay: ${i * 70}ms`}>
+            <h3 class="font-bold text-ink mb-1.5">{s.t}</h3>
+            <p class="text-sm text-slate-500">{s.d}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="container-ak pb-20">
+    <div class="rounded-[24px] bg-coral-100/60 border border-coral-500/20 p-8 text-center max-w-2xl mx-auto" data-reveal>
+      <h2 class="font-bold text-ink text-xl mb-2">Melihat atau Mengalami Perundungan?</h2>
+      <p class="text-slate-600 mb-5">
+        Segera laporkan kepada wali kelas, guru BK, atau pihak sekolah. Setiap laporan
+        ditangani dengan serius dan menjaga kerahasiaan.
+      </p>
+      <a href="/kontak" class="btn btn-primary">Hubungi Sekolah</a>
+    </div>
+  </section>
+</BaseLayout>

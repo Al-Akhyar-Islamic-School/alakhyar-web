@@ -1,0 +1,61 @@
+---
+// Layout untuk halaman Markdown statis (privacy policy, syarat & ketentuan, dll).
+import BaseLayout from './BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout title={frontmatter.title} description={frontmatter.description}>
+  <PageHeader
+    eyebrow={frontmatter.eyebrow ?? 'Informasi'}
+    title={frontmatter.title}
+    subtitle={frontmatter.subtitle}
+  />
+  <section class="container-ak py-12 max-w-3xl">
+    <div class="prose-ak">
+      <slot />
+    </div>
+  </section>
+</BaseLayout>
+
+<style is:global>
+  .prose-ak {
+    color: var(--color-slate-700);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .prose-ak > * + * {
+    margin-top: 1em;
+  }
+  .prose-ak h3,
+  .prose-ak h2 {
+    font-weight: 700;
+    color: var(--color-ink);
+    margin-top: 1.6em;
+  }
+  .prose-ak h2 {
+    font-size: 20px;
+  }
+  .prose-ak h3 {
+    font-size: 17px;
+  }
+  .prose-ak ul,
+  .prose-ak ol {
+    padding-left: 1.4rem;
+  }
+  .prose-ak ul {
+    list-style: disc;
+  }
+  .prose-ak ol {
+    list-style: decimal;
+  }
+  .prose-ak a {
+    color: var(--color-primary-600);
+    text-decoration: underline;
+  }
+  .prose-ak hr {
+    border-color: var(--color-slate-200);
+    margin: 1.6em 0;
+  }
+</style>
