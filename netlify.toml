@@ -1,0 +1,8 @@
+# Konfigurasi build Netlify — mengunci setting agar tidak bergantung UI dashboard.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  # Astro 7 membutuhkan Node >= 22.12
+  NODE_VERSION = "22.12.0"
