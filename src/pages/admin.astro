@@ -16,7 +16,8 @@
   <body>
     <!-- Netlify Identity widget: login Google (Al Akhyar) untuk produksi -->
     <script is:inline src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <!-- Decap CMS -->
-    <script is:inline src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <!-- Decap CMS — pin versi stabil (3.11.0 terbaru crash React #130 saat load
+         dashboard dengan git-gateway; jangan pakai range ^3.0.0) -->
+    <script is:inline src="https://unpkg.com/decap-cms@3.3.3/dist/decap-cms.js"></script>
   </body>
 </html>
