@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BeritaCard from '../components/BeritaCard.astro';
 import AlumniSMA from '../components/AlumniSMA.astro';
+import Placeholder from '../components/Placeholder.astro';
 import { site, jenjang, pilar, stats, kurikulum, dinar, testimoni } from '../data/site';
 import heroFoto from '../assets/brand/foto-mengaji.png';
 import dinarSS from '../assets/brand/Dinar APP SS.png';
@@ -231,6 +232,9 @@ const fmtTanggal = (d: Date) =>
                 <div class="absolute inset-0 pattern-dots opacity-60" aria-hidden="true" />
                 <p class="relative text-[11px] uppercase tracking-wider font-bold text-white/70">{j.umur}</p>
                 <h3 class="relative font-display font-bold text-2xl mt-1">{j.nama}</h3>
+              </div>
+              <div class="px-4 pt-4">
+                <Placeholder label={`Foto siswa ${j.nama}`} ratio="aspect-[16/10]" class="!rounded-xl" />
               </div>
               <div class="p-6">
                 <p class="text-sm text-slate-500 leading-relaxed">{j.deskripsi}</p>

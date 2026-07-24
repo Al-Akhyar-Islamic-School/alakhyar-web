@@ -21,8 +21,10 @@ import { site } from '../data/site';
         <a href={`mailto:${site.email}`} class="text-primary-600 text-sm hover:underline">{site.email}</a>
       </div>
       <div class="card-ak p-6">
-        <h3 class="font-bold text-ink mb-1">Telepon</h3>
-        <p class="text-slate-500 text-sm">{site.phone}</p>
+        <h3 class="font-bold text-ink mb-1">Telepon / WhatsApp</h3>
+        <a href={site.whatsapp} target="_blank" rel="noopener" class="text-primary-600 text-sm hover:underline">
+          {site.phone} 💬
+        </a>
       </div>
     </div>
     <div class="mt-10" data-reveal>

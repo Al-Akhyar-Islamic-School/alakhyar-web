@@ -40,7 +40,7 @@ const year = new Date().getFullYear();
       <ul class="space-y-2 text-sm text-white/70">
         <li>{site.address}</li>
         <li><a href={`mailto:${site.email}`} class="hover:text-white">{site.email}</a></li>
-        <li>{site.phone}</li>
+        <li><a href={site.whatsapp} target="_blank" rel="noopener" class="hover:text-white">{site.phone} (WhatsApp)</a></li>
         <li><a href={site.instagram} target="_blank" rel="noopener" class="hover:text-white">Instagram {site.instagramHandle}</a></li>
         <li class="text-white/50 pt-1">{site.officeHours}</li>
       </ul>

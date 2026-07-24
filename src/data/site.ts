@@ -10,6 +10,7 @@ export const site = {
   city: 'Kota Makassar',
   email: 'official@alakhyar.sch.id',
   phone: '0852-1516-1778',
+  whatsapp: 'https://wa.me/6285215161778',
   address: 'Jl. Arung Teko No. 99, Sudiang, Biringkanaya, Makassar, Sulawesi Selatan',
   officeHours: 'Senin–Jumat · 08.00–16.00 WITA',
   instagram: 'https://www.instagram.com/alakhyar_is',
@@ -22,7 +23,7 @@ export const site = {
 // Angka kunci untuk branding (sumber: halaman & artikel resmi situs lama)
 export const stats = [
   { angka: '20+', label: 'Tahun Berkiprah', ket: 'Beroperasi sejak 2004' },
-  { angka: '650+', label: 'Peserta Didik', ket: 'Data tahun 2024' },
+  { angka: '900+', label: 'Peserta Didik', ket: 'Tahun Ajaran 2026/2027' },
   { angka: '4', label: 'Jenjang Pendidikan', ket: 'TK/KB · SD · SMP · SMA' },
   { angka: '3', label: 'Pilar Kurikulum', ket: 'Iman · Ilmu · Ihsan' },
 ] as const;
