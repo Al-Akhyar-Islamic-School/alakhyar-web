@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import logo from '../assets/brand/logo-sekolah-white.png';
+import logo from '../assets/brand/logo-mark-white.png';
 import { site, nav, jenjang } from '../data/site';
 const year = new Date().getFullYear();
 ---
@@ -8,7 +8,7 @@ const year = new Date().getFullYear();
 <footer class="bg-primary-700 text-white/80 mt-20">
   <div class="container-ak py-14 grid gap-10 md:grid-cols-4">
     <div class="md:col-span-1">
-      <Image src={logo} alt={site.name} width={48} height={48} class="h-11 w-auto mb-4" />
+      <Image src={logo} alt={site.name} width={112} height={112} class="h-12 w-12 mb-4" />
       <p class="text-sm leading-relaxed text-white/70 max-w-xs">
         {site.description}
       </p>
