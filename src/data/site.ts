@@ -8,9 +8,9 @@ export const site = {
   description:
     'Sekolah Islam Al Akhyar Makassar — TK/KB Islam, SD Islam, SMP Islam, dan SMA Islam di bawah Yayasan Pendidikan Islam Al Akhyar. Unggul secara akademik, kokoh dalam akhlak.',
   city: 'Kota Makassar',
-  email: 'info@alakhyar.sch.id',
+  email: 'official@alakhyar.sch.id',
   phone: '0852-1516-1778',
-  address: 'Jl. Arung Teko No. 100, Sudiang, Biringkanaya, Makassar, Sulawesi Selatan',
+  address: 'Jl. Arung Teko No. 99, Sudiang, Biringkanaya, Makassar, Sulawesi Selatan',
   officeHours: 'Senin–Jumat · 08.00–16.00 WITA',
   instagram: 'https://www.instagram.com/alakhyar_is',
   instagramHandle: '@alakhyar_is',
