@@ -357,6 +357,7 @@
 /ypi-al-akhyar-islamic-scholl-memberi-penghargaan-guru-dan-staf-terbaik /berita/ypi-al-akhyar-islamic-scholl-memberi-penghargaan-guru-dan-staf-terbaik 301
 /ypi-al-akhyar-islamic-scholl-memberi-penghargaan-guru-dan-staf-terbaik/ /berita/ypi-al-akhyar-islamic-scholl-memberi-penghargaan-guru-dan-staf-terbaik 301
 # Redirect halaman statis WordPress lama -> halaman baru
+/karir https://s.alakhyar.sch.id/karir 301
 /about-us /tentang 301
 /about-us/* /tentang 301
 /sejarah /tentang 301
@@ -382,5 +383,5 @@
 /program-tahfidz /school-life 301
 /kegiatan-tahunan /school-life 301
 /siswa-berprestasi /berita/kategori/prestasi 301
-/lowongan-pekerjaan /karir 301
+/lowongan-pekerjaan https://s.alakhyar.sch.id/karir 301
 /stop-bullying-mengerti-menghindari-dan-mengatasi-bullying-di-sekolah /stop-bullying 301

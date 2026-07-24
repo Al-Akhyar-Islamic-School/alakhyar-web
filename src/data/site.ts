@@ -6,7 +6,7 @@ export const site = {
   shortName: 'Al Akhyar',
   tagline: 'Unggul & Berakhlak',
   description:
-    'Sekolah Islam Al Akhyar Makassar — TK Islam, SD Islam, SMP Islam, dan SMA Islam di bawah Yayasan Pendidikan Islam Al Akhyar. Unggul secara akademik, kokoh dalam akhlak.',
+    'Sekolah Islam Al Akhyar Makassar — TK/KB Islam, SD Islam, SMP Islam, dan SMA Islam di bawah Yayasan Pendidikan Islam Al Akhyar. Unggul secara akademik, kokoh dalam akhlak.',
   city: 'Kota Makassar',
   email: 'info@alakhyar.sch.id',
   phone: '0852-1516-1778',
@@ -23,7 +23,7 @@ export const site = {
 export const stats = [
   { angka: '20+', label: 'Tahun Berkiprah', ket: 'Beroperasi sejak 2004' },
   { angka: '650+', label: 'Peserta Didik', ket: 'Data tahun 2024' },
-  { angka: '4', label: 'Jenjang Pendidikan', ket: 'TK · SD · SMP · SMA' },
+  { angka: '4', label: 'Jenjang Pendidikan', ket: 'TK/KB · SD · SMP · SMA' },
   { angka: '3', label: 'Pilar Kurikulum', ket: 'Iman · Ilmu · Ihsan' },
 ] as const;
 
@@ -137,12 +137,12 @@ export const testimoni = [
   {
     teks: 'Keputusan menyekolahkan anak saya di Al Akhyar sangat tepat. Anak saya mendapatkan fasilitas, pendidikan, lingkungan, dan guru yang terbaik. Adab dan ilmu diajarkan beriringan, dikemas dengan cara yang menyenangkan.',
     nama: 'Minanty Candiwaty',
-    peran: 'Orang Tua Siswa TK Islam',
+    peran: 'Orang Tua Siswa TK/KB Islam',
   },
   {
     teks: 'Alhamdulillah, dua anak saya yang bersekolah di Al Akhyar banyak mengalami perubahan positif — kemandirian, sopan santun, keagamaan, dan akademiknya. Anak senang dan nyaman di sekolah, kami orang tua pun merasa aman.',
     nama: 'Anisya Nurul Riskyta',
-    peran: 'Orang Tua Siswa TK Islam',
+    peran: 'Orang Tua Siswa TK/KB Islam',
   },
   {
     teks: 'Lingkungan sekolah nyaman dan aman, guru-gurunya peduli dan perhatian pada perkembangan peserta didik. Perkembangan karakter anak saya memperlihatkan kemajuan yang signifikan.',
@@ -191,7 +191,7 @@ export const nav = [
   { label: 'Jenjang', href: '/jenjang' },
   { label: 'School Life', href: '/school-life' },
   { label: 'Berita', href: '/berita' },
-  { label: 'Karir', href: '/karir' },
+  { label: 'Karir', href: 'https://s.alakhyar.sch.id/karir' },
   { label: 'Kontak', href: '/kontak' },
 ];
 
@@ -215,7 +215,7 @@ export const babKurikulum = [
 export const jenjang = [
   {
     slug: 'tk',
-    nama: 'TK Islam',
+    nama: 'TK/KB Islam',
     lengkap: 'KB-TK Islam Al Akhyar',
     umur: 'Usia 2–6 tahun',
     berdiri: 2012,
