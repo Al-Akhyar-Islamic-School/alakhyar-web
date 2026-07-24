@@ -151,16 +151,35 @@ export const testimoni = [
   },
 ] as const;
 
-// Kampus tujuan alumni SMA (booklet SMA, Nov 2025)
+// Alumni SMA angkatan terbaru (2025/2026) — data resmi sekolah
+export const alumniTerbaru = {
+  angkatan: '2025/2026',
+  daftar: [
+    { nama: 'Annida Althafunnisa', prodi: 'Bisnis Islam', kampus: 'Universitas Indonesia', logo: '/kampus/ui.svg' },
+    { nama: 'Salsa Puspaningrum BZ', prodi: 'Ilmu Administrasi Niaga', kampus: 'Universitas Indonesia', logo: '/kampus/ui.svg' },
+    { nama: 'Sitti Fadillah Almira Fahrini', prodi: 'Pendidikan Dokter', kampus: 'Universitas Hasanuddin', logo: '/kampus/unhas.png' },
+    { nama: 'Alya’ Nuriadi Sindi', prodi: 'Ekonomi dan Bisnis Islam', kampus: 'Universitas Hasanuddin', logo: '/kampus/unhas.png' },
+    { nama: 'WD. Rahel Azzalikha Ananda', prodi: 'Wilayah dan Kota', kampus: 'Universitas Hasanuddin', logo: '/kampus/unhas.png' },
+    { nama: 'Afifa Salsabila Herwan', prodi: 'Agroteknologi', kampus: 'Universitas Hasanuddin', logo: '/kampus/unhas.png' },
+    { nama: 'Rizka Amaliah S', prodi: 'Ilmu Keperawatan', kampus: 'Universitas Hasanuddin', logo: '/kampus/unhas.png' },
+    { nama: 'Naura Azzahra Nawawi', prodi: 'Kesehatan Masyarakat', kampus: 'Universitas Hasanuddin', logo: '/kampus/unhas.png' },
+  ],
+} as const;
+
+// Logo kampus tujuan utama (sumber: Wikipedia/Wikimedia, PNG/SVG transparan)
+export const kampusLogos = [
+  { nama: 'Universitas Indonesia', logo: '/kampus/ui.svg' },
+  { nama: 'Universitas Hasanuddin', logo: '/kampus/unhas.png' },
+  { nama: 'Universitas Negeri Makassar', logo: '/kampus/unm.png' },
+  { nama: 'Universitas Islam Indonesia', logo: '/kampus/uii.svg' },
+  { nama: 'Universitas Muslim Indonesia', logo: '/kampus/umi.png' },
+] as const;
+
+// Kampus tujuan alumni lainnya (booklet SMA, Nov 2025)
 export const kampusAlumni = [
-  'FK UNHAS',
-  'UNHAS',
-  'UNM',
   'UIN',
   'Poltekkes',
   'Poltekbang',
-  'UMI',
-  'UII',
   'Politeknik Negeri Surabaya',
   'Universitas Bosowa',
 ] as const;
