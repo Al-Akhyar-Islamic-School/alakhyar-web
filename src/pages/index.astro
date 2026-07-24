@@ -3,7 +3,8 @@ import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BeritaCard from '../components/BeritaCard.astro';
-import { site, jenjang, pilar, stats, kurikulum, dinar, testimoni, kampusAlumni, alumniTerbaru, kampusLogos } from '../data/site';
+import AlumniSMA from '../components/AlumniSMA.astro';
+import { site, jenjang, pilar, stats, kurikulum, dinar, testimoni } from '../data/site';
 import heroFoto from '../assets/brand/foto-mengaji.png';
 import dinarSS from '../assets/brand/Dinar APP SS.png';
 import dinarLogo from '../assets/brand/Dinar App logo.png';
@@ -67,7 +68,7 @@ const fmtTanggal = (d: Date) =>
         <p class="text-lg text-slate-500 leading-relaxed max-w-xl mb-8">
           Lebih dari 20 tahun Sekolah Islam Al Akhyar Makassar membina putra-putri
           bangsa — memadukan Kurikulum Merdeka berciri khas keislaman, tahfidz
-          Qur’an &amp; hadits, dalam empat jenjang: TK, SD, SMP, dan SMA Islam.
+          Qur’an &amp; hadits, dalam empat jenjang: TK/KB, SD, SMP, dan SMA Islam.
         </p>
         <div class="flex flex-wrap gap-3 mb-10">
           <a href="/spmb" class="btn btn-primary text-base !px-7 !py-3.5">Daftar Sekarang</a>
@@ -420,64 +421,8 @@ const fmtTanggal = (d: Date) =>
     </div>
 
     <!-- Alumni SMA -->
-    <div class="mt-12 rounded-[24px] bg-white border border-slate-200 shadow-sm p-8 md:p-10" data-reveal>
-      <div class="text-center mb-8">
-        <p class="eyebrow mb-1">Alumni SMA</p>
-        <h3 class="text-2xl font-bold text-ink mb-2">
-          Angkatan {alumniTerbaru.angkatan} Menembus Kampus Impian
-        </h3>
-        <p class="text-sm text-slate-400 max-w-xl mx-auto">
-          Kuota jalur undangan mencapai 40% — tahun ini lulusan kami diterima di
-          Universitas Indonesia dan Universitas Hasanuddin, termasuk Pendidikan Dokter.
-        </p>
-      </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-        {
-          alumniTerbaru.daftar.map((a, i) => (
-            <div
-              class="rounded-2xl bg-slate-50 border border-slate-200 p-5 flex flex-col items-center text-center"
-              data-reveal
-              style={`--reveal-delay: ${(i % 4) * 70}ms`}
-            >
-              <img
-                src={a.logo}
-                alt={`Logo ${a.kampus}`}
-                width="48"
-                height="48"
-                loading="lazy"
-                decoding="async"
-                class="h-12 w-12 object-contain mb-3"
-              />
-              <p class="font-bold text-ink text-sm leading-snug">{a.nama}</p>
-              <p class="text-xs text-slate-500 mt-1">{a.prodi}</p>
-              <p class="text-[11px] font-bold text-primary-600 uppercase tracking-wide mt-2">{a.kampus}</p>
-            </div>
-          ))
-        }
-      </div>
-
-      <!-- logo kampus tujuan -->
-      <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 pb-2">
-        {
-          kampusLogos.map((k) => (
-            <img
-              src={k.logo}
-              alt={`Logo ${k.nama}`}
-              title={k.nama}
-              width="56"
-              height="56"
-              loading="lazy"
-              decoding="async"
-              class="h-14 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
-            />
-          ))
-        }
-      </div>
-      <p class="text-center text-xs text-slate-400 mt-6">
-        Serta kampus tujuan lainnya:
-        {kampusAlumni.join(' · ')}
-      </p>
+    <div class="mt-12">
+      <AlumniSMA />
     </div>
   </section>
 

@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BeritaCard from '../../components/BeritaCard.astro';
 import Placeholder from '../../components/Placeholder.astro';
+import AlumniSMA from '../../components/AlumniSMA.astro';
 import { jenjang, site, programUnggulan } from '../../data/site';
 
 export function getStaticPaths() {
@@ -136,6 +137,14 @@ const warnaHero: Record<string, string> = {
       <a href={site.dinarUrl} target="_blank" rel="noopener" class="text-primary-600 font-semibold hover:underline">Dinar App</a>
     </p>
   </section>
+
+  {
+    j.slug === 'sma' && (
+      <section class="container-ak pb-16">
+        <AlumniSMA />
+      </section>
+    )
+  }
 
   {
     terkait.length > 0 && (
