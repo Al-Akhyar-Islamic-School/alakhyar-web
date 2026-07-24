@@ -59,6 +59,14 @@ build ulang situs (± 2–3 menit sampai tayang).
 > `public/admin/config.yml` sebaiknya tetap ada (tidak berpengaruh di produksi),
 > namun pastikan **Git Gateway aktif** agar login Google berfungsi.
 
+## Foto di Berita
+
+- Silakan upload foto langsung dari HP — **sistem otomatis mengompres** (resize
+  maks 1920px + optimasi) lewat GitHub Actions, jadi tidak perlu mengecilkan manual.
+- Format yang didukung: **JPG / PNG / WebP**. Hindari HEIC (foto iPhone default) —
+  ubah dulu ke JPG karena browser tidak bisa menampilkannya.
+- Foto tersimpan di repo GitHub (`public/uploads/berita/`) dan disajikan via CDN.
+
 ## Alur konten
 
 - **Berita** → dikelola lewat `/admin` (staf) atau file Markdown di `src/content/berita/`

@@ -1,0 +1,48 @@
+name: Kompres gambar upload CMS
+
+# Guru meng-upload foto dari HP (3-10MB) lewat /admin tanpa kompresi.
+# Workflow ini otomatis me-resize (maks 1920px) + mengompres setiap gambar
+# di public/uploads yang lebih besar dari 500KB, lalu commit hasilnya.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'public/uploads/**'
+
+jobs:
+  kompres:
+    runs-on: ubuntu-latest
+    # jangan berjalan lagi untuk commit hasil kompresi sendiri
+    if: "!contains(github.event.head_commit.message, '[auto-kompres]')"
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pasang alat kompresi
+        run: sudo apt-get update -q && sudo apt-get install -y -q imagemagick jpegoptim optipng webp
+
+      - name: Resize + kompres gambar > 500KB
+        run: |
+          set -e
+          FILES=$(find public/uploads -type f \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' \) -size +500k || true)
+          if [ -z "$FILES" ]; then echo "Tidak ada gambar besar."; exit 0; fi
+          echo "$FILES" | while IFS= read -r f; do
+            before=$(stat -c%s "$f")
+            mogrify -resize '1920x1920>' -strip "$f"
+            case "$(echo "$f" | tr 'A-Z' 'a-z')" in
+              *.jpg|*.jpeg) jpegoptim --max=82 --strip-all --quiet "$f" ;;
+              *.png)        optipng -o2 -quiet "$f" ;;
+              *.webp)       cwebp -quiet -q 82 "$f" -o "$f.tmp" && mv "$f.tmp" "$f" ;;
+            esac
+            after=$(stat -c%s "$f")
+            echo "$f: $((before/1024))KB -> $((after/1024))KB"
+          done
+
+      - name: Commit hasil kompresi
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A public/uploads
+          git diff --cached --quiet || { git commit -m "Kompres otomatis gambar upload CMS [auto-kompres]"; git push; }
