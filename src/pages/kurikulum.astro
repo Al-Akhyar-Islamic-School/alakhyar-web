@@ -1,0 +1,196 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site, pilar, kurikulum, babKurikulum } from '../data/site';
+import logoKurikulum from '../assets/brand/logo-kurikulum.png';
+import goalCurriculum from '../assets/brand/goal-curriculum.png';
+
+const warnaPilar: Record<string, string> = {
+  primary: 'border-t-primary-500',
+  sky: 'border-t-sky-500',
+  green: 'border-t-green-500',
+};
+
+const penciri = [
+  { t: 'Tahfidz Qur’an & Hadits', d: 'Metode terukur per jenjang — Sabaq-Sabqi-Manzil (SD) dan Tasmi’ (SMP/SMA) — dengan target dan asesmen tersendiri.' },
+  { t: 'Pembiasaan 7KAIH', d: 'Kokurikuler pembiasaan karakter dan adab islami dalam keseharian, dari shalat berjamaah hingga amalan harian.' },
+  { t: 'Poinku', d: 'Sistem Poin Akhlak & Poin Unggul yang membina kedisiplinan — terhubung ke mekanisme beasiswa.' },
+  { t: 'Dinar App', d: 'Seluruh perjalanan belajar ananda — rapor, hafalan, karakter — terpantau orang tua secara real-time.' },
+];
+---
+
+<BaseLayout
+  title="Kurikulum"
+  description="Kurikulum Unggul & Berakhlak — integrasi Kurikulum Merdeka dengan kekhasan keislaman Al Akhyar, dari KB hingga SMA. Terdokumentasi terbuka."
+>
+  <!-- HERO -->
+  <section class="relative bg-white border-b border-slate-200 overflow-hidden">
+    <div class="absolute inset-0 pattern-dots-dark opacity-40" aria-hidden="true"></div>
+    <div class="container-ak relative grid lg:grid-cols-[1.4fr_1fr] gap-10 items-center py-16">
+      <div data-reveal>
+        <span class="chip bg-primary-50 border border-primary-100 text-primary-600 mb-5">
+          Tahun Ajaran 2026/2027
+        </span>
+        <h1 class="font-display text-4xl md:text-5xl font-bold text-ink leading-[1.1] tracking-tight mb-5">
+          Kurikulum <span class="text-gradient-brand">Unggul &amp; Berakhlak</span>
+        </h1>
+        <p class="text-lg text-slate-500 leading-relaxed max-w-xl">
+          Integrasi Kurikulum Merdeka dengan kekhasan keislaman Al Akhyar — KB, TK, SD,
+          SMP, dan SMA dalam satu ekosistem pendidikan yang unggul dan berakhlak mulia.
+          Terdokumentasi lengkap dan terbuka untuk publik.
+        </p>
+      </div>
+      <div class="flex justify-center lg:justify-end" data-reveal style="--reveal-delay: 120ms">
+        <Image
+          src={logoKurikulum}
+          alt="Logo Kurikulum Unggul & Berakhlak Al Akhyar"
+          class="w-52 md:w-64 h-auto drop-shadow-md"
+          widths={[256, 512]}
+          sizes="256px"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- GOAL CURRICULUM -->
+  <section class="container-ak py-20">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="flex justify-center" data-reveal>
+        <Image
+          src={goalCurriculum}
+          alt="Diagram Goal Curriculum Unggul & Berakhlak: Iman, Ilmu, Ihsan"
+          class="w-full max-w-md h-auto"
+          widths={[480, 768, 1024]}
+          sizes="(max-width: 768px) 90vw, 448px"
+        />
+      </div>
+      <div data-reveal style="--reveal-delay: 100ms">
+        <span class="eyebrow">Goal Curriculum</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-ink mt-3 mb-6">
+          Satu Tujuan, Tiga Pilar
+        </h2>
+        <p class="text-slate-500 mb-8">
+          Seluruh perjalanan belajar di Al Akhyar diarahkan pada satu tujuan besar —
+          <em>terwujudnya insan yang unggul dan berakhlak mulia</em> — yang ditopang
+          tiga pilar:
+        </p>
+        <div class="space-y-4">
+          {
+            pilar.map((p, i) => (
+              <div
+                class={`card-ak border-t-0 border-l-4 !rounded-xl ${warnaPilar[p.warna].replace('border-t-', 'border-l-')} px-6 py-4`}
+                data-reveal
+                style={`--reveal-delay: ${150 + i * 80}ms`}
+              >
+                <h3 class="font-bold text-ink text-lg">{p.nama}</h3>
+                <p class="text-sm text-slate-500">{p.deskripsi}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DUA KURIKULUM -->
+  <section class="bg-slate-100/70 border-y border-slate-200">
+    <div class="container-ak py-16">
+      <div class="max-w-2xl mx-auto text-center mb-10" data-reveal>
+        <span class="eyebrow">Pendekatan</span>
+        <h2 class="text-3xl font-bold text-ink mt-2">Dua Kurikulum yang Saling Menguatkan</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="rounded-[24px] bg-white border border-slate-200 shadow-sm p-8" data-reveal>
+          <span class="chip bg-sky-100 text-sky-600 mb-4">{kurikulum.nasional.ket}</span>
+          <h3 class="font-display font-bold text-2xl text-ink mb-3">{kurikulum.nasional.nama}</h3>
+          <p class="text-slate-500 leading-relaxed">{kurikulum.nasional.deskripsi}</p>
+        </div>
+        <div class="rounded-[24px] bg-brand-gradient text-white shadow-brand p-8 relative overflow-hidden" data-reveal style="--reveal-delay: 100ms">
+          <div class="absolute inset-0 pattern-dots" aria-hidden="true"></div>
+          <div class="relative">
+            <span class="chip bg-white/20 text-white mb-4">{kurikulum.islami.ket}</span>
+            <h3 class="font-display font-bold text-2xl mb-3">{kurikulum.islami.nama}</h3>
+            <p class="text-white/85 leading-relaxed">{kurikulum.islami.deskripsi}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAM PENCIRI -->
+  <section class="container-ak py-16">
+    <div class="max-w-2xl mb-10" data-reveal>
+      <span class="eyebrow">Penciri Khas</span>
+      <h2 class="text-3xl font-bold text-ink mt-2">Yang Membedakan Kurikulum Al Akhyar</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 gap-5">
+      {
+        penciri.map((p, i) => (
+          <div class="card-ak p-7" data-reveal style={`--reveal-delay: ${i * 80}ms`}>
+            <h3 class="font-bold text-ink text-lg mb-2">{p.t}</h3>
+            <p class="text-slate-500 text-sm leading-relaxed">{p.d}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- 13 BAB -->
+  <section class="container-ak pb-16">
+    <div class="max-w-2xl mb-10" data-reveal>
+      <span class="eyebrow">Dokumen Panduan</span>
+      <h2 class="text-3xl font-bold text-ink mt-2">Tiga Belas Bagian, Terbuka untuk Publik</h2>
+      <p class="text-slate-500 mt-3">
+        Dari landasan filosofis hingga tata tertib — setiap bab dapat dibaca langsung.
+      </p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      {
+        babKurikulum.map((b, i) => (
+          <a
+            href={`${site.kurikulumUrl}/${b.slug}`}
+            target="_blank"
+            rel="noopener"
+            class="card-ak p-5 flex items-start gap-3.5 group"
+            data-reveal
+            style={`--reveal-delay: ${(i % 4) * 60}ms`}
+          >
+            <span
+              class="shrink-0 w-9 h-9 rounded-lg text-white text-xs font-extrabold flex items-center justify-center"
+              style={`background:${b.warna}`}
+            >
+              {b.roman}
+            </span>
+            <span class="font-semibold text-ink text-sm leading-snug group-hover:text-primary-600 transition-colors mt-1.5">
+              {b.judul}
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- CTA BESAR -->
+  <section class="container-ak pb-20">
+    <a
+      href={site.kurikulumUrl}
+      target="_blank"
+      rel="noopener"
+      class="block rounded-[28px] bg-brand-gradient text-white text-center shadow-brand relative overflow-hidden transition-transform duration-200 hover:-translate-y-1"
+      data-reveal
+    >
+      <div class="absolute inset-0 pattern-dots" aria-hidden="true"></div>
+      <div class="relative px-8 py-16 md:py-20">
+        <p class="text-white/70 text-sm font-bold uppercase tracking-[0.1em] mb-4">
+          Panduan Kurikulum Lengkap · Tahun Ajaran 2026/2027
+        </p>
+        <p class="font-display text-3xl md:text-5xl font-bold leading-tight mb-6">
+          Selengkapnya, Klik di Sini
+        </p>
+        <p class="inline-flex items-center gap-2 text-lg md:text-xl text-white/90 font-semibold underline decoration-2 underline-offset-8">
+          kurikulum.alakhyar.sch.id →
+        </p>
+      </div>
+    </a>
+  </section>
+</BaseLayout>

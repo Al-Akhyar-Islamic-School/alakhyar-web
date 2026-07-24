@@ -187,12 +187,30 @@ export const kampusAlumni = [
 export const nav = [
   { label: 'Beranda', href: '/' },
   { label: 'Tentang Kami', href: '/tentang' },
+  { label: 'Kurikulum', href: '/kurikulum' },
   { label: 'Jenjang', href: '/jenjang' },
   { label: 'School Life', href: '/school-life' },
   { label: 'Berita', href: '/berita' },
   { label: 'Karir', href: '/karir' },
   { label: 'Kontak', href: '/kontak' },
 ];
+
+// 13 bab panduan kurikulum (kurikulum.alakhyar.sch.id)
+export const babKurikulum = [
+  { roman: 'I', judul: 'Pendahuluan', slug: 'bab-1-pendahuluan.html', warna: '#006195' },
+  { roman: 'II', judul: 'Profil Lulusan', slug: 'bab-2-profil-lulusan.html', warna: '#EC2A6B' },
+  { roman: 'III', judul: 'Struktur Kurikulum', slug: 'bab-3-struktur-kurikulum.html', warna: '#006195' },
+  { roman: 'IV', judul: 'Pengorganisasian', slug: 'bab-4-pengorganisasian.html', warna: '#1B93C6' },
+  { roman: 'V', judul: 'Program & Kalender', slug: 'bab-5-program-kalender.html', warna: '#E8493F' },
+  { roman: 'VI', judul: 'Tahfidz & Hadits', slug: 'bab-6-tahfidz-hadits.html', warna: '#218A62' },
+  { roman: 'VII', judul: 'Poinku', slug: 'bab-7-poinku.html', warna: '#B9790C' },
+  { roman: 'VIII', judul: 'Dinar App', slug: 'bab-8-dinar-app.html', warna: '#1B93C6' },
+  { roman: 'IX', judul: 'Perencanaan', slug: 'bab-9-perencanaan-pembelajaran.html', warna: '#006195' },
+  { roman: 'X', judul: 'Asesmen', slug: 'bab-10-asesmen-evaluasi.html', warna: '#EC2A6B' },
+  { roman: 'XI', judul: 'Evaluasi Kurikulum', slug: 'bab-11-evaluasi-kurikulum.html', warna: '#218A62' },
+  { roman: 'XII', judul: 'Tata Tertib', slug: 'bab-12-tata-tertib.html', warna: '#B9790C' },
+  { roman: 'XIII', judul: 'Penutup', slug: 'bab-13-penutup.html', warna: '#1B93C6' },
+] as const;
 
 export const jenjang = [
   {
