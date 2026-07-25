@@ -156,14 +156,14 @@ export const testimoni = [
 export const alumniTerbaru = {
   angkatan: '2025/2026',
   daftar: [
-    { nama: 'Annida Althafunnisa', prodi: 'Bisnis Islam', kampus: 'Universitas Indonesia', logo: '/kampus/ui.svg' },
-    { nama: 'Salsa Puspaningrum BZ', prodi: 'Ilmu Administrasi Niaga', kampus: 'Universitas Indonesia', logo: '/kampus/ui.svg' },
-    { nama: 'Sitti Fadillah Almira Fahrini', prodi: 'Pendidikan Dokter', kampus: 'Universitas Hasanuddin', logo: '/kampus/unhas.png' },
-    { nama: 'Alya’ Nuriadi Sindi', prodi: 'Ekonomi dan Bisnis Islam', kampus: 'Universitas Hasanuddin', logo: '/kampus/unhas.png' },
-    { nama: 'WD. Rahel Azzalikha Ananda', prodi: 'Wilayah dan Kota', kampus: 'Universitas Hasanuddin', logo: '/kampus/unhas.png' },
-    { nama: 'Afifa Salsabila Herwan', prodi: 'Agroteknologi', kampus: 'Universitas Hasanuddin', logo: '/kampus/unhas.png' },
-    { nama: 'Rizka Amaliah S', prodi: 'Ilmu Keperawatan', kampus: 'Universitas Hasanuddin', logo: '/kampus/unhas.png' },
-    { nama: 'Naura Azzahra Nawawi', prodi: 'Kesehatan Masyarakat', kampus: 'Universitas Hasanuddin', logo: '/kampus/unhas.png' },
+    { nama: 'Annida Althafunnisa', prodi: 'Bisnis Islam', kampus: 'Universitas Indonesia', singkat: 'UI', logo: '/kampus/ui.svg' },
+    { nama: 'Salsa Puspaningrum BZ', prodi: 'Ilmu Administrasi Niaga', kampus: 'Universitas Indonesia', singkat: 'UI', logo: '/kampus/ui.svg' },
+    { nama: 'Sitti Fadillah Almira Fahrini', prodi: 'Pendidikan Dokter', kampus: 'Universitas Hasanuddin', singkat: 'UNHAS', logo: '/kampus/unhas.png' },
+    { nama: 'Alya’ Nuriadi Sindi', prodi: 'Ekonomi dan Bisnis Islam', kampus: 'Universitas Hasanuddin', singkat: 'UNHAS', logo: '/kampus/unhas.png' },
+    { nama: 'WD. Rahel Azzalikha Ananda', prodi: 'Wilayah dan Kota', kampus: 'Universitas Hasanuddin', singkat: 'UNHAS', logo: '/kampus/unhas.png' },
+    { nama: 'Afifa Salsabila Herwan', prodi: 'Agroteknologi', kampus: 'Universitas Hasanuddin', singkat: 'UNHAS', logo: '/kampus/unhas.png' },
+    { nama: 'Rizka Amaliah S', prodi: 'Ilmu Keperawatan', kampus: 'Universitas Hasanuddin', singkat: 'UNHAS', logo: '/kampus/unhas.png' },
+    { nama: 'Naura Azzahra Nawawi', prodi: 'Kesehatan Masyarakat', kampus: 'Universitas Hasanuddin', singkat: 'UNHAS', logo: '/kampus/unhas.png' },
   ],
 } as const;
 

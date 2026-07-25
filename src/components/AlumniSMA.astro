@@ -3,23 +3,23 @@
 import { alumniTerbaru, kampusLogos, kampusAlumni } from '../data/site';
 ---
 
-<div class="rounded-[24px] bg-white border border-slate-200 shadow-sm p-8 md:p-10" data-reveal>
-  <div class="text-center mb-8">
+<div class="rounded-[24px] bg-white border border-slate-200 shadow-sm p-5 sm:p-8 md:p-10" data-reveal>
+  <div class="text-center mb-6 sm:mb-8">
     <p class="eyebrow mb-1">Alumni SMA</p>
-    <h3 class="text-2xl font-bold text-ink mb-2">
+    <h3 class="text-xl sm:text-2xl font-bold text-ink mb-2">
       Angkatan {alumniTerbaru.angkatan} Menembus Kampus Impian
     </h3>
-    <p class="text-sm text-slate-400 max-w-xl mx-auto">
-      Kuota jalur undangan mencapai 40% — tahun ini lulusan kami diterima di
-      Universitas Indonesia dan Universitas Hasanuddin, termasuk Pendidikan Dokter.
+    <p class="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto">
+      Kuota jalur undangan 40% — lulusan kami diterima di UI dan UNHAS,
+      termasuk Pendidikan Dokter.
     </p>
   </div>
 
-  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 mb-8 sm:mb-10">
     {
       alumniTerbaru.daftar.map((a, i) => (
         <div
-          class="rounded-2xl bg-slate-50 border border-slate-200 p-5 flex flex-col items-center text-center"
+          class="rounded-xl sm:rounded-2xl bg-slate-50 border border-slate-200 p-3 sm:p-5 flex flex-col items-center text-center"
           data-reveal
           style={`--reveal-delay: ${(i % 4) * 70}ms`}
         >
@@ -30,18 +30,21 @@ import { alumniTerbaru, kampusLogos, kampusAlumni } from '../data/site';
             height="48"
             loading="lazy"
             decoding="async"
-            class="h-12 w-12 object-contain mb-3"
+            class="h-8 w-8 sm:h-12 sm:w-12 object-contain mb-2 sm:mb-3"
           />
-          <p class="font-bold text-ink text-sm leading-snug">{a.nama}</p>
-          <p class="text-xs text-slate-500 mt-1">{a.prodi}</p>
-          <p class="text-[11px] font-bold text-primary-600 uppercase tracking-wide mt-2">{a.kampus}</p>
+          <p class="font-bold text-ink text-[12px] sm:text-sm leading-snug">{a.nama}</p>
+          <p class="text-[10px] sm:text-xs text-slate-500 mt-0.5 sm:mt-1 leading-snug">{a.prodi}</p>
+          <p class="text-[10px] sm:text-[11px] font-bold text-primary-600 uppercase tracking-wide mt-1.5 sm:mt-2">
+            <span class="sm:hidden">{a.singkat}</span>
+            <span class="hidden sm:inline">{a.kampus}</span>
+          </p>
         </div>
       ))
     }
   </div>
 
   <!-- logo kampus tujuan -->
-  <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 pb-2">
+  <div class="flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-10 gap-y-4 sm:gap-y-6 pb-2">
     {
       kampusLogos.map((k) => (
         <img
@@ -52,12 +55,12 @@ import { alumniTerbaru, kampusLogos, kampusAlumni } from '../data/site';
           height="56"
           loading="lazy"
           decoding="async"
-          class="h-14 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
+          class="h-9 sm:h-14 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
         />
       ))
     }
   </div>
-  <p class="text-center text-xs text-slate-400 mt-6">
+  <p class="text-center text-[10px] sm:text-xs text-slate-400 mt-4 sm:mt-6">
     Serta kampus tujuan lainnya:
     {kampusAlumni.join(' · ')}
   </p>
