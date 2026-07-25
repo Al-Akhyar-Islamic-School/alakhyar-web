@@ -178,15 +178,6 @@ const fmtTanggal = (d: Date) =>
         <strong>dua kurikulum sekaligus</strong> yang saling menguatkan.
       </p>
 
-      <!-- Goal Curriculum — tampil di mobile, di desktop sudah ada di /kurikulum -->
-      <Image
-        src={goalCurriculum}
-        alt="Goal Curriculum Unggul & Berakhlak: Iman, Ilmu, Ihsan"
-        class="md:hidden w-full max-w-xs mx-auto h-auto mt-8"
-        widths={[320, 640]}
-        sizes="320px"
-        loading="lazy"
-      />
     </div>
 
     <!-- dua kurikulum -->
@@ -205,6 +196,17 @@ const fmtTanggal = (d: Date) =>
         </div>
       </div>
     </div>
+
+    <!-- Goal Curriculum — tampil di mobile; di desktop tersedia lengkap di /kurikulum -->
+    <Image
+      src={goalCurriculum}
+      alt="Goal Curriculum Unggul & Berakhlak: Iman, Ilmu, Ihsan"
+      class="md:hidden w-full max-w-xs mx-auto h-auto mb-10"
+      widths={[320, 640]}
+      sizes="320px"
+      loading="lazy"
+      data-reveal
+    />
 
     <!-- pilar + pembiasaan harian -->
     <div class="grid lg:grid-cols-[1fr_1fr] gap-6 items-stretch">
