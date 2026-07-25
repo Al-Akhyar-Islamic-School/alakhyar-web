@@ -1,8 +1,12 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
-import Placeholder from '../components/Placeholder.astro';
 import { site, pilar, stats, visi, misi, sejarah, akreditasi } from '../data/site';
+import gedungUtama from '../assets/foto/gedung-utama.jpg';
+import gedungSD from '../assets/foto/gedung-sd.jpg';
+import gedungTK from '../assets/foto/gedung-tk.jpg';
+import gedungSMA from '../assets/foto/gedung-sma.jpg';
 
 const warnaPilar: Record<string, string> = {
   primary: 'border-t-primary-500',
@@ -41,9 +45,12 @@ const warnaPilar: Record<string, string> = {
       </div>
     </div>
     <div class="relative" data-reveal style="--reveal-delay: 120ms">
-      <Placeholder
-        label="Foto gedung / kampus Al Akhyar tampak depan (landscape)"
-        class="rounded-[28px] -rotate-1"
+      <Image
+        src={gedungUtama}
+        alt="Kampus Sekolah Islam Al Akhyar, Sudiang Makassar"
+        class="w-full aspect-[4/3] object-cover rounded-[28px] shadow-lg -rotate-1"
+        widths={[480, 960]}
+        sizes="(max-width: 1024px) 92vw, 520px"
       />
       <div class="absolute -bottom-6 left-8 bg-white rounded-2xl shadow-md border border-slate-200 px-6 py-4 rotate-1">
         <p class="font-display font-bold text-2xl text-primary-600 leading-none">4.200 m²</p>
@@ -136,6 +143,35 @@ const warnaPilar: Record<string, string> = {
       Dokumen kurikulum lengkap tersedia di
       <a href={site.kurikulumUrl} target="_blank" rel="noopener" class="text-primary-600 font-semibold hover:underline">kurikulum.alakhyar.sch.id</a>.
     </p>
+  </section>
+
+  <!-- Kampus kami -->
+  <section class="container-ak pb-16">
+    <div class="max-w-2xl mb-8" data-reveal>
+      <span class="eyebrow">Kampus Kami</span>
+      <h2 class="text-3xl font-bold text-ink mt-2">Tiga Gedung, Satu Lingkungan Islami</h2>
+    </div>
+    <div class="grid sm:grid-cols-3 gap-5">
+      {
+        [
+          { src: gedungTK, ket: 'Gedung KB-TK Islam' },
+          { src: gedungSD, ket: 'Gedung SD & SMP Islam' },
+          { src: gedungSMA, ket: 'Gedung SMA Islam' },
+        ].map((g, i) => (
+          <figure data-reveal style={`--reveal-delay: ${i * 90}ms`}>
+            <Image
+              src={g.src}
+              alt={g.ket}
+              class="w-full aspect-[4/3] object-cover rounded-2xl shadow-sm"
+              widths={[360, 720]}
+              sizes="(max-width: 640px) 90vw, 360px"
+              loading="lazy"
+            />
+            <figcaption class="text-sm text-slate-500 mt-2.5 text-center">{g.ket}</figcaption>
+          </figure>
+        ))
+      }
+    </div>
   </section>
 
   <!-- Akreditasi -->

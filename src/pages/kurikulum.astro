@@ -4,6 +4,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { site, pilar, kurikulum, babKurikulum } from '../data/site';
 import logoKurikulum from '../assets/brand/logo-kurikulum.png';
 import goalCurriculum from '../assets/brand/goal-curriculum.png';
+import fotoSD from '../assets/foto/jenjang-sd.jpg';
+import fotoSMP from '../assets/foto/jenjang-smp.jpg';
+import fotoSMA from '../assets/foto/jenjang-sma.jpg';
+import fotoTK from '../assets/foto/jenjang-tk.jpg';
 
 const warnaPilar: Record<string, string> = {
   primary: 'border-t-primary-500',
@@ -130,6 +134,36 @@ const penciri = [
             <h3 class="font-bold text-ink text-lg mb-2">{p.t}</h3>
             <p class="text-slate-500 text-sm leading-relaxed">{p.d}</p>
           </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Kurikulum dalam praktik -->
+  <section class="container-ak pb-16">
+    <div class="max-w-2xl mb-8" data-reveal>
+      <span class="eyebrow">Dalam Praktik</span>
+      <h2 class="text-3xl font-bold text-ink mt-2">Kurikulum yang Hidup di Kelas</h2>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      {
+        [
+          { src: fotoTK, ket: 'Sentra bermain — KB/TK' },
+          { src: fotoSD, ket: 'Literasi & tahfidz — SD' },
+          { src: fotoSMP, ket: 'Asesmen terstruktur — SMP' },
+          { src: fotoSMA, ket: 'Pembelajaran digital — SMA' },
+        ].map((g, i) => (
+          <figure data-reveal style={`--reveal-delay: ${i * 80}ms`}>
+            <Image
+              src={g.src}
+              alt={g.ket}
+              class="w-full aspect-square object-cover rounded-2xl shadow-sm"
+              widths={[280, 560]}
+              sizes="(max-width: 1024px) 45vw, 280px"
+              loading="lazy"
+            />
+            <figcaption class="text-xs text-slate-500 mt-2 text-center">{g.ket}</figcaption>
+          </figure>
         ))
       }
     </div>

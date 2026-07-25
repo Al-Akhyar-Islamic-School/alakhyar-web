@@ -4,11 +4,23 @@ import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BeritaCard from '../components/BeritaCard.astro';
 import AlumniSMA from '../components/AlumniSMA.astro';
-import Placeholder from '../components/Placeholder.astro';
 import { site, jenjang, pilar, stats, kurikulum, dinar, testimoni } from '../data/site';
-import heroFoto from '../assets/brand/foto-mengaji.png';
+import heroFoto from '../assets/foto/gedung-utama.jpg';
 import dinarSS from '../assets/brand/Dinar APP SS.png';
 import dinarLogo from '../assets/brand/Dinar App logo.png';
+import goalCurriculum from '../assets/brand/goal-curriculum.png';
+import fotoTK from '../assets/foto/jenjang-tk.jpg';
+import fotoSD from '../assets/foto/jenjang-sd.jpg';
+import fotoSMP from '../assets/foto/jenjang-smp.jpg';
+import fotoSMA from '../assets/foto/jenjang-sma.jpg';
+import type { ImageMetadata } from 'astro';
+
+const fotoJenjang: Record<string, ImageMetadata> = {
+  tk: fotoTK,
+  sd: fotoSD,
+  smp: fotoSMP,
+  sma: fotoSMA,
+};
 
 const semua = (await getCollection('berita', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -110,13 +122,15 @@ const fmtTanggal = (d: Date) =>
         <div class="relative aspect-[4/3] rounded-[28px] overflow-hidden shadow-lg rotate-1">
           <Image
             src={heroFoto}
-            alt="Siswa Al Akhyar sedang mengaji"
+            alt="Kampus Sekolah Islam Al Akhyar Makassar"
             class="w-full h-full object-cover"
             loading="eager"
+            widths={[640, 960, 1280]}
+            sizes="(max-width: 1024px) 92vw, 520px"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-primary-900/40 via-transparent to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-primary-900/45 via-transparent to-transparent"></div>
           <p class="absolute bottom-4 left-5 text-white text-sm font-medium drop-shadow">
-            Pembinaan Qur’an setiap hari · {site.city}
+            Kampus Al Akhyar · Sudiang, {site.city}
           </p>
         </div>
         <!-- kartu mengambang -->
@@ -163,6 +177,16 @@ const fmtTanggal = (d: Date) =>
         Tidak sekadar kurikulum nasional — setiap siswa Al Akhyar menempuh
         <strong>dua kurikulum sekaligus</strong> yang saling menguatkan.
       </p>
+
+      <!-- Goal Curriculum — tampil di mobile, di desktop sudah ada di /kurikulum -->
+      <Image
+        src={goalCurriculum}
+        alt="Goal Curriculum Unggul & Berakhlak: Iman, Ilmu, Ihsan"
+        class="md:hidden w-full max-w-xs mx-auto h-auto mt-8"
+        widths={[320, 640]}
+        sizes="320px"
+        loading="lazy"
+      />
     </div>
 
     <!-- dua kurikulum -->
@@ -253,7 +277,14 @@ const fmtTanggal = (d: Date) =>
                 <h3 class="relative font-display font-bold text-2xl mt-1">{j.nama}</h3>
               </div>
               <div class="px-4 pt-4">
-                <Placeholder label={`Foto siswa ${j.nama}`} ratio="aspect-[16/10]" class="!rounded-xl" />
+                <Image
+                  src={fotoJenjang[j.slug]}
+                  alt={`Suasana belajar ${j.lengkap}`}
+                  class="w-full aspect-[16/10] object-cover rounded-xl"
+                  widths={[320, 640]}
+                  sizes="(max-width: 640px) 90vw, 280px"
+                  loading="lazy"
+                />
               </div>
               <div class="p-6">
                 <p class="text-sm text-slate-500 leading-relaxed">{j.deskripsi}</p>
