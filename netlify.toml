@@ -1,8 +1,25 @@
 # Konfigurasi build Netlify — mengunci setting agar tidak bergantung UI dashboard.
+#
+# HEMAT CREDIT: paket gratis memberi 300 credit/bulan, tiap deploy 15 credit
+# (± 20 deploy). Aturan di bawah memastikan build hanya berjalan saat memang
+# ada perubahan yang tampak di situs.
 [build]
   command = "npm run build"
   publish = "dist"
+  # Batalkan build bila commit hanya menyentuh berkas yang tidak memengaruhi
+  # hasil situs (dokumentasi, workflow, config editor).
+  # Keluar kode 0 = build dibatalkan; selain itu = build lanjut.
+  # Catatan: artikel di src/content/berita/*.md TIDAK dikecualikan.
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- . ':(exclude)README.md' ':(exclude)PANDUAN-ADMIN.md' ':(exclude)AGENTS.md' ':(exclude)CLAUDE.md' ':(exclude).github/' ':(exclude).vscode/' ':(exclude).gitignore'"
 
 [build.environment]
   # Astro 7 membutuhkan Node >= 22.12
   NODE_VERSION = "22.12.0"
+
+# Draft guru di CMS membuat branch `cms/**` + Pull Request. Keduanya tidak perlu
+# dibangun — tulisan baru tayang saat editor menekan Publish (merge ke main).
+[context.deploy-preview]
+  ignore = "exit 0"
+
+[context.branch-deploy]
+  ignore = "exit 0"

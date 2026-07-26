@@ -8,6 +8,14 @@
 backend:
   name: git-gateway
   branch: main
+  # HEMAT CREDIT NETLIFY: commit draft/media diberi tanda [skip netlify] agar
+  # tidak memicu build. Hanya penerbitan (merge ke main) yang membangun situs.
+  commit_messages:
+    create: 'Buat {{collection}} "{{slug}}" [skip netlify]'
+    update: 'Perbarui {{collection}} "{{slug}}" [skip netlify]'
+    delete: 'Hapus {{collection}} "{{slug}}"'
+    uploadMedia: 'Unggah "{{path}}" [skip netlify]'
+    deleteMedia: 'Hapus "{{path}}" [skip netlify]'
 
 # Alur editorial: tulisan baru masuk papan "Drafts" -> "In Review" -> "Ready",
 # lalu tombol Publish untuk tayang. Kontributor menyimpan ke Draft/In Review;
