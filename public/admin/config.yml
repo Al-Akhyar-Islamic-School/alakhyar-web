@@ -45,7 +45,8 @@ collections:
       - { label: 'Judul', name: 'title', widget: 'string' }
       - { label: 'Ringkasan', name: 'description', widget: 'text' }
       - { label: 'Tanggal Terbit', name: 'pubDate', widget: 'datetime', format: 'YYYY-MM-DD' }
-      - { label: 'Penulis', name: 'author', widget: 'string', default: 'Humas Al Akhyar' }
+      # Terisi otomatis dengan nama akun Google penulis (lihat src/pages/admin.astro)
+      - { label: 'Penulis', name: 'author', widget: 'string', required: false }
       - label: 'Kategori'
         name: 'category'
         widget: 'select'

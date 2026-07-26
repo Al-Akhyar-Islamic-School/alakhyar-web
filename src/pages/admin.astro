@@ -126,8 +126,69 @@
         }
       })();
 
-      // Isi otomatis field "Penulis" dengan nama akun Google yang sedang login,
-      // bila penulis membiarkannya kosong / nilai default.
+      // ====== Field "Penulis" terisi otomatis ======
+      // Nama diambil dari akun Google yang sedang login. Diisi saat form dibuka
+      // (agar penulis melihatnya) dan dijamin ulang saat simpan.
+      (function () {
+        function namaPenulis() {
+          var u = window.netlifyIdentity && window.netlifyIdentity.currentUser();
+          return (
+            (u && u.user_metadata && u.user_metadata.full_name) || (u && u.email) || ''
+          );
+        }
+
+        // Mengisi input React perlu native setter + event, bukan sekadar .value
+        function isiInput(el, nilai) {
+          var proto = window.HTMLInputElement.prototype;
+          var setter = Object.getOwnPropertyDescriptor(proto, 'value').set;
+          setter.call(el, nilai);
+          el.dispatchEvent(new Event('input', { bubbles: true }));
+          el.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+
+        function isiFieldPenulis() {
+          var nama = namaPenulis();
+          if (!nama) return;
+          var labels = document.querySelectorAll('label');
+          for (var i = 0; i < labels.length; i++) {
+            if ((labels[i].textContent || '').trim().toLowerCase() !== 'penulis') continue;
+            var id = labels[i].getAttribute('for');
+            var input = id
+              ? document.getElementById(id)
+              : labels[i].parentElement && labels[i].parentElement.querySelector('input');
+            // hanya isi bila masih kosong — jangan timpa tulisan orang lain
+            if (input && !input.value && !input.__akTerisi) {
+              input.__akTerisi = 1;
+              isiInput(input, nama);
+            }
+          }
+        }
+
+        var jadwal = false;
+        function jadwalkan() {
+          if (jadwal) return;
+          jadwal = true;
+          requestAnimationFrame(function () {
+            jadwal = false;
+            isiFieldPenulis();
+          });
+        }
+
+        function mulai() {
+          isiFieldPenulis();
+          new MutationObserver(jadwalkan).observe(document.body, {
+            childList: true,
+            subtree: true,
+          });
+        }
+
+        if (window.netlifyIdentity) {
+          window.netlifyIdentity.on('init', mulai);
+          window.netlifyIdentity.on('login', mulai);
+        }
+      })();
+
+      // Jaring pengaman: pastikan Penulis terisi saat entri disimpan.
       CMS.registerEventListener({
         name: 'preSave',
         handler: function ({ entry }) {
@@ -138,8 +199,7 @@
               (user && user.email) ||
               '';
             var data = entry.get('data');
-            var author = data.get('author');
-            if (nama && (!author || author === 'Humas Al Akhyar')) {
+            if (nama && !data.get('author')) {
               return data.set('author', nama);
             }
             return data;
