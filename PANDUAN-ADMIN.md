@@ -2,22 +2,37 @@
 
 ## Peran Pengguna
 
-| Peran | Hak | Catatan |
+| Peran | Cara mendapatkan | Hak |
 |---|---|---|
-| **Admin** | Semua hak Editor + kelola situs Netlify, undang/cabut pengguna | Pemilik sistem |
-| **Editor** | Tulis, edit, hapus, **Publish** (menayangkan), approve tulisan kontributor | Penjaga mutu konten |
-| **Contributor** | Tulis & simpan ke papan **Drafts / In Review** | Tulisan tayang hanya setelah di-Publish Editor/Admin |
+| **Contributor** | **Default** — semua guru dengan akun Google `@alakhyar.sch.id` | Tulis & simpan ke papan **Drafts**. Tombol Publish **tidak tampil**. |
+| **Editor** | Di-set manual: role `editor` | Semua hak Contributor + **Publish** (menayangkan) |
+| **Admin** | Di-set manual: role `admin` | Semua hak Editor + kelola situs Netlify & pengguna |
 
-CMS memakai **Editorial Workflow** — di dashboard ada tab **Workflow** berisi papan
-tiga kolom: *Drafts → In Review → Ready*. Alur kerjanya:
+### Cara memberi role Editor/Admin
 
-1. **Contributor** menulis Berita → klik **Save** → tulisan masuk kolom *Drafts*
-   (belum tayang di web). Geser ke *In Review* bila sudah siap diperiksa.
-2. **Editor/Admin** membuka tab Workflow → membaca tulisan → jika layak, klik
-   **Publish** → tulisan tayang di web otomatis.
-3. Semua aksi tercatat di riwayat Git (siapa menulis, siapa menayangkan) —
-   pemisahan peran Contributor vs Editor ditegakkan lewat kesepakatan tim, bukan
-   paksaan sistem.
+1. Netlify → **Project configuration → Identity → Users**
+2. Klik user yang dituju → **Edit settings**
+3. Di **User account metadata**, isi roles: `editor` (atau `admin`)
+4. Berlaku saat user **login berikutnya**
+
+> Kolom **Roles** di Git Gateway biarkan **kosong**. Kalau diisi, semua guru
+> tanpa role di daftar itu langsung tertolak masuk.
+
+### Alur kerja
+
+CMS memakai **Editorial Workflow** — tab **Workflow** berisi papan tiga kolom:
+*Drafts → In Review → Ready*.
+
+1. **Guru (contributor)** menulis Berita → **Save** → masuk kolom *Drafts*
+   (belum tayang). Geser ke *In Review* bila siap diperiksa.
+2. **Editor/Admin** buka tab Workflow → baca → jika layak, klik **Publish** →
+   tayang otomatis di web.
+3. Semua aksi tercatat di riwayat Git: siapa menulis, siapa menayangkan.
+
+> Catatan teknis: penyembunyian tombol Publish dilakukan di sisi browser
+> (`src/pages/admin.astro`) untuk memandu alur kerja tim — bukan kunci
+> kriptografis. Pengendalian akses sesungguhnya ada pada Google consent screen
+> *Internal* yang hanya meloloskan email `@alakhyar.sch.id`.
 
 ## Mengelola Berita lewat CMS
 

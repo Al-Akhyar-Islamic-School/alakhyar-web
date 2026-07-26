@@ -53,6 +53,79 @@
         }, 200);
       })();
 
+      // ====== Kunci tombol Publish ======
+      // Default: semua guru hanya bisa menyimpan Draft. Hanya user dengan role
+      // "editor" atau "admin" (di-set lewat Netlify > Identity > Users >
+      // Edit settings > roles) yang melihat tombol Publish.
+      // Catatan: ini penegakan sisi-browser untuk memandu alur kerja tim,
+      // bukan kunci kriptografis.
+      (function () {
+        var ROLE_TERBIT = ['editor', 'admin'];
+        var pengamat = null;
+        var terjadwal = false;
+
+        function bolehTerbit(user) {
+          var roles = (user && user.app_metadata && user.app_metadata.roles) || [];
+          for (var i = 0; i < ROLE_TERBIT.length; i++) {
+            if (roles.indexOf(ROLE_TERBIT[i]) > -1) return true;
+          }
+          return false;
+        }
+
+        function sapu() {
+          terjadwal = false;
+          var els = document.querySelectorAll('button, [role="button"]');
+          for (var i = 0; i < els.length; i++) {
+            var el = els[i];
+            if (el.__akDicek) continue;
+            el.__akDicek = 1;
+            // cocokkan hanya tombol yang teksnya diawali "Publish"
+            // (Publish, Publish now, Publish and Create New, ...)
+            if (/^publish\b/i.test((el.textContent || '').trim())) {
+              el.style.display = 'none';
+            }
+          }
+        }
+
+        function jadwalkanSapu() {
+          if (terjadwal) return;
+          terjadwal = true;
+          requestAnimationFrame(sapu);
+        }
+
+        function kunci() {
+          if (pengamat) return;
+          sapu();
+          pengamat = new MutationObserver(jadwalkanSapu);
+          pengamat.observe(document.body, { childList: true, subtree: true });
+          tampilkanCatatan();
+        }
+
+        function tampilkanCatatan() {
+          if (document.getElementById('ak-catatan-draft')) return;
+          var bar = document.createElement('div');
+          bar.id = 'ak-catatan-draft';
+          bar.textContent =
+            'Mode kontributor — tulisan Anda tersimpan sebagai draft. Penerbitan dilakukan oleh editor.';
+          bar.setAttribute(
+            'style',
+            'position:fixed;left:0;right:0;bottom:0;z-index:9999;' +
+              'background:#006195;color:#fff;font:600 13px/1.4 system-ui,sans-serif;' +
+              'padding:10px 16px;text-align:center;'
+          );
+          document.body.appendChild(bar);
+        }
+
+        function periksa(user) {
+          if (!bolehTerbit(user)) kunci();
+        }
+
+        if (window.netlifyIdentity) {
+          window.netlifyIdentity.on('init', periksa);
+          window.netlifyIdentity.on('login', periksa);
+        }
+      })();
+
       // Isi otomatis field "Penulis" dengan nama akun Google yang sedang login,
       // bila penulis membiarkannya kosong / nilai default.
       CMS.registerEventListener({
