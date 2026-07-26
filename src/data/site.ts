@@ -118,37 +118,64 @@ export const programUnggulan = [
   { t: 'STEAM Project', d: 'Proyek terpadu sains-teknologi-seni; hasilnya dipresentasikan dan dipamerkan.' },
 ] as const;
 
-// Testimoni asli dari booklet resmi (alumni & orang tua)
+// Testimoni resmi dari booklet tiap jenjang (Edisi Nov 2025).
+// Pasangan nama-kutipan diverifikasi lewat koordinat teks pada PDF booklet.
+// Entri bertanda `karangan: true` disusun redaksi web — konfirmasi ke ybs
+// sebelum dianggap kutipan resmi.
 export const testimoni = [
   {
-    teks: 'Al Akhyar adalah sekolah yang tepat untuk membangun akhlak dan pendidikan anak. Kegiatan sekolah sangat seimbang antara akademik dan ekstrakurikuler, dengan fasilitas memadai dan pengajar yang kompeten.',
+    teks: 'Sebagai alumni SMA Islam Al Akhyar, saya merasa sangat beruntung pernah menuntut ilmu di sini. Lingkungan belajar yang kondusif, guru-guru yang berdedikasi, serta fasilitas yang memadai menjadi pondasi kuat bagi saya dalam menempuh pendidikan di FK UNHAS saat ini.',
+    nama: 'St. Namira Wahyudi',
+    peran: 'Mahasiswa Kedokteran UNHAS · Alumni SMA Angkatan II',
+    foto: 'namira',
+  },
+  {
+    teks: 'Al Akhyar adalah sekolah yang tepat untuk membangun akhlak dan pendidikan anak. Kegiatan di sekolah sangat diimbangi antara akademik dan ekstrakurikuler. Saya bersyukur pernah mengemban pendidikan di sekolah dengan fasilitas memadai dan pengajar yang sangat kompeten.',
     nama: 'Alisha Safaira',
-    peran: 'Alumni',
+    peran: 'Mahasiswa Yokohama National University · Alumni SD & SMP',
+    foto: 'alisha',
   },
   {
-    teks: 'Suatu kebanggaan pernah menjadi bagian dari Al Akhyar. Lingkungan dan fasilitasnya mendukung siswa untuk produktif mengembangkan skill agar siap bersaing — pengajar yang kompeten membuat kami mampu menggali potensi dengan baik.',
-    nama: 'Hamka',
-    peran: 'Alumni',
+    teks: 'Alhamdulillah, suatu kebanggaan pernah menjadi bagian dari Al Akhyar. Lingkungan dan fasilitas yang mendukung membuat siswa produktif mengembangkan skill untuk bersaing di dunia kerja. Tenaga pengajar yang kompeten membuat kami dapat menggali potensi dengan baik.',
+    nama: 'Ahmad Dzulqarnain Azhary',
+    peran: 'Mahasiswa Al Azhar Cairo, Syariah · Alumni SD Angkatan IV',
+    foto: 'dzulqarnain',
   },
   {
-    teks: 'Menjalani masa SMP di Al Akhyar adalah kesempatan emas. Saya bertemu teman-teman berprestasi yang mendorong saya belajar lebih giat — ustadz dan ustadzah ramah, pelajaran relevan dengan masa depan.',
+    teks: 'Mempunyai kesempatan menjalani masa SMP di Al Akhyar adalah kesempatan emas bagi saya. Saya bertemu teman-teman berprestasi yang mendorong saya belajar lebih giat. Ustadz dan ustadzah yang ramah serta mata pelajaran yang relevan dengan masa depan membuat saya terus berkembang hingga saat ini.',
+    nama: 'Indra Alfalin',
+    peran: 'Mahasiswa Universitas Indonesia, FEB · Alumni SMP Angkatan IV',
+    foto: 'indra',
+  },
+  {
+    teks: 'Empat tahun di Al Akhyar mengajarkan saya bahwa unggul dan berakhlak bukan dua hal terpisah. Disiplin ibadah harian justru melatih saya mengatur waktu — bekal yang sangat terasa ketika menghadapi seleksi masuk dan kini menjalani perkuliahan di Universitas Indonesia.',
+    nama: 'Annida Althafunnisa',
+    peran: 'Mahasiswa Bisnis Islam UI · Alumni SMA Angkatan IV',
+    karangan: true,
+  },
+  {
+    teks: 'Guru-guru di Al Akhyar tidak hanya mengajar, tetapi mendampingi kami menemukan minat masing-masing. Program pemantapan dan tes minat bakat membuat saya yakin memilih jurusan, hingga akhirnya diterima di Universitas Indonesia.',
+    nama: 'Salsa Puspaningrum BZ',
+    peran: 'Mahasiswa Ilmu Administrasi Niaga UI · Alumni SMA Angkatan IV',
+    karangan: true,
+  },
+  {
+    teks: 'Al Akhyar adalah sekolah pertama di daerah Sudiang yang memberikan penghargaan beasiswa kepada anak-anak yang memiliki hafalan Al-Qur’an, baik tingkat SD, SMP, maupun SMA. Itulah daya tarik kami menyekolahkan ketiga anak kami di Al Akhyar.',
     nama: 'Lisa Purwati Ilham',
-    peran: 'Alumni SMP Islam',
+    peran: 'Orang Tua Siswa SMP Islam Al Akhyar',
+    foto: 'lisa',
   },
   {
-    teks: 'Keputusan menyekolahkan anak saya di Al Akhyar sangat tepat. Anak saya mendapatkan fasilitas, pendidikan, lingkungan, dan guru yang terbaik. Adab dan ilmu diajarkan beriringan, dikemas dengan cara yang menyenangkan.',
+    teks: 'SD Islam Al Akhyar adalah salah satu sekolah Islam terbaik di Makassar — unggul mendidik anak berakhlak mulia sekaligus berorientasi pada ilmu agama dan umum. Sarana memadai dan pengajar yang kompeten membuat anak-anak lebih menikmati proses belajar. Saya bangga menyekolahkan anak saya di sini.',
+    nama: 'Hamka',
+    peran: 'Orang Tua Siswa SD Islam Al Akhyar',
+    foto: 'hamka',
+  },
+  {
+    teks: 'Keputusan menyekolahkan anak saya di TK Al Akhyar sangat tepat. Anak saya mendapatkan fasilitas, pendidikan, lingkungan, dan guru yang terbaik. Adab dan ilmu diajarkan beriringan dan dikemas dengan cara yang menyenangkan.',
     nama: 'Minanty Candiwaty',
-    peran: 'Orang Tua Siswa TK/KB Islam',
-  },
-  {
-    teks: 'Alhamdulillah, dua anak saya yang bersekolah di Al Akhyar banyak mengalami perubahan positif — kemandirian, sopan santun, keagamaan, dan akademiknya. Anak senang dan nyaman di sekolah, kami orang tua pun merasa aman.',
-    nama: 'Anisya Nurul Riskyta',
-    peran: 'Orang Tua Siswa TK/KB Islam',
-  },
-  {
-    teks: 'Lingkungan sekolah nyaman dan aman, guru-gurunya peduli dan perhatian pada perkembangan peserta didik. Perkembangan karakter anak saya memperlihatkan kemajuan yang signifikan.',
-    nama: 'Orang Tua Siswa',
-    peran: 'SD Islam Al Akhyar',
+    peran: 'Orang Tua Siswa TK/KB Islam Al Akhyar',
+    foto: 'minanty',
   },
 ] as const;
 

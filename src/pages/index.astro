@@ -10,6 +10,13 @@ import dinarSS from '../assets/brand/Dinar APP SS.png';
 import dinarLogo from '../assets/brand/Dinar App logo.png';
 import goalCurriculum from '../assets/brand/goal-curriculum.png';
 import fotoTK from '../assets/foto/jenjang-tk.jpg';
+import fNamira from '../assets/testimoni/namira.jpg';
+import fAlisha from '../assets/testimoni/alisha.jpg';
+import fDzul from '../assets/testimoni/dzulqarnain.jpg';
+import fIndra from '../assets/testimoni/indra.jpg';
+import fLisa from '../assets/testimoni/lisa.jpg';
+import fHamka from '../assets/testimoni/hamka.jpg';
+import fMinanty from '../assets/testimoni/minanty.jpg';
 import fotoSD from '../assets/foto/jenjang-sd.jpg';
 import fotoSMP from '../assets/foto/jenjang-smp.jpg';
 import fotoSMA from '../assets/foto/jenjang-sma.jpg';
@@ -20,6 +27,17 @@ const fotoJenjang: Record<string, ImageMetadata> = {
   sd: fotoSD,
   smp: fotoSMP,
   sma: fotoSMA,
+};
+
+// Potret narasumber testimoni (diambil dari booklet resmi tiap jenjang)
+const fotoTestimoni: Record<string, ImageMetadata> = {
+  namira: fNamira,
+  alisha: fAlisha,
+  dzulqarnain: fDzul,
+  indra: fIndra,
+  lisa: fLisa,
+  hamka: fHamka,
+  minanty: fMinanty,
 };
 
 const semua = (await getCollection('berita', ({ data }) => !data.draft)).sort(
@@ -463,12 +481,25 @@ const fmtTanggal = (d: Date) =>
             </svg>
             <blockquote class="text-slate-600 text-sm leading-relaxed flex-1">“{t.teks}”</blockquote>
             <figcaption class="mt-5 pt-4 border-t border-slate-100 flex items-center gap-3">
-              <span class="w-9 h-9 rounded-full bg-primary-100 text-primary-600 font-bold text-sm flex items-center justify-center shrink-0">
-                {t.nama.charAt(0)}
-              </span>
-              <span>
-                <p class="font-bold text-ink text-sm">{t.nama}</p>
-                <p class="text-xs text-slate-400">{t.peran}</p>
+              {
+                'foto' in t && fotoTestimoni[t.foto] ? (
+                  <Image
+                    src={fotoTestimoni[t.foto]}
+                    alt={`Foto ${t.nama}`}
+                    class="w-11 h-11 rounded-full object-cover shrink-0"
+                    widths={[44, 88]}
+                    sizes="44px"
+                    loading="lazy"
+                  />
+                ) : (
+                  <span class="w-11 h-11 rounded-full bg-primary-100 text-primary-600 font-bold text-sm flex items-center justify-center shrink-0">
+                    {t.nama.charAt(0)}
+                  </span>
+                )
+              }
+              <span class="min-w-0">
+                <p class="font-bold text-ink text-sm leading-snug">{t.nama}</p>
+                <p class="text-xs text-slate-400 leading-snug">{t.peran}</p>
               </span>
             </figcaption>
           </figure>
