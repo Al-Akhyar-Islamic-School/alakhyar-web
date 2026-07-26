@@ -20,6 +20,39 @@
          dashboard dengan git-gateway; jangan pakai range ^3.0.0) -->
     <script is:inline src="https://unpkg.com/decap-cms@3.3.3/dist/decap-cms.js"></script>
     <script is:inline>
+      // Sederhanakan layar login: hanya "Continue with Google".
+      // Widget Netlify Identity dirender di dalam iframe same-origin, jadi CSS
+      // bisa disuntikkan dari sini untuk menyembunyikan tab Sign up, form
+      // email/password, dan pemisah "OR".
+      (function () {
+        var CSS = [
+          /* tab "Sign up" / "Log in" di atas modal */
+          '[class*="header"] a, [class*="btnHeader"] { display: none !important; }',
+          /* form email + password + tombol Log in + Forgot password */
+          'form { display: none !important; }',
+          /* pemisah "OR" (widget menulisnya "seperator") */
+          '[class*="eperator"], [class*="eparator"], hr { display: none !important; }',
+          /* rapikan jarak agar tombol Google tidak menggantung */
+          '[class*="providersGroup"] { margin: 0 !important; }',
+        ].join('\n');
+
+        function suntik(doc) {
+          if (!doc || doc.getElementById('ak-login-css')) return;
+          var st = doc.createElement('style');
+          st.id = 'ak-login-css';
+          st.textContent = CSS;
+          (doc.head || doc.documentElement).appendChild(st);
+        }
+
+        // Widget membuat iframe-nya belakangan, jadi pantau sampai muncul.
+        var n = 0;
+        var timer = setInterval(function () {
+          var f = document.getElementById('netlify-identity-widget');
+          if (f && f.contentDocument) suntik(f.contentDocument);
+          if (++n > 100) clearInterval(timer); // berhenti setelah ~20 detik
+        }, 200);
+      })();
+
       // Isi otomatis field "Penulis" dengan nama akun Google yang sedang login,
       // bila penulis membiarkannya kosong / nilai default.
       CMS.registerEventListener({
