@@ -7,7 +7,10 @@ import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.alakhyar.sch.id',
+  // Domain utama = apex (www di-redirect ke sini oleh Netlify).
+  // Nilai ini dipakai untuk canonical URL, sitemap, dan Open Graph —
+  // harus sama dengan primary domain di Netlify agar SEO tidak terpecah.
+  site: 'https://alakhyar.sch.id',
   vite: {
     plugins: [tailwindcss()]
   },

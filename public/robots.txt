@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 
-Sitemap: https://www.alakhyar.sch.id/sitemap-index.xml
+Sitemap: https://alakhyar.sch.id/sitemap-index.xml
