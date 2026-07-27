@@ -120,7 +120,8 @@ export const programUnggulan = [
 
 // Testimoni resmi dari booklet tiap jenjang (Edisi Nov 2025).
 // Pasangan nama-kutipan diverifikasi lewat koordinat teks pada PDF booklet.
-// Entri bertanda `karangan: true` disusun redaksi web — konfirmasi ke ybs
+// Kutipan Annida Althafunnisa dikirim langsung oleh yang bersangkutan.
+// Entri bertanda `karangan: true` masih disusun redaksi web — konfirmasi ke ybs
 // sebelum dianggap kutipan resmi.
 export const testimoni = [
   {
@@ -148,10 +149,9 @@ export const testimoni = [
     foto: 'indra',
   },
   {
-    teks: 'Empat tahun di Al Akhyar mengajarkan saya bahwa unggul dan berakhlak bukan dua hal terpisah. Disiplin ibadah harian justru melatih saya mengatur waktu — bekal yang sangat terasa ketika menghadapi seleksi masuk dan kini menjalani perkuliahan di Universitas Indonesia.',
+    teks: 'Saya telah menghabiskan 15 tahun bersekolah di Al Akhyar, sehingga hampir seluruh masa kecil dan remaja saya tumbuh di sini. Selama itu, saya tidak pernah menyesal memilih Al Akhyar sejak TK. Bagi saya, Al Akhyar adalah sekolah yang mampu menyeimbangkan pendidikan akademik dan agama dengan baik. Guru-gurunya profesional, peduli, dan selalu mengayomi murid. Ditambah lagi, fasilitasnya terus berkembang mengikuti zaman, serta lingkungan pertemanannya yang sehat membuat saya selalu merasa nyaman. Al Akhyar bukan hanya sekolah bagi saya, tetapi juga rumah kedua.',
     nama: 'Annida Althafunnisa',
     peran: 'Mahasiswa Bisnis Islam UI · Alumni SMA Angkatan IV',
-    karangan: true,
   },
   {
     teks: 'Guru-guru di Al Akhyar tidak hanya mengajar, tetapi mendampingi kami menemukan minat masing-masing. Program pemantapan dan tes minat bakat membuat saya yakin memilih jurusan, hingga akhirnya diterima di Universitas Indonesia.',
