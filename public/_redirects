@@ -357,6 +357,10 @@
 /ypi-al-akhyar-islamic-scholl-memberi-penghargaan-guru-dan-staf-terbaik /berita/ypi-al-akhyar-islamic-scholl-memberi-penghargaan-guru-dan-staf-terbaik 301
 /ypi-al-akhyar-islamic-scholl-memberi-penghargaan-guru-dan-staf-terbaik/ /berita/ypi-al-akhyar-islamic-scholl-memberi-penghargaan-guru-dan-staf-terbaik 301
 # Redirect halaman statis WordPress lama -> halaman baru
+/gtk /guru 301
+/guru-dan-staf /guru 301
+/about-us/guru-dan-staf /guru 301
+/staff /guru 301
 /karir https://s.alakhyar.sch.id/karir 301
 /about-us /tentang 301
 /about-us/* /tentang 301

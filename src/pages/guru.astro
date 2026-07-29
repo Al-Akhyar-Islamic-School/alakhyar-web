@@ -1,0 +1,77 @@
+---
+// Halaman Guru & Tenaga Kependidikan.
+// Data ditarik dari SIMGTK (aplikasi kepegawaian sekolah) agar selalu terbarui
+// tanpa perlu update manual di situs ini.
+//
+// CATATAN EMBED: simgtk.alakhyar.sch.id mengirim header `X-Frame-Options: SAMEORIGIN`,
+// sehingga tidak bisa ditampilkan dalam <iframe> dari domain ini. Untuk mengaktifkan
+// embed, ubah konfigurasi server SIMGTK menjadi:
+//     Content-Security-Policy: frame-ancestors 'self' https://alakhyar.sch.id;
+// dan hapus header X-Frame-Options. Setelah itu, blok <iframe> di bawah bisa dipakai.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { site, jenjang } from '../data/site';
+
+const SIMGTK = 'https://simgtk.alakhyar.sch.id/public/gtk/data';
+---
+
+<BaseLayout
+  title="Guru & Tenaga Kependidikan"
+  description="Data guru dan tenaga kependidikan Sekolah Islam Al Akhyar Makassar — TK/KB, SD, SMP, dan SMA Islam."
+>
+  <PageHeader
+    eyebrow="Guru & Tenaga Kependidikan"
+    title="Pendidik di Balik Setiap Prestasi"
+    subtitle="Kami siap mendampingi putra-putri Anda tumbuh menjadi generasi berprestasi dan berkarakter islami."
+  />
+
+  <section class="container-ak py-14 max-w-3xl">
+    <div class="rounded-[24px] bg-brand-gradient text-white p-8 md:p-12 text-center shadow-brand relative overflow-hidden" data-reveal>
+      <div class="absolute inset-0 pattern-dots" aria-hidden="true"></div>
+      <div class="relative">
+        <p class="text-white/80 text-sm font-bold uppercase tracking-[0.08em] mb-3">
+          Data Kepegawaian Resmi
+        </p>
+        <h2 class="font-display text-2xl md:text-3xl font-bold mb-4">
+          Lihat Data Guru &amp; Tenaga Kependidikan
+        </h2>
+        <p class="text-white/80 max-w-lg mx-auto mb-8">
+          Daftar lengkap pendidik dan tenaga kependidikan Al Akhyar tersaji di
+          SIMGTK — sistem informasi kepegawaian sekolah yang selalu diperbarui.
+        </p>
+        <a
+          href={SIMGTK}
+          target="_blank"
+          rel="noopener"
+          class="btn bg-white text-primary-600 hover:bg-slate-100 text-base !px-8 !py-3.5"
+        >
+          Buka Data GTK →
+        </a>
+      </div>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-5 mt-10">
+      <div class="card-ak p-6" data-reveal>
+        <h3 class="font-bold text-ink mb-1.5">Tenaga Pendidik Kompeten</h3>
+        <p class="text-sm text-slate-500">
+          Guru-guru Al Akhyar terlatih membina akademik sekaligus adab, dengan
+          pendampingan yang menyeluruh di setiap jenjang.
+        </p>
+      </div>
+      <div class="card-ak p-6" data-reveal style="--reveal-delay: 90ms">
+        <h3 class="font-bold text-ink mb-1.5">Empat Jenjang</h3>
+        <p class="text-sm text-slate-500">
+          {jenjang.map((j) => j.nama).join(' · ')} — di bawah naungan Yayasan
+          Pendidikan Islam Al Akhyar.
+        </p>
+      </div>
+    </div>
+
+    <p class="text-sm text-slate-400 mt-8 text-center">
+      Ingin bergabung sebagai pendidik?
+      <a href="https://s.alakhyar.sch.id/karir" target="_blank" rel="noopener" class="text-primary-600 font-semibold hover:underline">
+        Lihat peluang karir
+      </a>
+    </p>
+  </section>
+</BaseLayout>
