@@ -5,7 +5,7 @@ description: Al Akhyar Road To JAMNAS 2026
 pubDate: 2026-08-11
 author: Ferniyanti Ferniyanti
 category: Prestasi
-cover: /uploads/berita/whatsapp-image-2026-08-10-at-10.56.32.jpeg
+cover: /uploads/berita/desain-tanpa-judul-2-.png
 tags:
   - SD
   - SMP
