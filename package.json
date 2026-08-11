@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "cms": "npx decap-server & astro dev",
+    "prebuild": "node scripts/generate-og.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"

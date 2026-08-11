@@ -1,4 +1,5 @@
 ---
+import { existsSync } from 'node:fs';
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ShareButtons from '../../components/ShareButtons.astro';
@@ -15,6 +16,15 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 const { title, description, pubDate, author, category, cover } = post.data;
 const urlArtikel = new URL(Astro.url.pathname, Astro.site).href;
+
+// Gambar pratinjau untuk WhatsApp/Facebook: versi 1200x630 hasil scripts/generate-og.mjs.
+// Bila turunannya gagal dibuat (mis. berkas sumber rusak), pakai logo sekolah
+// agar pratinjau tidak kosong.
+const ogKandidat = cover
+  ? `/og/${cover.split('/').pop().replace(/\.[^.]+$/, '')}.jpg`
+  : null;
+const ogImage =
+  ogKandidat && existsSync(`public${ogKandidat}`) ? ogKandidat : undefined;
 const fmtDate = pubDate.toLocaleDateString('id-ID', {
   day: 'numeric',
   month: 'long',
@@ -22,7 +32,7 @@ const fmtDate = pubDate.toLocaleDateString('id-ID', {
 });
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} image={ogImage} tipe="article">
   <article class="container-ak py-12 max-w-3xl">
     <a href="/berita" class="text-sm font-semibold text-primary-600 hover:text-primary-700">← Semua Berita</a>
 

@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Gambar pratinjau (Open Graph) dibuat otomatis saat build oleh scripts/generate-og.mjs
+public/og/
