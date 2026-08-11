@@ -20,6 +20,14 @@
          dashboard dengan git-gateway; jangan pakai range ^3.0.0) -->
     <script is:inline src="https://unpkg.com/decap-cms@3.3.3/dist/decap-cms.js"></script>
     <script is:inline>
+      // MODE AMAN: buka /admin?safe=1 untuk melewati seluruh penyesuaian kustom
+      // di bawah (login Google-saja, kunci Publish, auto-isi Penulis). Berguna
+      // sebagai jalan keluar bila salah satu skrip mengganggu tampilan CMS.
+      window.AK_SAFE = new URLSearchParams(location.search).has('safe');
+      if (window.AK_SAFE) console.warn('[Al Akhyar] Mode aman aktif — penyesuaian kustom dilewati.');
+    </script>
+    <script is:inline>
+      if (!window.AK_SAFE) {
       // Sederhanakan layar login: hanya "Continue with Google".
       // Widget Netlify Identity dirender di dalam iframe same-origin, jadi CSS
       // bisa disuntikkan dari sini untuk menyembunyikan tab Sign up, form
@@ -79,9 +87,13 @@
             var el = els[i];
             if (el.__akDicek) continue;
             el.__akDicek = 1;
+            // Jangan sentuh elemen pembungkus: kalau di dalamnya masih ada
+            // tombol lain, menyembunyikannya bisa mengosongkan seluruh editor.
+            if (el.querySelector('button, [role="button"], input, textarea')) continue;
             // cocokkan hanya tombol yang teksnya diawali "Publish"
             // (Publish, Publish now, Publish and Create New, ...)
-            if (/^publish\b/i.test((el.textContent || '').trim())) {
+            var t = (el.textContent || '').trim();
+            if (/^publish\b/i.test(t) && t.length <= 40) {
               el.style.display = 'none';
             }
           }
@@ -208,6 +220,7 @@
           }
         },
       });
+      } // akhir blok "if (!window.AK_SAFE)"
     </script>
   </body>
 </html>
