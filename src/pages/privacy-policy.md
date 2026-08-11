@@ -2,7 +2,7 @@
 layout: ../layouts/HalamanLayout.astro
 title: "Kebijakan Privasi"
 description: "Kebijakan privasi situs web resmi Sekolah Islam Al Akhyar Makassar."
-subtitle: "Terakhir diperbarui: 11 Maret 2025"
+subtitle: "Terakhir diperbarui: 28 Juli 2026"
 ---
 
 Selamat datang di situs web resmi Sekolah Islam Al Akhyar Makassar. Kami menghargai privasi Anda dan berkomitmen untuk melindungi informasi pribadi yang Anda berikan kepada kami. Kebijakan Privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, dan melindungi data Anda saat mengakses situs web kami.
@@ -18,6 +18,18 @@ Selamat datang di situs web resmi Sekolah Islam Al Akhyar Makassar. Kami menghar
   * Informasi lain yang relevan dengan layanan yang kami sediakan
 
 Selain itu, kami juga dapat mengumpulkan data non-pribadi seperti alamat IP, jenis perangkat, dan data analitik lainnya untuk meningkatkan pengalaman pengguna di situs web kami.
+
+**Layanan Analitik Pihak Ketiga**
+
+Untuk memahami bagaimana pengunjung menggunakan situs ini dan memperbaiki kualitas layanan, kami memakai:
+
+  * **Google Analytics 4** — mencatat statistik kunjungan (halaman yang dibuka, sumber trafik, jenis perangkat). Alamat IP pengunjung dianonimkan.
+
+  * **Microsoft Clarity** — merekam pola interaksi seperti gerakan kursor, klik, dan gulir halaman untuk mengetahui bagian mana yang perlu diperbaiki.
+
+Kedua layanan mengumpulkan data secara agregat dan tidak digunakan untuk mengidentifikasi individu. Anda dapat menonaktifkan pelacakan melalui pengaturan privasi browser, mode penyamaran (incognito), atau [Google Analytics Opt-out Browser Add-on](https://tools.google.com/dlpage/gaoptout).
+
+
 
 **2\. Penggunaan Informasi** Informasi yang kami kumpulkan digunakan untuk:
 
