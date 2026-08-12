@@ -102,7 +102,7 @@ const fmtTanggal = (d: Date) =>
           Qur’an &amp; hadits, dalam empat jenjang: TK/KB, SD, SMP, dan SMA Islam.
         </p>
         <div class="flex flex-wrap gap-3 mb-10">
-          <a href="/spmb" class="btn btn-primary text-base !px-7 !py-3.5">Daftar Sekarang</a>
+          <a href={site.spmbUrl} target="_blank" rel="noopener" class="btn btn-primary text-base !px-7 !py-3.5">Daftar Sekarang</a>
           <a href="/jenjang" class="btn btn-ghost text-base !px-7 !py-3.5">Lihat Jenjang</a>
         </div>
         <div class="grid sm:grid-cols-2 gap-x-6 gap-y-3.5 text-sm text-slate-500 max-w-lg">
@@ -533,7 +533,7 @@ const fmtTanggal = (d: Date) =>
           </p>
         </div>
         <div class="flex md:justify-end gap-3 flex-wrap">
-          <a href="/spmb" class="btn bg-white text-primary-600 hover:bg-slate-100 text-base !px-7 !py-3.5">
+          <a href={site.spmbUrl} target="_blank" rel="noopener" class="btn bg-white text-primary-600 hover:bg-slate-100 text-base !px-7 !py-3.5">
             Info Pendaftaran
           </a>
           <a href="/kontak" class="btn border border-white/40 text-white hover:bg-white/10 text-base !px-7 !py-3.5">
