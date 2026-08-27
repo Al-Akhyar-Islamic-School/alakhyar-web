@@ -10,7 +10,18 @@
   # hasil situs (dokumentasi, workflow, config editor).
   # Keluar kode 0 = build dibatalkan; selain itu = build lanjut.
   # Catatan: artikel di src/content/berita/*.md TIDAK dikecualikan.
-  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- . ':(exclude)README.md' ':(exclude)PANDUAN-ADMIN.md' ':(exclude)AGENTS.md' ':(exclude)CLAUDE.md' ':(exclude).github/' ':(exclude).vscode/' ':(exclude).gitignore'"
+  #
+  # PENTING: build dari BUILD HOOK tidak boleh ikut dibatalkan.
+  #
+  # Sejak artikel diambil dari e-Rapor, penerbitan berita tidak lagi
+  # menghasilkan commit apa pun — e-Rapor cuma menembak build hook. Bagi
+  # aturan di bawah itu terlihat sebagai "tidak ada yang berubah"
+  # ($CACHED_COMMIT_REF sama dengan $COMMIT_REF), sehingga build DIBATALKAN
+  # dan artikelnya tidak pernah tayang. Tidak ada galat, tidak ada tanda.
+  #
+  # Netlify mengisi INCOMING_HOOK_TITLE hanya untuk build yang dipicu hook,
+  # jadi itulah pembedanya. `exit 1` = build lanjut.
+  ignore = "if [ -n \"$INCOMING_HOOK_TITLE\" ]; then echo 'Dipicu build hook — lanjut.'; exit 1; fi; git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- . ':(exclude)README.md' ':(exclude)PANDUAN-ADMIN.md' ':(exclude)AGENTS.md' ':(exclude)CLAUDE.md' ':(exclude).github/' ':(exclude).vscode/' ':(exclude).gitignore'"
 
 [build.environment]
   # Astro 7 membutuhkan Node >= 22.12
