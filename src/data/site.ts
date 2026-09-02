@@ -327,3 +327,44 @@ export const jenjang = [
     programKhas: [],
   },
 ] as const;
+
+// ============ Al Akhyar Games Center — game.alakhyar.sch.id ============
+// Platform game edukatif buatan sendiri. Data diselaraskan dengan
+// packages/shared/src/game-kategori.ts di repo game-alakhyar.
+export const gameUrl = 'https://game.alakhyar.sch.id';
+
+export const gameKategori = [
+  { label: 'Islami', ikon: '🕌', jumlah: 5, ket: 'Hafalan surah, tajwid, dan adab.' },
+  { label: 'Koding & Logika', ikon: '🤖', jumlah: 5, ket: 'Menyusun perintah, mencari pola, memperbaiki kesalahan.' },
+  { label: 'Sains & Alam', ikon: '🔬', jumlah: 3, ket: 'Eksperimen listrik, rantai makanan, dan ekosistem.' },
+  { label: 'Kata & Angka', ikon: '✏️', jumlah: 5, ket: 'Kosakata, teka-teki huruf, dan hitung cepat.' },
+  { label: 'Main Bareng', ikon: '👥', jumlah: 6, ket: 'Dimainkan beramai-ramai, sekelas atau serumah.' },
+] as const;
+
+// Urutan dipilih agar warna & gaya logo berselang-seling di animasi berjalan
+export const gameLogo = [
+  { slug: 'kapal-selam', nama: 'Kapal Selam: Duel Samudra' },
+  { slug: 'susun-ayat', nama: 'Susun Ayat' },
+  { slug: 'robot-sajadah', nama: 'Robot Sajadah' },
+  { slug: 'sains-quiz', nama: 'Sains Quiz' },
+  { slug: 'gabung-surah', nama: 'Gabung Surah' },
+  { slug: 'mental-math', nama: 'Mental Math' },
+  { slug: 'benteng-cerdas', nama: 'Benteng Cerdas' },
+  { slug: 'detektif-tajwid', nama: 'Detektif Tajwid' },
+  { slug: 'pola-ajaib', nama: 'Pola Ajaib' },
+  { slug: 'jaring-hayat', nama: 'Jaring Hayat' },
+  { slug: 'main-kata', nama: 'Main Kata' },
+  { slug: 'ular-tangga', nama: 'Ular Tangga Cerdas' },
+  { slug: 'tebak-surah', nama: 'Tebak Surah' },
+  { slug: 'balap-lari', nama: 'Balap Lari' },
+  { slug: 'kata-rahasia', nama: 'Kata Rahasia' },
+  { slug: 'nyalakan', nama: 'Nyalakan!' },
+  { slug: 'wordle-islami', nama: 'Wordle Islami' },
+  { slug: 'urutkan-langkah', nama: 'Urutkan Langkah' },
+  { slug: 'gambar-angka', nama: 'Gambar Angka' },
+  { slug: 'balap-robot', nama: 'Balap Robot' },
+  { slug: 'cari-bug', nama: 'Cari Bug' },
+  { slug: 'treasure-hunt', nama: 'Treasure Hunt' },
+  { slug: 'find-word', nama: 'Find Word' },
+  { slug: 'tts', nama: 'TTS Kurikulum' },
+] as const;
