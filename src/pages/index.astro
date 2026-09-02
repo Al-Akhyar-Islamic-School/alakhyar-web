@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BeritaCard from '../components/BeritaCard.astro';
 import AlumniSMA from '../components/AlumniSMA.astro';
+import GamesCenter from '../components/GamesCenter.astro';
 import { site, jenjang, pilar, stats, kurikulum, dinar, testimoni } from '../data/site';
 import heroFoto from '../assets/foto/gedung-utama.jpg';
 import dinarSS from '../assets/brand/Dinar APP SS.png';
@@ -512,6 +513,9 @@ const fmtTanggal = (d: Date) =>
       <AlumniSMA />
     </div>
   </section>
+
+  <!-- ============ AL AKHYAR GAMES CENTER ============ -->
+  <GamesCenter />
 
   <!-- ============ CTA ============ -->
   <section class="container-ak pb-20 pt-4">

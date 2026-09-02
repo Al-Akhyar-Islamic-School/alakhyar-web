@@ -225,6 +225,16 @@ body {
 .marquee-track {
   animation: marquee 50s linear infinite;
 }
+
+/* Arah sebaliknya — dipakai baris kedua logo game agar terasa hidup */
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+.marquee-track-reverse {
+  animation: marquee-reverse 45s linear infinite;
+}
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track { animation: none; }
+  .marquee-track,
+  .marquee-track-reverse { animation: none; }
 }

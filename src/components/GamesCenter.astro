@@ -1,0 +1,124 @@
+---
+// Al Akhyar Games Center — showcase platform game edukatif buatan sendiri.
+// Logo game berjalan dua baris berlawanan arah (marquee CSS murni, tanpa JS).
+import { Image } from 'astro:assets';
+import { gameUrl, gameKategori, gameLogo } from '../data/site';
+
+interface Props {
+  /** 'penuh' untuk beranda, 'ringkas' untuk halaman School Life */
+  variant?: 'penuh' | 'ringkas';
+}
+const { variant = 'penuh' } = Astro.props;
+
+// Muat semua logo game sebagai aset teroptimasi
+const berkasLogo = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/game/*.png',
+  { eager: true }
+);
+const logo = (slug: string) => berkasLogo[`../assets/game/${slug}.png`]?.default;
+
+const daftar = gameLogo.filter((g) => logo(g.slug));
+const barisAtas = daftar.slice(0, Math.ceil(daftar.length / 2));
+const barisBawah = daftar.slice(Math.ceil(daftar.length / 2));
+---
+
+<section class="relative overflow-hidden bg-primary-900 text-white">
+  <div class="absolute inset-0 pattern-dots opacity-50" aria-hidden="true"></div>
+  <div
+    class="absolute -top-24 right-0 w-[420px] h-[420px] rounded-full bg-magenta-500/20 blur-3xl"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="absolute -bottom-32 -left-20 w-[380px] h-[380px] rounded-full bg-sky-500/20 blur-3xl"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="container-ak relative py-16 md:py-20">
+    <div class="max-w-2xl mx-auto text-center mb-10" data-reveal>
+      <span class="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 px-4 py-1.5 text-xs font-bold text-sky-200 mb-5">
+        🎮 Al Akhyar Games Center
+      </span>
+      <h2 class="font-display text-3xl md:text-4xl font-bold mb-4 leading-tight">
+        Belajar Sambil Bermain —<br class="hidden sm:block" />
+        <span class="text-sky-300">24 Game Edukatif Buatan Sendiri</span>
+      </h2>
+      <p class="text-white/70 text-lg">
+        Dari menyusun ayat, menaklukkan tajwid, sampai menulis baris kode pertama.
+        Dibuat sendiri oleh Al Akhyar, gratis untuk seluruh siswa.
+      </p>
+    </div>
+
+    <!-- Logo game berjalan: dua baris berlawanan arah -->
+    <div class="relative -mx-5 mb-10" data-reveal style="--reveal-delay: 100ms">
+      <div class="space-y-4">
+        <div class="flex gap-4 w-max marquee-track">
+          {
+            [...barisAtas, ...barisAtas].map((g) => (
+              <Image
+                src={logo(g.slug)}
+                alt={g.nama}
+                title={g.nama}
+                class="w-20 h-20 md:w-24 md:h-24 rounded-2xl shadow-lg shrink-0 bg-white/5"
+                widths={[96, 192]}
+                sizes="96px"
+                loading="lazy"
+              />
+            ))
+          }
+        </div>
+        <div class="flex gap-4 w-max marquee-track-reverse">
+          {
+            [...barisBawah, ...barisBawah].map((g) => (
+              <Image
+                src={logo(g.slug)}
+                alt={g.nama}
+                title={g.nama}
+                class="w-20 h-20 md:w-24 md:h-24 rounded-2xl shadow-lg shrink-0 bg-white/5"
+                widths={[96, 192]}
+                sizes="96px"
+                loading="lazy"
+              />
+            ))
+          }
+        </div>
+      </div>
+      <!-- pudar di kedua tepi agar terasa menyatu -->
+      <div class="pointer-events-none absolute inset-y-0 left-0 w-16 md:w-28 bg-gradient-to-r from-primary-900 to-transparent"></div>
+      <div class="pointer-events-none absolute inset-y-0 right-0 w-16 md:w-28 bg-gradient-to-l from-primary-900 to-transparent"></div>
+    </div>
+
+    {
+      variant === 'penuh' && (
+        <div class="grid grid-cols-2 lg:grid-cols-5 gap-3 mb-10">
+          {gameKategori.map((k, i) => (
+            <div
+              class="rounded-2xl bg-white/[0.06] border border-white/10 backdrop-blur px-4 py-4 text-center"
+              data-reveal
+              style={`--reveal-delay: ${i * 70}ms`}
+            >
+              <p class="text-2xl mb-1.5">{k.ikon}</p>
+              <p class="font-bold text-white text-sm leading-snug">{k.label}</p>
+              <p class="text-[11px] text-sky-300 font-semibold mt-0.5">{k.jumlah} game</p>
+            </div>
+          ))}
+        </div>
+      )
+    }
+
+    <div class="text-center" data-reveal>
+      <a
+        href={gameUrl}
+        target="_blank"
+        rel="noopener"
+        class="btn bg-white text-primary-700 hover:bg-sky-50 text-base !px-8 !py-3.5"
+      >
+        Ayo Coba Mainkan →
+      </a>
+      <p class="text-xs text-white/50 mt-3">
+        Gratis untuk siswa Al Akhyar · game.alakhyar.sch.id
+      </p>
+    </div>
+  </div>
+</section>
