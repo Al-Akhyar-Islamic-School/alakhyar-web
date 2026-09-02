@@ -45,13 +45,8 @@ const galeri = (await getCollection('berita', ({ data }) => !data.draft && !!dat
         )
       }
     </div>
-  </section>
 
-  <!-- Games Center — versi ringkas -->
-  <GamesCenter variant="ringkas" />
-
-  <section class="container-ak py-14">
-    <div data-reveal>
+    <div data-reveal class="mt-16">
       <span class="eyebrow">Galeri</span>
       <h2 class="text-3xl font-bold text-ink mt-2 mb-8">Dokumentasi Kegiatan</h2>
     </div>
@@ -77,4 +72,7 @@ const galeri = (await getCollection('berita', ({ data }) => !data.draft && !!dat
       }
     </div>
   </section>
+
+  <!-- Games Center — ditaruh paling akhir agar pembaca fokus dulu ke kegiatan & galeri -->
+  <GamesCenter variant="ringkas" />
 </BaseLayout>

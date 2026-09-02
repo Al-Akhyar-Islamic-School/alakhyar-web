@@ -91,17 +91,13 @@ const barisBawah = daftar.slice(Math.ceil(daftar.length / 2));
 
     {
       variant === 'penuh' && (
-        <div class="grid grid-cols-2 lg:grid-cols-5 gap-3 mb-10">
-          {gameKategori.map((k, i) => (
-            <div
-              class="rounded-2xl bg-white/[0.06] border border-white/10 backdrop-blur px-4 py-4 text-center"
-              data-reveal
-              style={`--reveal-delay: ${i * 70}ms`}
-            >
-              <p class="text-2xl mb-1.5">{k.ikon}</p>
-              <p class="font-bold text-white text-sm leading-snug">{k.label}</p>
-              <p class="text-[11px] text-sky-300 font-semibold mt-0.5">{k.jumlah} game</p>
-            </div>
+        <div class="flex flex-wrap justify-center gap-2 md:gap-2.5 mb-8" data-reveal>
+          {gameKategori.map((k) => (
+            <span class="inline-flex items-center gap-2 rounded-full bg-white/[0.07] border border-white/10 px-3.5 py-1.5">
+              <span aria-hidden="true">{k.ikon}</span>
+              <span class="text-[13px] font-semibold text-white">{k.label}</span>
+              <span class="text-[11px] font-bold text-sky-300">{k.jumlah}</span>
+            </span>
           ))}
         </div>
       )
