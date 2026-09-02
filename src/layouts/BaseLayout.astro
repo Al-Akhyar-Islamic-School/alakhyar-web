@@ -71,6 +71,14 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     />
 
     <Analytics />
+
+    <!-- Jaring pengaman: bila JavaScript gagal/diblokir, konten ber-data-reveal
+         tetap terlihat alih-alih tinggal halaman kosong. -->
+    <noscript>
+      <style>
+        [data-reveal] { opacity: 1 !important; transform: none !important; }
+      </style>
+    </noscript>
   </head>
   <body class="min-h-screen flex flex-col">
     <Header />

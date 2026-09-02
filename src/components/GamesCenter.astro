@@ -3,6 +3,8 @@
 // Logo game berjalan dua baris berlawanan arah (marquee CSS murni, tanpa JS).
 import { Image } from 'astro:assets';
 import { gameUrl, gameKategori, gameLogo } from '../data/site';
+import hpKatalog from '../assets/game/game-hp-katalog.png';
+import hpMain from '../assets/game/game-hp-main.png';
 
 interface Props {
   /** 'penuh' untuk beranda, 'ringkas' untuk halaman School Life */
@@ -102,6 +104,26 @@ const barisBawah = daftar.slice(Math.ceil(daftar.length / 2));
         </div>
       )
     }
+
+    <!-- Tampilan nyata di HP siswa -->
+    <div class="flex items-end justify-center gap-4 md:gap-8 mb-9" data-reveal>
+      <Image
+        src={hpKatalog}
+        alt="Katalog 24 game di Al Akhyar Games Center"
+        class="w-36 sm:w-44 md:w-52 h-auto rounded-[20px] shadow-2xl rotate-[-4deg]"
+        widths={[220, 440]}
+        sizes="(max-width: 640px) 144px, 208px"
+        loading="lazy"
+      />
+      <Image
+        src={hpMain}
+        alt="Permainan Susun Ayat sedang dimainkan"
+        class="w-36 sm:w-44 md:w-52 h-auto rounded-[20px] shadow-2xl rotate-[4deg]"
+        widths={[220, 440]}
+        sizes="(max-width: 640px) 144px, 208px"
+        loading="lazy"
+      />
+    </div>
 
     <div class="text-center" data-reveal>
       <a
