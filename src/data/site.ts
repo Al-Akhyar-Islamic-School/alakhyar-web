@@ -13,6 +13,9 @@ export const site = {
   whatsapp: 'https://wa.me/6285215161778',
   address: 'Jl. Arung Teko No. 99, Sudiang, Biringkanaya, Makassar, Sulawesi Selatan',
   officeHours: 'Senin–Jumat · 08.00–16.00 WITA',
+  // Titik kampus (sama dengan peta di /kontak) — dipakai structured data
+  geo: { lat: -5.0813575, lng: 119.5315974 },
+  mapsUrl: 'https://maps.app.goo.gl/43J8yNmFw8NdH8SQ6',
   instagram: 'https://www.instagram.com/alakhyar_is',
   instagramHandle: '@alakhyar_is',
   kurikulumUrl: 'https://kurikulum.alakhyar.sch.id',
@@ -57,13 +60,22 @@ export const sejarah = [
   { tahun: '2020', judul: 'SMA Dibuka', teks: 'Peresmian gedung SMA sekaligus pembukaan jenjang SMA Islam Al Akhyar — terakreditasi A sejak 2023.' },
 ] as const;
 
-// Akreditasi BAN-S/M per jenjang (migrasi halaman "Akreditasi" + booklet SMA)
+// Akreditasi per jenjang (migrasi halaman "Akreditasi" + booklet SMA).
+// SMP diperbarui menjadi A atas konfirmasi sekolah (Okt 2026).
+// `slug` menautkan ke data `jenjang` di bawah agar halaman jenjang ikut menampilkannya.
 export const akreditasi = [
-  { jenjang: 'TK/RA', nilai: 'A' },
-  { jenjang: 'SD Islam', nilai: 'A' },
-  { jenjang: 'SMP Islam', nilai: 'B+' },
-  { jenjang: 'SMA Islam', nilai: 'A' },
+  { slug: 'tk', jenjang: 'TK/KB Islam', nilai: 'A' },
+  { slug: 'sd', jenjang: 'SD Islam', nilai: 'A' },
+  { slug: 'smp', jenjang: 'SMP Islam', nilai: 'A' },
+  { slug: 'sma', jenjang: 'SMA Islam', nilai: 'A' },
 ] as const;
+
+// Siklus pendaftaran yang sedang berjalan — satu-satunya tempat mengubah tahun SPMB.
+// Sumber: spmb.alakhyar.sch.id (Early Bird Admission 2027/2028 dibuka 9 Sep – 31 Des 2026).
+// Jadwal & biaya rinci sengaja tidak disalin ke sini; selalu rujuk situs SPMB.
+export const spmb = {
+  tahunAjaran: '2027/2028',
+} as const;
 
 // Narahubung pendaftaran (booklet resmi Nov 2025)
 export const narahubung = ['0852 1516 1778'] as const;
@@ -214,13 +226,13 @@ export const kampusAlumni = [
 
 export const nav = [
   { label: 'Beranda', href: '/' },
-  { label: 'Tentang Kami', href: '/tentang' },
-  { label: 'Kurikulum', href: '/kurikulum' },
-  { label: 'Jenjang', href: '/jenjang' },
-  { label: 'School Life', href: '/school-life' },
-  { label: 'Berita', href: '/berita' },
+  { label: 'Tentang Kami', href: '/tentang/' },
+  { label: 'Kurikulum', href: '/kurikulum/' },
+  { label: 'Jenjang', href: '/jenjang/' },
+  { label: 'School Life', href: '/school-life/' },
+  { label: 'Berita', href: '/berita/' },
   { label: 'Karir', href: 'https://s.alakhyar.sch.id/karir' },
-  { label: 'Kontak', href: '/kontak' },
+  { label: 'Kontak', href: '/kontak/' },
 ];
 
 // 13 bab panduan kurikulum (kurikulum.alakhyar.sch.id)
@@ -252,6 +264,9 @@ export const jenjang = [
     booklet: '/booklet/booklet-tk-al-akhyar.pdf',
     deskripsi:
       'Pendidikan anak usia dini berbasis bermain dengan Kurikulum Merdeka + metode BCCT — menumbuhkan akhlak, kemandirian, dan kecerdasan emosional.',
+    // Deskripsi mesin pencari (± 155 karakter, menyebut lokasi)
+    seoDeskripsi:
+      'KB-TK Islam Al Akhyar di Sudiang, Biringkanaya, Makassar — pendidikan anak usia 2–6 tahun dengan Kurikulum Merdeka & metode BCCT, rasio guru 1 : 7.',
     keunikan: [
       'Metode BCCT (Beyond Centers and Circle Time) — bermain dan belajar menjadi satu.',
       'Lima sentra: Balok, Imtaq, Main Peran, Sains & Bahan Alam, dan Literasi.',
@@ -279,6 +294,9 @@ export const jenjang = [
     booklet: '/booklet/booklet-sd-al-akhyar.pdf',
     deskripsi:
       'Fullday school dengan dua kurikulum: Kurikulum Merdeka + Kurikulum Unggul & Berakhlak — tahfidz metode Sabaq-Sabqi-Manzil hingga Fiqih.',
+    // Deskripsi mesin pencari (± 155 karakter, menyebut lokasi)
+    seoDeskripsi:
+      'SD Islam Al Akhyar di Sudiang, Biringkanaya, Makassar — fullday school terakreditasi A: Kurikulum Merdeka + tahfidz Sabaq-Sabqi-Manzil, kelas maks. 25 siswa.',
     keunikan: [
       'Tahfidz metode Sabaq-Sabqi-Manzil, Bahasa Arab, BTQ, Aqidah Akhlak, Hadits, Fiqih.',
       'Kelas maksimal 25 siswa — kelas 1–2 didampingi 2 guru.',
@@ -298,6 +316,9 @@ export const jenjang = [
     booklet: '/booklet/booklet-smp-al-akhyar.pdf',
     deskripsi:
       'Kurikulum Merdeka + kurikulum Islami khas: tahfidz metode Tasmi’, Tahsin, proyek STEAM, dan pembinaan organisasi OSIS-PMR.',
+    // Deskripsi mesin pencari (± 155 karakter, menyebut lokasi)
+    seoDeskripsi:
+      'SMP Islam Al Akhyar di Sudiang, Biringkanaya, Makassar — terakreditasi A: Kurikulum Merdeka + tahfidz Tasmi’, Tahsin, proyek STEAM, OSIS & PMR.',
     keunikan: [
       'Tahfidz metode Tasmi’ dan Tahsin dalam Kurikulum Unggul & Berakhlak.',
       'Prestasi nasional & internasional: OSN Provinsi, UCMAS Kuala Lumpur.',
@@ -317,6 +338,9 @@ export const jenjang = [
     booklet: '/booklet/booklet-sma-al-akhyar.pdf',
     deskripsi:
       'Terakreditasi A sejak 2023. Lulusan menembus UNHAS, UNM, hingga Fakultas Kedokteran — dengan kuota jalur undangan 40%.',
+    // Deskripsi mesin pencari (± 155 karakter, menyebut lokasi)
+    seoDeskripsi:
+      'SMA Islam Al Akhyar di Sudiang, Biringkanaya, Makassar — terakreditasi A, peminatan IPA & IPS; alumni diterima di UNHAS, UNM, hingga Fakultas Kedokteran.',
     keunikan: [
       'Alumni diterima di UNHAS, UNM, Poltekkes, Poltekbang, UMI, UII — termasuk 2 lulusan di Fakultas Kedokteran.',
       'Study & Campus Tour ke kampus Jawa: UNAIR, ITS, Universitas Brawijaya (2024).',

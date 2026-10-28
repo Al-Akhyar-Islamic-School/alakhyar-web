@@ -18,7 +18,7 @@ const year = new Date().getFullYear();
       <h3 class="text-white font-semibold text-sm mb-3">Jenjang</h3>
       <ul class="space-y-2 text-sm">
         {jenjang.map((j) => (
-          <li><a href={`/jenjang/${j.slug}`} class="hover:text-white transition-colors">{j.nama}</a></li>
+          <li><a href={`/jenjang/${j.slug}/`} class="hover:text-white transition-colors">{j.nama}</a></li>
         ))}
       </ul>
     </div>
@@ -27,10 +27,17 @@ const year = new Date().getFullYear();
       <h3 class="text-white font-semibold text-sm mb-3">Tautan</h3>
       <ul class="space-y-2 text-sm">
         {nav.filter((n) => n.href !== '/').map((item) => (
-          <li><a href={item.href} class="hover:text-white transition-colors">{item.label}</a></li>
+          <li>
+            <a
+              href={item.href}
+              target={item.href.startsWith('http') ? '_blank' : undefined}
+              rel={item.href.startsWith('http') ? 'noopener' : undefined}
+              class="hover:text-white transition-colors"
+            >{item.label}{item.href.startsWith('http') && ' ↗'}</a>
+          </li>
         ))}
         <li><a href={site.spmbUrl} target="_blank" rel="noopener" class="hover:text-white transition-colors">SPMB / PPDB ↗</a></li>
-        <li><a href="/guru" class="hover:text-white transition-colors">Guru &amp; Tenaga Kependidikan</a></li>
+        <li><a href="/guru/" class="hover:text-white transition-colors">Guru &amp; Tenaga Kependidikan</a></li>
         <li><a href={site.kurikulumUrl} target="_blank" rel="noopener" class="hover:text-white transition-colors">Kurikulum ↗</a></li>
         <li><a href={site.dinarUrl} target="_blank" rel="noopener" class="hover:text-white transition-colors">Dinar App ↗</a></li>
       </ul>
@@ -52,9 +59,9 @@ const year = new Date().getFullYear();
     <div class="container-ak py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/50">
       <p>© {year} {site.name}. Semua hak cipta dilindungi.</p>
       <div class="flex items-center gap-4">
-        <a href="/stop-bullying" class="hover:text-white">Stop Bullying</a>
-        <a href="/privacy-policy" class="hover:text-white">Kebijakan Privasi</a>
-        <a href="/syarat-dan-ketentuan" class="hover:text-white">Syarat &amp; Ketentuan</a>
+        <a href="/stop-bullying/" class="hover:text-white">Stop Bullying</a>
+        <a href="/privacy-policy/" class="hover:text-white">Kebijakan Privasi</a>
+        <a href="/syarat-dan-ketentuan/" class="hover:text-white">Syarat &amp; Ketentuan</a>
       </div>
     </div>
   </div>

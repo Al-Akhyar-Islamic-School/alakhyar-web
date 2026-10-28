@@ -6,6 +6,8 @@ author: "admin"
 category: Umum
 tags: ["Yayasan"]
 cover: /uploads/berita/04.jpg
+# Konten contoh bawaan tema WordPress lama (bukan berita sekolah) — tidak diterbitkan
+draft: true
 ---
 
 #### Lommodo ligula eget dolor. Aenean massa. Cum sociis que penatibus et magnis dis parturient montes lorem, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla onsequat massa quis enim.

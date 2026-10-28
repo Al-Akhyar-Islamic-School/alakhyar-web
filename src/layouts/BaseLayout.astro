@@ -3,24 +3,86 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Analytics from '../components/Analytics.astro';
-import { site } from '../data/site';
+import { site, jenjang, akreditasi } from '../data/site';
 
 interface Props {
   title?: string;
+  // Judul <title> utuh tanpa akhiran " · Sekolah Islam Al Akhyar" (mis. halaman jenjang)
+  titleLengkap?: string;
   description?: string;
   image?: string;
+  // Ukuran asli gambar OG; default = logo sekolah (1920×1080)
+  imageWidth?: number;
+  imageHeight?: number;
   tipe?: 'website' | 'article';
+  // true untuk halaman yang tidak perlu muncul di Google (mis. 404)
+  noindex?: boolean;
+  // Structured data tambahan khusus halaman (Article, FAQPage, dst.)
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
   title,
+  titleLengkap,
   description = site.description,
   image = '/brand/Logo Sekolah.png',
+  imageWidth = image === '/brand/Logo Sekolah.png' ? 1920 : 1200,
+  imageHeight = image === '/brand/Logo Sekolah.png' ? 1080 : 630,
   tipe = 'website',
+  noindex = false,
+  jsonLd,
 } = Astro.props;
 
-const pageTitle = title ? `${title} · ${site.name}` : `${site.name} — ${site.tagline}`;
+const homeTitle = `${site.name} Makassar — TK/KB, SD, SMP & SMA Islam`;
+const pageTitle = titleLengkap ?? (title ? `${title} · ${site.name}` : homeTitle);
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const siteUrl = Astro.site!.href;
+
+// Profil sekolah untuk Google & mesin pencari AI — semua nilai dari src/data/site.ts.
+// Tiap jenjang ditulis sebagai sub-organisasi agar pencarian "SMP Islam di Sudiang"
+// dapat dihubungkan ke halaman jenjangnya.
+const alamat = {
+  '@type': 'PostalAddress',
+  streetAddress: 'Jl. Arung Teko No. 99, Sudiang',
+  addressLocality: 'Makassar',
+  addressRegion: 'Sulawesi Selatan',
+  addressCountry: 'ID',
+};
+const sekolahLd = {
+  '@context': 'https://schema.org',
+  '@type': 'School',
+  '@id': `${siteUrl}#sekolah`,
+  name: site.name,
+  alternateName: ['Al Akhyar Islamic School', 'Al Akhyar Makassar'],
+  description: site.description,
+  url: siteUrl,
+  logo: new URL('/brand/Logo Sekolah.png', Astro.site).href,
+  image: new URL('/brand/Logo Sekolah.png', Astro.site).href,
+  email: site.email,
+  telephone: `+${site.whatsapp.split('/').pop()}`,
+  foundingDate: '2004',
+  address: alamat,
+  geo: { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lng },
+  hasMap: site.mapsUrl,
+  areaServed: ['Sudiang', 'Biringkanaya', 'Kota Makassar'].map((name) => ({ '@type': 'Place', name })),
+  sameAs: [site.instagram],
+  subOrganization: jenjang.map((j) => ({
+    '@type': j.slug === 'tk' ? 'Preschool' : j.slug === 'sd' ? 'ElementarySchool' : j.slug === 'smp' ? 'MiddleSchool' : 'HighSchool',
+    name: `${j.lengkap} Makassar`,
+    url: new URL(`/jenjang/${j.slug}/`, Astro.site).href,
+    description: j.seoDeskripsi,
+    address: alamat,
+    foundingDate: String(j.berdiri),
+    hasCredential: akreditasi
+      .filter((a) => a.slug === j.slug)
+      .map((a) => ({
+        '@type': 'EducationalOccupationalCredential',
+        credentialCategory: 'Akreditasi Sekolah',
+        name: `Terakreditasi ${a.nilai}`,
+      })),
+  })),
+};
+const ldList = [sekolahLd, ...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [])];
 ---
 
 <!doctype html>
@@ -34,17 +96,27 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <link rel="canonical" href={canonical} />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+
+    <!-- Font: dimuat langsung dari <head> (bukan @import di CSS) agar tidak
+         menunggu CSS selesai diunduh lebih dulu — lebih cepat di HP. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap"
+    />
 
     <!-- Open Graph — dibaca WhatsApp, Facebook, Telegram saat tautan dibagikan -->
     <meta property="og:type" content={tipe} />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:title" content={title || `${site.name} — ${site.tagline}`} />
+    <meta property="og:title" content={title || homeTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(image, Astro.site)} />
     <meta property="og:image:secure_url" content={new URL(image, Astro.site)} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image:width" content={String(imageWidth)} />
+    <meta property="og:image:height" content={String(imageHeight)} />
     <meta property="og:image:alt" content={title || site.name} />
     <meta property="og:locale" content="id_ID" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -52,23 +124,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(image, Astro.site)} />
 
-    <!-- Structured data: sekolah -->
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'School',
-        name: site.name,
-        description: site.description,
-        url: Astro.site?.href,
-        address: {
-          '@type': 'PostalAddress',
-          addressLocality: 'Makassar',
-          addressRegion: 'Sulawesi Selatan',
-          addressCountry: 'ID',
-        },
-      })}
-    />
+    <!-- Structured data: profil sekolah (+ data khusus halaman bila ada) -->
+    {ldList.map((ld) => <script type="application/ld+json" set:html={JSON.stringify(ld)} />)}
 
     <Analytics />
 
@@ -81,8 +138,14 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     </noscript>
   </head>
   <body class="min-h-screen flex flex-col">
+    <a
+      href="#konten"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:rounded-full focus:bg-primary-600 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+    >
+      Lewati ke konten utama
+    </a>
     <Header />
-    <main class="flex-1">
+    <main id="konten" class="flex-1">
       <slot />
     </main>
     <Footer />

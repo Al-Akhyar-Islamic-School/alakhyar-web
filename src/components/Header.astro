@@ -11,20 +11,21 @@ const isActive = (href: string) =>
 <header class="sticky top-0 z-50 bg-white/85 backdrop-blur-md border-b border-slate-200">
   <div class="container-ak flex items-center justify-between h-16 gap-4">
     <a href="/" class="flex items-center gap-2.5 shrink-0">
-      <Image src={logo} alt={site.name} width={96} height={96} class="h-10 w-10" />
+      <Image src={logo} alt={site.name} width={96} height={96} class="h-10 w-10" loading="eager" />
       <span class="flex flex-col leading-tight">
         <span class="text-[11px] sm:text-[13px] font-medium text-slate-500 tracking-[0.02em]">Sekolah Islam</span>
         <span class="font-extrabold text-ink text-[14px] sm:text-[16px] tracking-wide">ALAKHYAR</span>
       </span>
     </a>
 
-    <nav class="hidden lg:flex items-center gap-1">
+    <nav class="hidden lg:flex items-center gap-1" aria-label="Menu utama">
       {
         nav.map((item) => (
           <a
             href={item.href}
             target={item.href.startsWith('http') ? '_blank' : undefined}
             rel={item.href.startsWith('http') ? 'noopener' : undefined}
+            aria-current={isActive(item.href) ? 'page' : undefined}
             class:list={[
               'px-3 py-2 rounded-full text-sm font-medium transition-colors',
               isActive(item.href)
@@ -52,6 +53,7 @@ const isActive = (href: string) =>
         id="menu-toggle"
         class="lg:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100"
         aria-label="Buka menu"
+        aria-controls="mobile-nav"
         aria-expanded="false"
       >
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -63,13 +65,14 @@ const isActive = (href: string) =>
 
   <!-- Mobile nav -->
   <div id="mobile-nav" class="lg:hidden hidden border-t border-slate-200 bg-white">
-    <nav class="container-ak flex flex-col py-3">
+    <nav class="container-ak flex flex-col py-3" aria-label="Menu utama (seluler)">
       {
         nav.map((item) => (
           <a
             href={item.href}
             target={item.href.startsWith('http') ? '_blank' : undefined}
             rel={item.href.startsWith('http') ? 'noopener' : undefined}
+            aria-current={isActive(item.href) ? 'page' : undefined}
             class:list={[
               'px-3 py-2.5 rounded-lg text-sm font-medium',
               isActive(item.href) ? 'text-primary-600 bg-primary-50' : 'text-slate-700',
@@ -89,5 +92,6 @@ const isActive = (href: string) =>
   toggle?.addEventListener('click', () => {
     const open = menu?.classList.toggle('hidden');
     toggle.setAttribute('aria-expanded', String(!open));
+    toggle.setAttribute('aria-label', open ? 'Buka menu' : 'Tutup menu');
   });
 </script>

@@ -1,27 +1,73 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
-import { site } from '../data/site';
+import { site, jenjang, akreditasi, kurikulum, spmb } from '../data/site';
+
+// Pertanyaan yang paling sering ditanyakan orang tua. Semua jawaban disusun dari
+// data resmi di src/data/site.ts — jangan menambah angka/jadwal/biaya di sini.
+const semuaA = akreditasi.every((a) => a.nilai === 'A');
+const faq = [
+  {
+    t: 'Di mana lokasi Sekolah Islam Al Akhyar?',
+    j: `${site.address} — ± 5 km dari Bandara Sultan Hasanuddin dan ± 1,5 km dari Embarkasi Asrama Haji Makassar.`,
+  },
+  {
+    t: 'Jenjang apa saja yang tersedia?',
+    j: `${jenjang.map((x) => `${x.lengkap} (${x.umur.replace('Usia ', '')})`).join(', ')} — di bawah Yayasan Pendidikan Islam Al Akhyar.`,
+  },
+  {
+    t: 'Bagaimana status akreditasinya?',
+    j: semuaA
+      ? `Semua jenjang terakreditasi A: ${akreditasi.map((a) => a.jenjang).join(', ')}.`
+      : akreditasi.map((a) => `${a.jenjang}: ${a.nilai}`).join(', ') + '.',
+  },
+  {
+    t: 'Kurikulum apa yang digunakan?',
+    j: `${kurikulum.nasional.nama} (${kurikulum.nasional.ket.toLowerCase()}) dipadukan dengan ${kurikulum.islami.nama} — tahfidz Qur’an, tahsin, Bahasa Arab, aqidah akhlak, hadits, dan fiqih.`,
+  },
+  {
+    t: `Bagaimana cara mendaftar untuk Tahun Ajaran ${spmb.tahunAjaran}?`,
+    j: `Pendaftaran (SPMB) dilakukan secara daring di spmb.alakhyar.sch.id. Untuk jadwal, persyaratan, dan rincian biaya, silakan hubungi narahubung pendaftaran melalui WhatsApp ${site.phone}.`,
+  },
+  {
+    t: 'Kapan kantor sekolah melayani tamu?',
+    j: `${site.officeHours.replace(' · ', ', pukul ')}. Pertanyaan juga dapat dikirim ke ${site.email}.`,
+  },
+];
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((f) => ({
+    '@type': 'Question',
+    name: f.t,
+    acceptedAnswer: { '@type': 'Answer', text: f.j },
+  })),
+};
 ---
 
-<BaseLayout title="Kontak" description="Hubungi Sekolah Islam Al Akhyar.">
+<BaseLayout
+  title="Kontak & Lokasi"
+  description={`Alamat, peta, WhatsApp, dan jam kantor Sekolah Islam Al Akhyar di Jl. Arung Teko No. 99, Sudiang, Makassar — serta info pendaftaran SPMB ${spmb.tahunAjaran}.`}
+  jsonLd={faqLd}
+>
   <PageHeader eyebrow="Kontak" title="Hubungi Kami" subtitle="Kami senang menyambut pertanyaan Anda." />
   <section class="container-ak py-14 max-w-3xl">
     <div class="grid sm:grid-cols-2 gap-5">
       <div class="card-ak p-6">
-        <h3 class="font-bold text-ink mb-1">Alamat</h3>
+        <h2 class="font-bold text-ink mb-1">Alamat</h2>
         <p class="text-slate-500 text-sm">{site.address}</p>
       </div>
       <div class="card-ak p-6">
-        <h3 class="font-bold text-ink mb-1">Jam Kantor</h3>
+        <h2 class="font-bold text-ink mb-1">Jam Kantor</h2>
         <p class="text-slate-500 text-sm">{site.officeHours}</p>
       </div>
       <div class="card-ak p-6">
-        <h3 class="font-bold text-ink mb-1">Email</h3>
+        <h2 class="font-bold text-ink mb-1">Email</h2>
         <a href={`mailto:${site.email}`} class="text-primary-600 text-sm hover:underline">{site.email}</a>
       </div>
       <div class="card-ak p-6">
-        <h3 class="font-bold text-ink mb-1">Telepon / WhatsApp</h3>
+        <h2 class="font-bold text-ink mb-1">Telepon / WhatsApp</h2>
         <a href={site.whatsapp} target="_blank" rel="noopener" class="text-primary-600 text-sm hover:underline">
           {site.phone} 💬
         </a>
@@ -31,7 +77,7 @@ import { site } from '../data/site';
       <h2 class="text-2xl font-bold text-ink mb-4">Arah ke Sekolah</h2>
       <div class="rounded-2xl bg-white border border-slate-200 overflow-hidden">
         <iframe
-          src="https://maps.google.com/maps?q=-5.0813575,119.5315974&z=16&output=embed"
+          src={`https://maps.google.com/maps?q=${site.geo.lat},${site.geo.lng}&z=16&output=embed`}
           title="Peta lokasi Sekolah Islam Al Akhyar Makassar"
           class="w-full h-[380px] border-0"
           loading="lazy"
@@ -44,11 +90,11 @@ import { site } from '../data/site';
             dijangkau dari berbagai penjuru Makassar:
           </p>
           <ul class="space-y-2 text-sm text-slate-500">
-            <li class="flex gap-2.5"><span>✈️</span> ± 5 km dari Bandara Sultan Hasanuddin</li>
-            <li class="flex gap-2.5"><span>🕌</span> ± 1,5 km dari Embarkasi Asrama Haji Makassar</li>
+            <li class="flex gap-2.5"><span aria-hidden="true">✈️</span> ± 5 km dari Bandara Sultan Hasanuddin</li>
+            <li class="flex gap-2.5"><span aria-hidden="true">🕌</span> ± 1,5 km dari Embarkasi Asrama Haji Makassar</li>
           </ul>
           <a
-            href="https://maps.app.goo.gl/43J8yNmFw8NdH8SQ6"
+            href={site.mapsUrl}
             target="_blank"
             rel="noopener"
             class="btn btn-primary !py-2.5 text-sm mt-2"
@@ -57,6 +103,28 @@ import { site } from '../data/site';
           </a>
         </div>
       </div>
+    </div>
+
+    <!-- Pertanyaan umum orang tua (juga dibaca mesin pencari lewat FAQPage) -->
+    <div class="mt-14" data-reveal>
+      <span class="eyebrow">Info Singkat</span>
+      <h2 class="text-2xl font-bold text-ink mt-2 mb-5">Pertanyaan yang Sering Diajukan</h2>
+      <div class="space-y-3">
+        {
+          faq.map((f) => (
+            <details class="group card-ak !transform-none px-5 py-4">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-ink">
+                {f.t}
+                <span class="text-primary-500 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-slate-500">{f.j}</p>
+            </details>
+          ))
+        }
+      </div>
+      <a href={site.spmbUrl} target="_blank" rel="noopener" class="btn btn-primary mt-6">
+        Daftar SPMB {spmb.tahunAjaran}
+      </a>
     </div>
   </section>
 </BaseLayout>

@@ -26,7 +26,7 @@ const warnaHeader: Record<string, string> = {
 
 <BaseLayout
   title="Jenjang Pendidikan"
-  description="TK Islam, SD Islam, SMP Islam, dan SMA Islam Al Akhyar Makassar."
+  description="Empat jenjang di Sudiang, Biringkanaya, Makassar: KB-TK Islam (2–6 tahun), SD Islam, SMP Islam, dan SMA Islam Al Akhyar — semua terakreditasi A."
 >
   <PageHeader
     eyebrow="Jenjang Pendidikan"
@@ -38,7 +38,7 @@ const warnaHeader: Record<string, string> = {
       {
         jenjang.map((j, i) => (
           <a
-            href={`/jenjang/${j.slug}`}
+            href={`/jenjang/${j.slug}/`}
             class="group rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
             data-reveal
             style={`--reveal-delay: ${i * 80}ms`}

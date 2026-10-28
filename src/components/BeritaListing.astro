@@ -13,8 +13,9 @@ interface Props {
 
 const { posts, aktif = 'Semua', page = 1, totalPages = 1, baseUrl = '/berita' } = Astro.props;
 const kategori = ['Semua', 'Kegiatan', 'Prestasi', 'Pengumuman', 'Umum'];
-const hrefKat = (k: string) => (k === 'Semua' ? '/berita' : `/berita/kategori/${k.toLowerCase()}`);
-const hrefPage = (p: number) => (p === 1 ? baseUrl : `${baseUrl === '/berita' ? '/berita/halaman' : baseUrl}/${p}`);
+// Tautan internal selalu berakhiran '/' (sama dengan URL kanonis) agar tidak kena redirect 301
+const hrefKat = (k: string) => (k === 'Semua' ? '/berita/' : `/berita/kategori/${k.toLowerCase()}/`);
+const hrefPage = (p: number) => (p === 1 ? `${baseUrl}/` : `${baseUrl === '/berita' ? '/berita/halaman' : baseUrl}/${p}/`);
 ---
 
 <div class="flex flex-wrap gap-2 mb-10">

@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
-const { title, description, pubDate, author, category, cover } = post.data;
+const { title, description, pubDate, updatedDate, author, category, cover } = post.data;
 const urlArtikel = new URL(Astro.url.pathname, Astro.site).href;
 
 // Gambar pratinjau untuk WhatsApp/Facebook: versi 1200x630 hasil scripts/generate-og.mjs.
@@ -25,6 +25,26 @@ const ogKandidat = cover
   : null;
 const ogImage =
   ogKandidat && existsSync(`public${ogKandidat}`) ? ogKandidat : undefined;
+// Structured data artikel — membantu Google & mesin pencari AI mengenali tanggal,
+// penulis, dan penerbitnya.
+const artikelLd = {
+  '@context': 'https://schema.org',
+  '@type': 'NewsArticle',
+  headline: title,
+  description,
+  datePublished: pubDate.toISOString(),
+  dateModified: (updatedDate ?? pubDate).toISOString(),
+  // Akun generik hasil migrasi WordPress ("admin", "alakhyar") ditulis sebagai tim humas
+  author:
+    !author || /^(admin|alakhyar|humas al akhyar)$/i.test(author)
+      ? { '@type': 'Organization', name: 'Humas Al Akhyar' }
+      : { '@type': 'Person', name: author },
+  publisher: { '@id': `${Astro.site!.href}#sekolah` },
+  mainEntityOfPage: urlArtikel,
+  image: cover ? [new URL(cover, Astro.site).href] : undefined,
+  articleSection: category,
+};
+
 const fmtDate = pubDate.toLocaleDateString('id-ID', {
   day: 'numeric',
   month: 'long',
@@ -32,9 +52,9 @@ const fmtDate = pubDate.toLocaleDateString('id-ID', {
 });
 ---
 
-<BaseLayout title={title} description={description} image={ogImage} tipe="article">
+<BaseLayout title={title} description={description} image={ogImage} tipe="article" jsonLd={artikelLd}>
   <article class="container-ak py-12 max-w-3xl">
-    <a href="/berita" class="text-sm font-semibold text-primary-600 hover:text-primary-700">← Semua Berita</a>
+    <a href="/berita/" class="text-sm font-semibold text-primary-600 hover:text-primary-700">← Semua Berita</a>
 
     <div class="flex items-center gap-2 mt-6 mb-3">
       <span class="text-[11px] font-bold uppercase tracking-wide text-primary-600 bg-primary-50 px-2 py-0.5 rounded-full">
@@ -56,6 +76,8 @@ const fmtDate = pubDate.toLocaleDateString('id-ID', {
           alt={title}
           width={1024}
           height={576}
+          fetchpriority="high"
+          decoding="async"
           class="w-full rounded-xl shadow-sm mb-8 object-cover"
         />
       )
@@ -70,7 +92,7 @@ const fmtDate = pubDate.toLocaleDateString('id-ID', {
     </div>
 
     <div class="mt-8 text-center">
-      <a href="/berita" class="btn btn-ghost text-sm">← Kembali ke Semua Berita</a>
+      <a href="/berita/" class="btn btn-ghost text-sm">← Kembali ke Semua Berita</a>
     </div>
   </article>
 </BaseLayout>

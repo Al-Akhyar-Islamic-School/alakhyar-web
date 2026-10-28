@@ -10,7 +10,7 @@ const items = [
   { t: 'Proyek STEAM', d: 'Pembelajaran berbasis proyek yang menumbuhkan inovasi dan nalar kritis.' },
   { t: 'Outing Class', d: 'Belajar dari sumber nyata: museum, instansi, alam, dan dunia profesi.' },
   { t: 'Kegiatan Keislaman', d: 'Semarak Ramadhan, pelatihan dai-daiyah, dan amalan harian 7KAIH.' },
-  { t: 'Sekolah Ramah Anak', d: 'Lingkungan aman dan hangat dengan program anti-perundungan (Program Roots UNICEF).', href: '/stop-bullying' },
+  { t: 'Sekolah Ramah Anak', d: 'Lingkungan aman dan hangat dengan program anti-perundungan (Program Roots UNICEF).', href: '/stop-bullying/' },
 ];
 
 // Galeri dari dokumentasi asli artikel
@@ -54,7 +54,7 @@ const galeri = (await getCollection('berita', ({ data }) => !data.draft && !!dat
       {
         galeri.map((g, i) => (
           <a
-            href={`/berita/${g.id}`}
+            href={`/berita/${g.id}/`}
             class="group relative rounded-2xl overflow-hidden aspect-[4/3] border border-slate-200"
             data-reveal
             style={`--reveal-delay: ${i * 60}ms`}

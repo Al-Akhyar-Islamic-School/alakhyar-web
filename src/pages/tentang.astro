@@ -17,7 +17,7 @@ const warnaPilar: Record<string, string> = {
 
 <BaseLayout
   title="Tentang Kami"
-  description="Sejarah, visi-misi, dan pilar pendidikan Sekolah Islam Al Akhyar Makassar — berkiprah sejak 2004."
+  description="Sejarah, visi-misi, akreditasi, dan kampus Sekolah Islam Al Akhyar di Sudiang, Biringkanaya, Makassar — berkiprah sejak 2004."
 >
   <PageHeader
     eyebrow="Tentang Kami"
@@ -178,15 +178,15 @@ const warnaPilar: Record<string, string> = {
   <section class="container-ak pb-16">
     <div class="mb-8" data-reveal>
       <span class="eyebrow">Mutu</span>
-      <h2 class="text-3xl font-bold text-ink mt-2">Akreditasi BAN-S/M</h2>
+      <h2 class="text-3xl font-bold text-ink mt-2">Akreditasi Setiap Jenjang</h2>
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
       {
         akreditasi.map((a, i) => (
-          <div class="card-ak p-6 text-center" data-reveal style={`--reveal-delay: ${i * 70}ms`}>
+          <a href={`/jenjang/${a.slug}/`} class="card-ak p-6 text-center" data-reveal style={`--reveal-delay: ${i * 70}ms`}>
             <p class="font-display font-bold text-4xl text-primary-600 mb-1">{a.nilai}</p>
             <p class="text-sm font-semibold text-ink">{a.jenjang}</p>
-          </div>
+          </a>
         ))
       }
     </div>
@@ -195,7 +195,7 @@ const warnaPilar: Record<string, string> = {
   <!-- CTA: kenali para pendidik -->
   <section class="container-ak pb-20">
     <a
-      href="/guru"
+      href="/guru/"
       class="group block rounded-[24px] bg-brand-gradient text-white p-8 md:p-10 shadow-brand relative overflow-hidden transition-transform duration-200 hover:-translate-y-1"
       data-reveal
     >
