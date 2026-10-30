@@ -90,9 +90,27 @@ export function artikelDariErapor(apiUrl: string): Loader {
       const endpoint = `${apiUrl.replace(/\/$/, '')}/api/v2/publik/artikel`;
       logger.info(`Memuat artikel dari ${endpoint}`);
 
-      const res = await fetch(endpoint, { headers: { Accept: 'application/json' } });
+      const res = await fetch(endpoint, {
+        headers: {
+          Accept: 'application/json',
+          // Identitas jelas agar mudah dikenali (dan dikecualikan) di log firewall
+          'User-Agent': 'AlAkhyarWebBuild/1.0 (+https://alakhyar.sch.id)',
+        },
+      });
 
       if (!res.ok) {
+        // e-Rapor berada di belakang Cloudflare. Bila yang menolak adalah
+        // Cloudflare (bukan e-Rapor), catat jejaknya supaya penyebabnya bisa
+        // dicari di Security → Events dengan Ray ID tersebut.
+        const ray = res.headers.get('cf-ray');
+        const mitigasi = res.headers.get('cf-mitigated');
+        if (ray) {
+          logger.error(
+            `Respons dari Cloudflare: cf-ray=${ray}` +
+              (mitigasi ? `, cf-mitigated=${mitigasi}` : '') +
+              ' — periksa Cloudflare → Security → Events untuk Ray ID ini.'
+          );
+        }
         /*
           Dilempar, bukan dikembalikan kosong.
 
